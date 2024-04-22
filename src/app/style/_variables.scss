@@ -1,0 +1,29 @@
+//variables.scss
+
+//colors
+$main-color: #4511B2;
+$text-color: #171717;
+$sec-color: #BEADFA;
+$light-purp: #DFCCFB;
+$error:#DC0606 ;
+$darkred:#901B18;
+$grey: #999;
+
+//mixins
+@mixin flex-row{
+    display: flex;
+    flex-direction: row;
+}
+@mixin flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin transition {
+    transition: all 0.2s ease-in-out;
+}
+
+//spacings (numbers are not fix for now)
+$p-sm: 1em;
+$p-m: 2em;
+$p-l: 3em; 
