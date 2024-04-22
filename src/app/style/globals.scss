@@ -10,6 +10,8 @@ body {
   @include flex-column;
   padding-left: 1rem;
   padding-right: 1rem;
+  font-size: 14px;
+  color: $text-color;
 }
 
 h1 {
