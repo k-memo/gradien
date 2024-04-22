@@ -20,12 +20,13 @@ export default function StartBtn() {
         Get Started
       </button>
       <button className="btn-second">
-        Next <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
+        Next <FontAwesomeIcon icon={faArrowRight} className="icon" />
       </button>
       <button className="btn-img">
       <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
       <span>camera</span>
       </button>
+
 
     </main>
   );

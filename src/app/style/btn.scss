@@ -12,6 +12,7 @@
     align-items: center;
     gap: 2em;
     padding-left: 1em;
+    cursor: pointer;
     .circle-icon{
       @include flex-row;
       margin: 0;
@@ -37,30 +38,36 @@
       text-align: center;
       position: absolute;
     }
+    &:hover, &:active{
+        background-color: $main-color;
+        color: white;
+    }
   }
   
   .btn-main{
-    padding: 8px 40px;
+    padding: 10px 50px;
     background-color: $main-color;
     color: white;
-    border-radius: 10px;
-    border: solid 1px #28004a;
+    border: none;
     &:hover{
-      background-color: $sec-color;
+      background-color: $hover;
       border: none;
     }
     &:active{
-      background-color: $sec-color;
+      background-color: $hover;
       border: none;
     }
   }
   .btn-second{
-    padding: 8px 40px;
+    padding: 8px 30px;
     background-color: transparent;
     color: $main-color;
-    border-radius: 10px;
     border: solid 2px $main-color;
-    &:hover{
+    @include flex-row;
+    align-items: center;
+    gap: 2em;
+    
+    &:hover, &:active{
       background-color: $main-color;
       color: white;
     }
@@ -73,11 +80,44 @@
     @include flex-column;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    width: 150px;
-    padding: 5px 0px;
-    &:hover{
+    padding: 5px 40px;
+    border: solid 2px $main-color;
+    &:hover, &:active{
       background-color: $main-color;
       color: white;
+    }
+  }
+  .btn-long{
+    background-color: $main-color;
+    color: white;
+    padding: 8px 100px;
+    border: none;
+    width: 270px;
+    &:hover, &:active{
+        background-color: $hover;
+    }
+  }
+  .prev-btn{
+    background-color: $sec-color;
+    padding: 10px 50px;
+    color: white;
+    border: none;
+    &:hover, &:active{
+        background-color: $main-color;
+    }
+  }
+  .btn{
+    cursor: pointer;
+    border-radius: 10px;
+    @include transition;
+  }
+  .delete-btn{
+    padding: 10px 50px;
+    background-color: $error;
+    color: white;
+    border: solid 1px $darkred;
+    &:hover, &:active{
+      background-color: $darkred;
+      border: none;
     }
   }
