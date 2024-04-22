@@ -1,10 +1,17 @@
-import Image from "next/image";
+import Logo from "../../components/logo";
 import "./style/application.scss";
 
 export default function Home() {
   return (
     <main>
-      Hello
+      <div className={"landing-page-greeting"}>
+        <h1>
+          GR
+          <Logo />
+          DIEN
+        </h1>
+        <p className={"sub"}>FIND YOUR COLORPALETTE</p>
+      </div>
     </main>
   );
 }

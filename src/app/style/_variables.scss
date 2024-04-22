@@ -5,16 +5,17 @@ $main-color: #4511B2;
 $text-color: #171717;
 $sec-color: #BEADFA;
 $light-purp: #DFCCFB;
-$error:#DC0606 ;
-$darkred:#901B18;
+$error: #DC0606;
+$darkred: #901B18;
 $grey: #999;
 
 //mixins
-@mixin flex-row{
+@mixin flex-row {
     display: flex;
     flex-direction: row;
 }
-@mixin flex-column{
+
+@mixin flex-column {
     display: flex;
     flex-direction: column;
 }
@@ -26,4 +27,14 @@ $grey: #999;
 //spacings (numbers are not fix for now)
 $p-sm: 1em;
 $p-m: 2em;
-$p-l: 3em; 
+$p-l: 3em;
+
+// text sizes
+$base-size: 16px;
+
+$h1-size: 2.5rem;
+$h2-size: 2rem;
+$h3-size: 1.75rem;
+$h4-size: 1.5rem;
+$h5-size: 1.25rem;
+$h6-size: 1.125rem;
