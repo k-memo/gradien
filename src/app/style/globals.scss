@@ -8,8 +8,7 @@
 
 body {
   @include flex-column;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 2rem;
   font-size: 14px;
   color: $text-color;
 }

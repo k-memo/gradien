@@ -1,8 +1,13 @@
-.landing-page-greeting {
-  @include flex-column;
+.landing-page {
+  margin-top: 20vh;
 
-  .sub {
-    font-size: 0.8rem;
-    font-weight: bold;
+  .landing-page-greeting {
+    @include flex-column;
+
+    .sub {
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
   }
 }
