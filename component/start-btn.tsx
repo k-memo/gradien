@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
-export default function Home() {
+export default function StartBtn() {
   return (
     <main>
+      Hello<br/>
       <button className="btn-main">
         Test
       </button><br/>
@@ -14,17 +15,18 @@ export default function Home() {
         <div className="circle-icon">
           <div className="circle">
           </div>
-          <FontAwesomeIcon icon={faArrowRight} className="arrow-right icon" />
+          <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
         </div>
         Get Started
       </button>
       <button className="btn-second">
-        Next <FontAwesomeIcon icon={faArrowRight} className="arrow-right icon" />
+        Next <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
       </button>
       <button className="btn-img">
-      <FontAwesomeIcon icon={faArrowRight} className="arrow-right icon" />
+      <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
       <span>camera</span>
       </button>
+
     </main>
   );
 }

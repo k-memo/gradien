@@ -1,0 +1,83 @@
+
+//buttons
+.btn-special{
+    width: 200px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    color: $main-color;
+    border: none;
+    box-shadow: -3px 4px 5px rgba(52, 52, 52, 0.453);
+    @include flex-row;
+    align-items: center;
+    gap: 2em;
+    padding-left: 1em;
+    .circle-icon{
+      @include flex-row;
+      margin: 0;
+      border-radius: 40px;
+      height: 40px;
+      width: 40px;
+      justify-content: center;
+      align-items: center;
+    }
+    .circle{
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 40px;
+      background-color: $main-color;
+      filter: blur(10px);
+      position: relative;
+    }
+    .arrow-right{
+      color: white;
+      width: 16px;
+      text-align: center;
+      position: absolute;
+    }
+  }
+  
+  .btn-main{
+    padding: 8px 40px;
+    background-color: $main-color;
+    color: white;
+    border-radius: 10px;
+    border: solid 1px #28004a;
+    &:hover{
+      background-color: $sec-color;
+      border: none;
+    }
+    &:active{
+      background-color: $sec-color;
+      border: none;
+    }
+  }
+  .btn-second{
+    padding: 8px 40px;
+    background-color: transparent;
+    color: $main-color;
+    border-radius: 10px;
+    border: solid 2px $main-color;
+    &:hover{
+      background-color: $main-color;
+      color: white;
+    }
+  }
+  
+  .btn-img{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: $main-color;
+    text-align: center;
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 150px;
+    padding: 5px 0px;
+    &:hover{
+      background-color: $main-color;
+      color: white;
+    }
+  }
