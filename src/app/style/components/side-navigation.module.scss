@@ -1,0 +1,52 @@
+@mixin on-circle($item-count, $circle-size, $item-size) {
+    position: relative;
+    width: $circle-size;
+    height: $circle-size;
+    padding: 0;
+    border-radius: 50%;
+    list-style: none;
+
+    >* {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: $item-size;
+        height: $item-size;
+        margin: -($item-size / 2);
+
+        $angle: (
+            360 / $item-count
+        );
+    $rot: 0;
+
+    @for $i from 1 through $item-count {
+        &:nth-of-type(#{$i}) {
+            transform:
+                rotate($rot * 1deg) translate($circle-size / 2) rotate($rot * -1deg);
+        }
+
+        $rot: $rot + $angle;
+    }
+}
+}
+
+.circular-container {
+    @include on-circle($item-count: 8, $circle-size: 20em, $item-size: 6em);
+    margin: 5em auto 0;
+    border: solid 5px tomato;
+
+    .item {
+        display: block;
+        max-width: 100%;
+        border-radius: 50%;
+        filter: grayscale(100%);
+        border: solid 5px tomato;
+        transition: .15s;
+
+        &:hover,
+        &:active {
+            filter: grayscale(0);
+        }
+    }
+}
