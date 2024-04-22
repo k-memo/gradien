@@ -1,15 +1,24 @@
-*{
+* {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   margin: 0;
-  letter-spacing:.5px;
+  letter-spacing: .5px;
   line-height: 1.2;
 }
-body{
+
+body {
+  @include flex-column;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 14px;
   color: $text-color;
 }
-.icon{
+
+.icon {
   width: 16px;
   text-align: center;
+}
+
+h1 {
+  font-size: $h1-size;
 }
