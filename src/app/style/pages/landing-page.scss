@@ -1,0 +1,80 @@
+h4{
+    font-size: 12px;
+}
+h3{
+    margin-bottom: 0.5em;
+}
+
+.landing-page-greeting{
+    height: 80vh;
+}
+.heading{
+    margin-bottom: 3em;
+}
+//about section
+#about{
+    min-height: 70vh;
+    h2{
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+    .emoji{
+        font-size: 30px;
+    }
+}
+.icon{
+    width: 16px;
+   color: $main-color
+}
+
+
+.bullet-points{
+    @include flex-column;
+    gap: 2em;
+    .points{
+        @include flex-row;
+        text-align: center;
+    }
+}
+
+//contact section
+
+#contact{
+    a{
+        text-decoration: none;
+        cursor: pointer;
+        color: $text-color;
+        &:hover, &:active{
+            color: $hover;
+        }
+        :visited{
+
+            color: $text-color;
+        }
+    }
+    height: 100vh;
+    .contact-text{
+        margin-bottom: 2em;
+    }
+    .contact-point{
+        @include flex-row;
+        align-items: center;
+        gap: 1em;
+        margin-bottom: 1em;
+    }
+    .contact-form{
+        margin-top: 2em;
+        input[type=submit]{
+            width: 50%;
+            float: right;
+        }
+    }
+    input[type=submit]{
+        background-image: url(../../arrow-right.svg);
+        background-repeat: no-repeat;
+        background-position: 90% center;
+    }
+
+}
