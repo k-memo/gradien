@@ -1,9 +1,11 @@
 "use client";
 import { CiExport } from "react-icons/ci";
+import NavForm from "../../../components/nav-form";
 import { FaRegImage } from "react-icons/fa6";
 import { FiCamera, FiSave } from "react-icons/fi";
 import ColorPickerForm from "../../../components/color-picker-form";
 import { useState } from "react";
+
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
@@ -18,7 +20,7 @@ export default function Home() {
 
   return (
     <main className="multi-step">
-      <nav>Navigation</nav>
+      <NavForm formStep={formStep}/>
 
       <div className="">
         {formStep === 0 && (
