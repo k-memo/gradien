@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ImageInputField: React.FC = () => {
+const ImageUploadField: React.FC = () => {
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -27,4 +27,4 @@ const ImageInputField: React.FC = () => {
   );
 };
 
-export default ImageInputField;
+export default ImageUploadField;
