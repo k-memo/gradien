@@ -20,59 +20,6 @@
         gap: 1em;
     }
 
-
-
-    // get palette
-    .palette-section{
-        height: 80vh;
-        h3{
-            text-align: center;
-            margin-bottom: 2em;
-        }
-        .palette{
-            @include flex-row;
-        }
-        .palette-color{
-            width: 50px;
-            height: 60px;
-            border-radius: 5px;
-            background-color: grey;
-            box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
-            transition: transform 0.3s ease;
-            margin-right: -4px;
-            cursor: pointer;
-            &:hover, &:active{
-                transform: scale(1.2);
-            }
-        }
-
-
-        .name{
-            @include flex-row;
-            gap: 1em;
-            align-items: flex-end;
-            margin-top: 1em;
-            label{
-                text-transform: lowercase;
-                font-size: 14px;
-                padding-top: 10px;
-            }
-            input{
-                color: $main-color;
-                border-bottom: solid 1px $main-color !important;
-                border: none;
-                border-radius: 0px;
-                background-color: transparent;
-                width: 50%;
-                padding: 0px;
-                height: 30px;
-            }
-        }
-        input:focus{
-            border: none;
-            outline: none;
-        }
-    }
     .links{
         @include flex-column;
         margin: 5em 0em;
@@ -93,4 +40,5 @@
             width: 50%;
         }
     }
-    }
+
+}
