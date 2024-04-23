@@ -6,13 +6,13 @@ import { FiCamera } from "react-icons/fi";
 import { FaRegImage } from "react-icons/fa6";
 import { CiExport } from "react-icons/ci";
 import { FiSave } from "react-icons/fi";
-
+import NavForm from './nav-form';
 
 export default function Form() {
     return(
         <>
             <section className='multi-step'>
-                <nav>Navigation</nav>
+                <NavForm/>
                 <form>
                     <div className="upload">
                         <h3>Upload Image</h3>
