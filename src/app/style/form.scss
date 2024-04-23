@@ -31,10 +31,11 @@ label{
     color: $yellow;
 }
 .img-input{
-    width: 80vw;
+    width: 82vw;
     height: 30vh;
     border: dashed 2px $main-color;
     background-color: none;
+    margin-bottom: 1em;
 }
 .img-input-error{
     border: dashed 2px $error;
