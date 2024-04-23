@@ -81,6 +81,8 @@
     justify-content: center;
     align-items: center;
     padding: 5px 40px;
+    border-radius: 10px;
+    width: 50%;
     border: solid 2px $main-color;
     &:hover, &:active{
       background-color: $main-color;
