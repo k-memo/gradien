@@ -13,23 +13,34 @@ export default function Home() {
   return (
     <main className="landing-page">
       <section className="landing-page-greeting">
-        <div className="heading">
-          <h1>
-            GR
-            <Logo />
-            DIEN
-          </h1>
-          <p className="sub">FIND YOUR COLOR PALETTE</p>
+        <div className="gradient-bg">
+            <div className="gradient-container">
+              <div className="g1"></div>
+              <div className="g2"></div>
+              <div className="g3"></div>
+              <div className="g4"></div>
+            </div>
         </div>
-        
-        <button className="btn-special">
-        <div className="circle-icon">
-          <div className="circle">
+        <div className="landing-text">
+          <div className="heading">
+            <h1>
+              GR
+              <Logo />
+              DIEN
+            </h1>
+            <p className="sub">FIND YOUR COLOR PALETTE</p>
           </div>
-          <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
+          
+          <button className="btn-special">
+          <div className="circle-icon">
+            <div className="circle">
+            </div>
+            <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
+          </div>
+            Get Started
+          </button>
         </div>
-          Get Started
-        </button>
+       
       </section>
       <section id="about">
         <h2>WHY YOU NEED <br/>COLOR ANALYSIS</h2>
