@@ -38,6 +38,7 @@ export default function ColorPickerForm() {
 
       <ImageColorPicker
         onColorPick={handleColorPick}
+
         imgSrc={"./rado.png"}
         zoom={1}
       />
