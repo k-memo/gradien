@@ -6,6 +6,7 @@ import { FiCamera, FiSave } from "react-icons/fi";
 import ColorPickerForm from "../../../components/color-picker-form";
 import { useState } from "react";
 
+
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
 
