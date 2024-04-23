@@ -1,6 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import ColorPickerForm from './color-picker-form'
+import { FiCamera } from "react-icons/fi";
+import { FaRegImage } from "react-icons/fa6";
+import { CiExport } from "react-icons/ci";
+import { FiSave } from "react-icons/fi";
+
+
 export default function Form() {
     return(
         <>
@@ -12,33 +19,19 @@ export default function Form() {
                         <div className="input-conatainer">
                             <input className='img-input'/>
                             <div className="choose-option">
-                                <a className='btn-img'>Camera</a>
-                                <a className='btn-img'>Gallery</a>
+                                <a className='btn-img'>
+                                    <FiCamera />
+                                    Camera
+                                </a>
+                                <a className='btn-img'>
+                                <FaRegImage />
+                                Gallery
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div className="pick-color">
-                        <input className='img-input'/>
-                        <div className="colors">
-                            <div className="color">
-                                <div className="color1">
-
-                                </div>
-                                <span></span>
-                            </div>
-                            <div className="color">
-                                <div className="color2">
-
-                                </div>
-                                <span></span>
-                            </div>
-                            <div className="color">
-                                <div className="color3">
-
-                                </div>
-                                <span></span>
-                            </div>
-                        </div>
+                    <ColorPickerForm/>
                     </div>
 
                     <div className="get-palette">
@@ -58,8 +51,8 @@ export default function Form() {
 
                         </div>
                         <div className="links">
-                            <a className='btn-second btn'>export</a>
-                            <a className='btn-main btn'>save</a>    
+                            <a className='btn-second btn'>export <CiExport className='link-icon'/></a>
+                            <a className='btn-main btn'>save colorpalette<FiSave  className='link-icon'/></a>    
                         </div>
                     </div>
                     

@@ -6,19 +6,44 @@
     }
 
     .color-square {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
         margin-right: 10px;
         border-radius: 5px;
+        border: solid 1px $grey;
     }
 
     input[type="text"] {
-        border: 2px solid;
+        border: none;
         outline: none;
         padding: 5px;
+        width: 60%;
     }
 
     input[type="text"]:focus {
         border-color: #007bff;
     }
+    .picked-colors{
+        margin-top: 2em;
+        margin-bottom: 4em;
+        @include flex-column;
+        align-items: center;
+    }
+}
+.picker{
+    width: 40px;
+    height: 24px;
+    cursor: pointer;
+    &:hover, &:active{
+        color: $hover;
+    }
+}
+#image-color-pick-canvas{
+    border-radius: 10px;
+    width: 82vw;
+    height: 300px;
+}
+.submit-area{
+    @include flex-row;
+    gap: 1em;
 }

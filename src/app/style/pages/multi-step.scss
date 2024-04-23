@@ -77,5 +77,20 @@
         @include flex-column;
         margin: 5em 0em;
         gap: 1em;
+        .link-icon{
+            width: 24px;
+            height: 20px;
+        }
+        .btn{
+            @include flex-row;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-main{
+            width: 80%;
+        }
+        .btn-second{
+            width: 50%;
+        }
     }
     }
