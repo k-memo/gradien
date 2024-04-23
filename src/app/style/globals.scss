@@ -4,6 +4,10 @@
   line-height: 1.2;
 }
 
+a {
+  text-decoration: none
+}
+
 body {
   @include flex-column;
   padding: 2rem;
