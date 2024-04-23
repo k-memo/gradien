@@ -15,6 +15,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@prisma/client": "^5.12.1",
     "next": "14.2.0",
+    "openai": "^4.38.3",
     "prettier": "^3.2.5",
     "react": "^18",
     "react-circular-menu": "^2.4.9",
