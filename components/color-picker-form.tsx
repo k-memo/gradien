@@ -3,7 +3,6 @@ import { ImageColorPicker } from "react-image-color-picker";
 import image from "./rado.png";
 import { CgColorPicker } from "react-icons/cg";
 
-
 export default function ColorPickerForm() {
   const [currentPart, setCurrentPart] = useState("");
   const [eyeColor, setEyeColor] = useState("");
@@ -34,12 +33,11 @@ export default function ColorPickerForm() {
   };
 
   return (
-    <main className="color-picker-page">
-      <h3>Pick your colors</h3>
+    <div className="color-picker-page">
+      <h1>Pick your colors</h1>
 
       <ImageColorPicker
         onColorPick={handleColorPick}
-
         imgSrc={"./rado.png"}
         zoom={1}
       />
@@ -47,14 +45,21 @@ export default function ColorPickerForm() {
       <form onSubmit={onSubmit}>
         <div className="picked-colors">
           <div className="color-input">
-            <div className="color-square" style={{ backgroundColor: eyeColor }} />
+            <div
+              className="color-square"
+              style={{ backgroundColor: eyeColor }}
+            />
             <input
               type="text"
               name="eyeColor"
               onClick={() => setCurrentPart("eye")}
               value={eyeColor}
               readOnly
-            /><CgColorPicker className="picker" onClick={() => setCurrentPart("eye")} />
+            />
+            <CgColorPicker
+              className="picker"
+              onClick={() => setCurrentPart("eye")}
+            />
           </div>
           <div className="color-input">
             <div
@@ -68,7 +73,10 @@ export default function ColorPickerForm() {
               onClick={() => setCurrentPart("hair")}
               readOnly
             />
-            <CgColorPicker className="picker" onClick={() => setCurrentPart("hair")}/>
+            <CgColorPicker
+              className="picker"
+              onClick={() => setCurrentPart("hair")}
+            />
           </div>
           <div className="color-input">
             <div
@@ -82,14 +90,19 @@ export default function ColorPickerForm() {
               onClick={() => setCurrentPart("skin")}
               readOnly
             />
-            <CgColorPicker className="picker" onClick={() => setCurrentPart("skin")} />
-          </div>    
+            <CgColorPicker
+              className="picker"
+              onClick={() => setCurrentPart("skin")}
+            />
+          </div>
         </div>
         <div className="submit-area">
           <a className="prev-btn btn">Previous</a>
-          <button type="submit" className="btn-main btn">Submit</button>
+          <button type="submit" className="btn-main btn">
+            Submit
+          </button>
         </div>
       </form>
-    </main>
+    </div>
   );
 }
