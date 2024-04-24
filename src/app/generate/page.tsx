@@ -74,6 +74,7 @@ export default function Home() {
                 <SwiperSlide
                   key={color.name}
                   style={{ backgroundColor: color.hex }}
+                  
                 >
                   {color.name}
                 </SwiperSlide>

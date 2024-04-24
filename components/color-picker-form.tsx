@@ -100,6 +100,7 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="eyeColor"
+                placeholder='eye color'
                 onClick={() => {
                   setCurrentPart('eye');
                 }}
@@ -125,6 +126,7 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="hairColor"
+                placeholder='hair color'
                 value={hairColor}
                 onClick={() => setCurrentPart('hair')}
                 readOnly
@@ -148,6 +150,7 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="skinColor"
+                placeholder='skin color'
                 value={skinColor}
                 onClick={() => setCurrentPart('skin')}
                 readOnly

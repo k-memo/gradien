@@ -81,7 +81,11 @@ input:focus {
   padding: 2em;
   color: #fff;
 }
-
+.ex-heading{
+  @include flex-row;
+  justify-content: space-between;
+  align-items: center;
+}
 .explanation {
   margin-bottom: 3em;
 }

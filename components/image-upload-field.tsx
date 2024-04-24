@@ -33,7 +33,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
       />
       <h3>upload image</h3>
       <div className="img-input">
-        <img src={imageSrc} width="200" alt="" />
+        <img className='img-resize' src={imageSrc} width="200" alt="" />
         <span>only png or jpg</span>
       </div>
 
