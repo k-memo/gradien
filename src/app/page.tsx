@@ -1,12 +1,12 @@
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaRegEnvelope } from "react-icons/fa";
-import { FiPhone } from "react-icons/fi";
-import { SlLocationPin } from "react-icons/sl";
-import Logo from "../../components/logo";
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaRegEnvelope } from 'react-icons/fa';
+import { FiPhone } from 'react-icons/fi';
+import { SlLocationPin } from 'react-icons/sl';
+import Logo from '../../components/logo';
 
-import "./style/application.scss";
-import Link from "next/link";
+import './style/application.scss';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -31,10 +31,10 @@ export default function Home() {
             <p className="sub">FIND YOUR COLOR PALETTE</p>
           </div>
           <div>
-          <Link href="generate" className="btn-main btn">
-            Get Started
+            <Link href="generate" className="btn-main btn">
+              Get Started
               <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
-          </Link>
+            </Link>
           </div>
         </div>
       </section>

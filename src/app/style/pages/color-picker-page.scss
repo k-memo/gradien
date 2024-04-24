@@ -1,67 +1,69 @@
 .color-picker-page {
+  .color-div {
+    .color-input {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      width: 70%;
 
-    .color-div {
-
-        .color-input {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            width: 70%;
-
-            input {
-                width: 50%;
-                height: 24px;
-                background-color: transparent;
-                border-bottom: solid 1px $main-color;
-                border-radius: 0px;
-            }
-        }
+      input {
+        width: 50%;
+        height: 24px;
+        background-color: transparent;
+        border-bottom: solid 1px $main-color;
+        border-radius: 0px;
+      }
     }
+  }
 
-    .color-square {
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-        border-radius: 5px;
-        border: solid 1px $grey;
-    }
+  .color-square {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: solid 1px $grey;
+  }
 
-    input[type="text"] {
-        border: none;
-        outline: none;
-        padding: 5px;
-    }
+  input[type='text'] {
+    border: none;
+    outline: none;
+    padding: 5px;
+  }
 
-    input[type="text"]:focus {
-        border-color: #007bff;
-    }
+  input[type='text']:focus {
+    border-color: #007bff;
+  }
 
-    .picked-colors {
-        margin-top: 2em;
-        margin-bottom: 4em;
-        @include flex-column;
-        align-items: center;
-    }
+  .picked-colors {
+    margin-top: 2em;
+    margin-bottom: 4em;
+    @include flex-column;
+    align-items: center;
+  }
 }
 
 .picker {
-    width: 40px;
-    height: 24px;
-    cursor: pointer;
+  width: 40px;
+  height: 24px;
+  cursor: pointer;
 
-    &:hover,
-    &:active {
-        color: $hover;
-    }
+  &:hover,
+  &:active {
+    color: $hover;
+  }
 }
 
 #image-color-pick-canvas {
-    border-radius: 10px;
-    width: 82vw;
-    height: 300px;
+  border-radius: 10px;
+  width: 82vw;
+  height: 300px;
 }
 
 .submit-area {
-    @include flex-row;
-    gap: 1em;
+  @include flex-row;
+  gap: 1em;
+}
+
+.cursor-crosshair {
+  cursor: crosshair;
 }

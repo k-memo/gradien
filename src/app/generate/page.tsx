@@ -1,31 +1,33 @@
-"use client";
-import React, { useRef, useState } from "react";
-import { CiExport } from "react-icons/ci";
-import { FiSave } from "react-icons/fi";
-import "swiper/css";
-import "swiper/css/effect-cards";
-import { EffectCards } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import ColorPickerForm from "../../../components/color-picker-form";
-import ImageUploadField from "../../../components/image-upload-field";
-import NavForm from "../../../components/nav-form";
-import ShowMore from "../../../components/showmore";
-import { IPalette } from "../../../models/colorpalette.interface";
-import Logo from "../../../components/logo";
+'use client';
+import React, { useRef, useState } from 'react';
+import { CiExport } from 'react-icons/ci';
+import { FiSave } from 'react-icons/fi';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import { EffectCards } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import ColorPickerForm from '../../../components/color-picker-form';
+import ImageUploadField from '../../../components/image-upload-field';
+import NavForm from '../../../components/nav-form';
+import ShowMore from '../../../components/showmore';
+import { IPalette } from '../../../models/colorpalette.interface';
+import Logo from '../../../components/logo';
+import { LoadingGlobal } from '../../../components/loading-global';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
   const [colorpalette, setPalette] = useState<IPalette>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const imageUploadRef = useRef(null);
-  const [imageSrcFromChild, setImageSrcFromChild] = React.useState("");
+  const [imageSrcFromChild, setImageSrcFromChild] = React.useState('');
 
   const handlePrevStep = () => {
-    setFormStep((prevStep) => Math.max(prevStep - 1, 0));
+    setFormStep(prevStep => Math.max(prevStep - 1, 0));
   };
 
   const handleNextStep = () => {
-    setFormStep((prevStep) => prevStep + 1);
+    setFormStep(prevStep => prevStep + 1);
   };
 
   const childRef = useRef(null);
@@ -34,7 +36,8 @@ export default function Home() {
     <main className="multi-step">
       <NavForm formStep={formStep} setFormStep={setFormStep} />
 
-      <div className="">
+      <div className="multi-step-item">
+        {isLoading === true && <LoadingGlobal />}
         {formStep === 0 && (
           <section className="upload-section">
             <ImageUploadField
@@ -49,6 +52,8 @@ export default function Home() {
             <ColorPickerForm
               imgSrc={imageSrcFromChild}
               setPalette={setPalette}
+              setLoading={setIsLoading}
+              setFormStep={setFormStep}
             />
           </section>
         )}
@@ -60,12 +65,12 @@ export default function Home() {
               <h3>Your Colorpalette</h3>
             </div>
             <Swiper
-              effect={"cards"}
+              effect={'cards'}
               grabCursor={true}
               modules={[EffectCards]}
               className="mySwiper"
             >
-              {colorpalette?.colors.map((color) => (
+              {colorpalette?.colors.map(color => (
                 <SwiperSlide
                   key={color.name}
                   style={{ backgroundColor: color.hex }}
@@ -76,7 +81,7 @@ export default function Home() {
             </Swiper>
 
             <div className="palette">
-              {colorpalette?.colors.map((color) => (
+              {colorpalette?.colors.map(color => (
                 <div
                   key={color.name}
                   className="palette-color"

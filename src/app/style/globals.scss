@@ -5,7 +5,7 @@
 }
 
 a {
-  text-decoration: none
+  text-decoration: none;
 }
 
 body {
@@ -14,7 +14,8 @@ body {
   color: $text-color;
   margin: 0;
 }
-main{
+
+main {
   padding: 2em;
 }
 
@@ -25,5 +26,16 @@ main{
 
 h1 {
   font-size: $h1-size;
-  font-weight: 800
+  font-weight: 800;
+}
+
+.loading-animation {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
 }

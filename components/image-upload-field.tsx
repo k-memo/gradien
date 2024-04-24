@@ -1,11 +1,11 @@
-import React, { forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle } from 'react';
 
 interface Props {
   setImageSrcFromChild: (imageUrl: string) => void;
 }
 
 const ImageUploadField = forwardRef((props: Props, ref) => {
-  const [imageSrc, setImageSrc] = React.useState("");
+  const [imageSrc, setImageSrc] = React.useState('');
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -29,25 +29,24 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         name="image"
         id="file"
         onChange={handleFileChange}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
       />
-     <h3>upload image</h3>
+      <h3>upload image</h3>
       <div className="img-input">
         <img src={imageSrc} width="200" alt="" />
         <span>only png or jpg</span>
       </div>
 
       <div className="uploadImage">
-        <label htmlFor="file" style={{ cursor: "pointer" }} className="btn-img">
+        <label htmlFor="file" style={{ cursor: 'pointer' }} className="btn-img">
           Upload Image
         </label>
       </div>
- 
     </div>
   );
 });
 
 // Set display name for the component
-ImageUploadField.displayName = "ImageUploadField";
+ImageUploadField.displayName = 'ImageUploadField';
 
 export default ImageUploadField;

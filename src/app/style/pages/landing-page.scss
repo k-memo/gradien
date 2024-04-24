@@ -1,7 +1,6 @@
 .landing-page {
   margin-top: 20vh;
 
-
   .landing-page-greeting {
     @include flex-column;
     height: 80vh;
@@ -10,7 +9,6 @@
       font-size: 0.8rem;
       font-weight: bold;
     }
-
   }
 }
 
@@ -25,7 +23,8 @@ h3 {
 .heading {
   margin-bottom: 3em;
 }
-.arrow-right{
+
+.arrow-right {
   height: 24px;
 }
 
@@ -47,9 +46,8 @@ h3 {
 
 .icon {
   width: 16px;
-  color: $main-color
+  color: $main-color;
 }
-
 
 .bullet-points {
   @include flex-column;
@@ -75,7 +73,6 @@ h3 {
     }
 
     :visited {
-
       color: $text-color;
     }
   }
@@ -96,18 +93,17 @@ h3 {
   .contact-form {
     margin-top: 2em;
 
-    input[type=submit] {
+    input[type='submit'] {
       width: 50%;
       float: right;
     }
   }
 
-  input[type=submit] {
+  input[type='submit'] {
     background-image: url(../../arrow-right.svg);
     background-repeat: no-repeat;
     background-position: 90% center;
   }
-
 }
 
 .landing-text {
@@ -118,7 +114,8 @@ h3 {
   @include flex-column;
   justify-content: space-between;
   align-items: center;
-  .btn{
+
+  .btn {
     border-radius: 20px;
   }
 }
@@ -196,7 +193,6 @@ h3 {
   animation: moveVertical 30s ease infinite;
 
   opacity: 1;
-
 }
 
 .g2 {
@@ -246,7 +242,6 @@ h3 {
   transform-origin: calc(50% - 200px);
   animation: moveHorizontal 20s ease infinite;
 
-
   opacity: 1;
 }
 
@@ -263,9 +258,9 @@ h3 {
   transform-origin: calc(50% - 800px) calc(50% + 200px);
   animation: moveHorizontal 50s ease infinite;
 
-
   opacity: 1;
 }
+
 .g6 {
   position: absolute;
   background: $yellow;
@@ -275,17 +270,18 @@ h3 {
   width: 200px;
   height: 200px;
   top: calc(50%);
-  left: calc(50% );
+  left: calc(50%);
   transform-origin: calc(50% + 200px);
   animation: moveHorizontal 20s ease infinite;
-
 
   opacity: 1;
 }
 
 .interactive {
   position: absolute;
-  background: radial-gradient(circle at center, rgba($sec-color, 0.8) 0, rgba($sec-color, 0) 50%) no-repeat;
+  background: radial-gradient(circle at center,
+      rgba($sec-color, 0.8) 0,
+      rgba($sec-color, 0) 50%) no-repeat;
   mix-blend-mode: $blending;
 
   width: 100%;

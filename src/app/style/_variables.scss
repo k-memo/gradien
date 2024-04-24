@@ -1,29 +1,29 @@
 //variables.scss
 
 //colors
-$main-color: #4511B2;
+$main-color: #4511b2;
 $text-color: #171717;
-$hover: #865AFF;
-$sec-color: #BEADFA;
-$light-purp: #DFCCFB;
-$error: #DC0606;
-$darkred: #901B18;
+$hover: #865aff;
+$sec-color: #beadfa;
+$light-purp: #dfccfb;
+$error: #dc0606;
+$darkred: #901b18;
 $grey: #999;
-$yellow: #FFF8C9;
+$yellow: #fff8c9;
 
 //mixins
 @mixin flex-row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 @mixin flex-column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @mixin transition {
-    transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 //spacings (numbers are not fix for now)
