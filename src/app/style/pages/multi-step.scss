@@ -1,4 +1,7 @@
 .multi-step{
+    background-image: url(../../../../public/gardien.jpg);
+    background-size: cover;
+    height: 100vh;
     .choose-option{
         @include flex-row;
         gap: 1em;

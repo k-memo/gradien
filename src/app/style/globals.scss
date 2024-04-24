@@ -10,9 +10,12 @@ a {
 
 body {
   @include flex-column;
-  padding: 2rem;
   font-size: 14px;
   color: $text-color;
+  margin: 0;
+}
+main{
+  padding: 2em;
 }
 
 .icon {
