@@ -3,6 +3,10 @@
         display: flex;
         align-items: center;
         margin-bottom: 10px;
+        width: 70%;
+        input{
+            width: 50%;
+        }
     }
 
     .color-square {
@@ -17,7 +21,6 @@
         border: none;
         outline: none;
         padding: 5px;
-        width: 60%;
     }
 
     input[type="text"]:focus {

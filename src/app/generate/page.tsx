@@ -12,6 +12,7 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
 import ShowMore from "../../../components/showmore";
 import ImageUploadField from "../../../components/image-upload-field";
+import Logo from "../../../components/logo";
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
@@ -52,7 +53,9 @@ export default function Home() {
         {formStep === 2 && (
           <section className="palette-section">
             <div className="palette-heading">
-              <h2>Your Colorpalette</h2>
+              <Logo/>
+              <h3>Your Colorpalette</h3>
+          
             </div>
             <Swiper
               effect={"cards"}
@@ -70,10 +73,7 @@ export default function Home() {
               <SwiperSlide>Slide 8</SwiperSlide>
               <SwiperSlide>Slide 9</SwiperSlide>
             </Swiper>
-            <div className="name">
-              <label>Palettename:</label>
-              <input className="palette-name" />
-            </div>
+            
             <div className="palette">
               <div className="palette-color p1"></div>
               <div className="palette-color p2"></div>
