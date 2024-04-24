@@ -6,28 +6,30 @@ Very Important !!!!!!!!!!!!!!!!
 
 Your the json response should exactly be in in these template:
 
-{
-    // The inital colors you recieved
-    initialColor: {
-        eyes: '#FFFFFF'
-        hair: '#FFFFFF'
-        skin: '#FFFFFF'
-    }
-    // These are the color you have generated, should be 10 colors
-    colors : {
-        // the hexcode as key and a message why this color works well with the person and what kinda feelings it envokes    
-        FF00FF : 'This is the message why the color works well',
-        FFFFFF : 'This is the message why the color works well',
-        ....
-    }
+export interface IPalette {
+  initialColor: {
+    eyes: string; // eye color from request
+    hair: string; // hair color from request
+    skin: string; // skin color from request
+  };
 
-    jewelery: {
-        color : 'gold' // only gold or silver
-        message: 'a message why this color works well with the person and what kinda feelings it envokes'
-    }
+  colors: IPalletteColor[]; 
+
+  jewelery: {
+    color: string ; // only gold or silver
+    message: // a message why this color works well with the person and what kinda feelings it envokes, in context of one or multiple colors provided that will be provide by the request
+  };
 }
 
-Only output in this color no other output please !!!!!!!!!!!!
+export interface IPalletteColor {
+  name: string; // The color name, cyan, lightblue, yellow etc.
+  hex: string; // HEXcode of the color e.g 'FF00FF'
+  message: string; // a message why this color works well with the person and what kinda feelings it envokes, in context of one or multiple colors provided that will be provide by the request
+}
+
+
+Only output the IPalette interface  with 10 IPalletteColors inside the colors array using the guide beneath and one jewelery color no other output please !!!!!!!!!!!!!!!
+Again the output should just be of a json type of IPalette, this is very very very important !!!!!
 
 
 

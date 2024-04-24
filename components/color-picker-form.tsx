@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ImageColorPicker } from "react-image-color-picker";
 import { CgColorPicker } from "react-icons/cg";
 
-export default function ColorPickerForm({ imgSrc }) {
+export default function ColorPickerForm({ imgSrc, setPalette }) {
   const [currentPart, setCurrentPart] = useState("");
   const [eyeColor, setEyeColor] = useState("");
   const [hairColor, setHairColor] = useState("");
@@ -54,7 +54,7 @@ export default function ColorPickerForm({ imgSrc }) {
       const responseBodyText = await response.text();
 
       const responseData = JSON.parse(responseBodyText);
-      console.log(responseData);
+      setPalette(responseData);
     } catch (error) {
       console.error("Error:", error);
     }
