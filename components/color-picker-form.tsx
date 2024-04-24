@@ -25,12 +25,48 @@ export default function ColorPickerForm() {
     }
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(`eyeColor = ${eyeColor}`);
     console.log(`hairColor = ${hairColor}`);
     console.log(`skinColor = ${skinColor}`);
+
+    try {
+      const response = await fetch("/api/generatePalette", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          colors: {
+            eyeColor: rgbToHex(eyeColor),
+            hairColor: rgbToHex(hairColor),
+            skinColor: rgbToHex(skinColor),
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit colors");
+      }
+
+      const responseBodyText = await response.text();
+
+      const responseData = JSON.parse(responseBodyText);
+      console.log(responseData);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+  function rgbToHex(rgb: string): string {
+    // Extracting the RGB values from the string
+    const [r, g, b] = rgb.match(/\d+/g)?.map(Number) || [];
+
+    // Converting RGB to hex
+    const hex = ((r << 16) + (g << 8) + b).toString(16).padStart(6, "0");
+
+    return `#${hex}`;
+  }
 
   return (
     <div className="color-picker-page">
