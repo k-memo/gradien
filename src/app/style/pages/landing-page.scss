@@ -189,8 +189,8 @@ h3 {
   border-radius: 100%;
   width: 400px;
   height: 400px;
-  top: calc(50%);
-  left: calc(50%);
+  top: calc(-50%);
+  left: calc(-50%);
 
   transform-origin: center center;
   animation: moveVertical 30s ease infinite;
@@ -207,8 +207,8 @@ h3 {
   border-radius: 100%;
   width: $circle-size;
   height: 400px;
-  top: calc(50% - $circle-size / 2);
-  left: calc(50% - $circle-size / 2);
+  top: 0;
+  right: 0;
 
   transform-origin: calc(50% - 400px);
   animation: moveInCircle 15s reverse infinite;
@@ -224,8 +224,8 @@ h3 {
   border-radius: 100%;
   width: 300px;
   height: 300px;
-  top: calc(50% - $circle-size / 2);
-  left: calc(50% - $circle-size / 2);
+  bottom: 0;
+  left: 0;
 
   transform-origin: calc(50% + 400px);
   animation: moveInCircle 20s linear infinite;
@@ -241,8 +241,8 @@ h3 {
   border-radius: 100%;
   width: 300px;
   height: 300px;
-  top: calc(-50%);
-  left: calc(-50%);
+  top: -50%;
+  left: 0;
   transform-origin: calc(50% - 200px);
   animation: moveHorizontal 20s ease infinite;
 
@@ -252,7 +252,7 @@ h3 {
 
 .g5 {
   position: absolute;
-  background: #865aff64;
+  background: $sec-color;
   filter: blur(50px);
   mix-blend-mode: $blending;
   border-radius: 100%;
