@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { forwardRef, useImperativeHandle } from "react";
 
-const ImageUploadField: React.FC = () => {
+interface Props {
+  setImageSrcFromChild: (imageUrl: string) => void;
+}
+
+const ImageUploadField = forwardRef((props: Props, ref) => {
+  const [imageSrc, setImageSrc] = React.useState("");
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+
     if (file) {
-      const image = document.getElementById('output') as HTMLImageElement;
-      image.src = URL.createObjectURL(file);
+      const imageUrl = URL.createObjectURL(file);
+      setImageSrc(imageUrl);
+      props.setImageSrcFromChild(imageUrl); // Call the function from props
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    getImage: () => imageSrc,
+  }));
 
   return (
     <div>
@@ -17,14 +29,17 @@ const ImageUploadField: React.FC = () => {
         name="image"
         id="file"
         onChange={handleFileChange}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
       />
-      <label htmlFor="file" style={{ cursor: 'pointer' }}>
+      <label htmlFor="file" style={{ cursor: "pointer" }}>
         Upload Image
       </label>
-      <img id="output" width="200" />
+      <img src={imageSrc} width="200" alt="Uploaded" />
     </div>
   );
-};
+});
+
+// Set display name for the component
+ImageUploadField.displayName = "ImageUploadField";
 
 export default ImageUploadField;

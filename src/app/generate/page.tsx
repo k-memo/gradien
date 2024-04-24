@@ -4,17 +4,20 @@ import NavForm from "../../../components/nav-form";
 import { FaRegImage } from "react-icons/fa6";
 import { FiCamera, FiSave } from "react-icons/fi";
 import ColorPickerForm from "../../../components/color-picker-form";
-import { useState } from "react";
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-import { EffectCards } from 'swiper/modules';
-import ShowMore from "../../../components/showmore"
-
+import { useRef, useState } from "react";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import { EffectCards } from "swiper/modules";
+import ShowMore from "../../../components/showmore";
+import ImageUploadField from "../../../components/image-upload-field";
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
+
+  const imageUploadRef = useRef(null);
+  const [imageSrcFromChild, setImageSrcFromChild] = React.useState("");
 
   const handlePrevStep = () => {
     setFormStep((prevStep) => Math.max(prevStep - 1, 0));
@@ -24,6 +27,8 @@ export default function Home() {
     setFormStep((prevStep) => prevStep + 1);
   };
 
+  const childRef = useRef(null);
+
   return (
     <main className="multi-step">
       <NavForm formStep={formStep} setFormStep={setFormStep} />
@@ -31,26 +36,16 @@ export default function Home() {
       <div className="">
         {formStep === 0 && (
           <section className="upload-section">
-            <h3>Upload Image</h3>
-            <div className="input-container">
-              <input className="img-input" />
-              <div className="choose-option">
-                <a className="btn-img">
-                  <FiCamera />
-                  Camera
-                </a>
-                <a className="btn-img" onClick={handleNextStep}>
-                  <FaRegImage />
-                  Gallery
-                </a>
-              </div>
-            </div>
+            <ImageUploadField
+              ref={imageUploadRef}
+              setImageSrcFromChild={setImageSrcFromChild} // Pass down the function to update the image source
+            />
           </section>
         )}
 
         {formStep === 1 && (
           <section className="color-picker-section">
-            <ColorPickerForm />
+            <ColorPickerForm imgSrc={imageSrcFromChild} />
           </section>
         )}
 
@@ -58,10 +53,9 @@ export default function Home() {
           <section className="palette-section">
             <div className="palette-heading">
               <h2>Your Colorpalette</h2>
-          
             </div>
             <Swiper
-              effect={'cards'}
+              effect={"cards"}
               grabCursor={true}
               modules={[EffectCards]}
               className="mySwiper"
@@ -77,9 +71,9 @@ export default function Home() {
               <SwiperSlide>Slide 9</SwiperSlide>
             </Swiper>
             <div className="name">
-                <label>Palettename:</label>
-                <input className="palette-name" />
-              </div>
+              <label>Palettename:</label>
+              <input className="palette-name" />
+            </div>
             <div className="palette">
               <div className="palette-color p1"></div>
               <div className="palette-color p2"></div>
@@ -91,16 +85,16 @@ export default function Home() {
             </div>
 
             <div className="explanation">
-              <ShowMore/>
+              <ShowMore />
             </div>
             <div className="links">
-                    <a className="btn-second btn">
-                      export <CiExport className="link-icon" />
-                    </a>
-                    <a className="btn-main btn">
-                      save colorpalette
-                      <FiSave className="link-icon" />
-                    </a>
+              <a className="btn-second btn">
+                export <CiExport className="link-icon" />
+              </a>
+              <a className="btn-main btn">
+                save colorpalette
+                <FiSave className="link-icon" />
+              </a>
             </div>
           </section>
         )}

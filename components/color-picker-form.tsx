@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { ImageColorPicker } from "react-image-color-picker";
-import image from "./rado.png";
 import { CgColorPicker } from "react-icons/cg";
 
-export default function ColorPickerForm() {
+export default function ColorPickerForm({ imgSrc }) {
   const [currentPart, setCurrentPart] = useState("");
   const [eyeColor, setEyeColor] = useState("");
   const [hairColor, setHairColor] = useState("");
@@ -76,8 +75,8 @@ export default function ColorPickerForm() {
 
       <ImageColorPicker
         onColorPick={handleColorPick}
-        imgSrc={"./rado.png"}
-        zoom={1}
+        imgSrc={imgSrc}
+        zoom={3}
       />
 
       <form onSubmit={onSubmit}>
