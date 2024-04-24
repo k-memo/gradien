@@ -51,7 +51,13 @@ label{
     height: 30vh;
     border: dashed 2px $main-color;
     background-color: none;
+    
     margin-bottom: 1em;
+    border-radius: 10px;
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 .img-input-error{
     border: dashed 2px $error;

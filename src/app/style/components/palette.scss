@@ -1,5 +1,5 @@
 
-        .palette{
+    .palette{
             @include flex-row;
             margin: 2em 0em;
         }
@@ -121,9 +121,9 @@
     align-items: center;
     justify-content: center;
     border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 1em;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 2em;
     color: #fff;
   }
   
@@ -169,6 +169,14 @@
   
   .explanation{
     margin-bottom: 3em;
+    h2{
+        font-weight: 500;
+        font-size: 18px;
+    }
+    .ex-heading{
+        @include flex-row;
+        justify-content: space-between;
+    }
   }
 
   .palette-heading{
@@ -176,6 +184,10 @@
     margin-top: 2em;
     h2{
         text-transform: uppercase;
+    }
+    h3{
+        margin-top: 1em;
+        margin-bottom: 2em;
     }
   }
   .links{

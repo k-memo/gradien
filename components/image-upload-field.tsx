@@ -31,10 +31,18 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      <label htmlFor="file" style={{ cursor: "pointer" }}>
-        Upload Image
-      </label>
-      <img src={imageSrc} width="200" alt="Uploaded" />
+     <h3>upload image</h3>
+      <div className="img-input">
+        <img src={imageSrc} width="200" alt="" />
+        <span>only png or jpg</span>
+      </div>
+
+      <div className="uploadImage">
+        <label htmlFor="file" style={{ cursor: "pointer" }} className="btn-img">
+          Upload Image
+        </label>
+      </div>
+ 
     </div>
   );
 });
