@@ -31,19 +31,21 @@ export default function ColorPickerForm() {
     console.log(`hairColor = ${hairColor}`);
     console.log(`skinColor = ${skinColor}`);
 
+    const color = {
+      eyeColor: rgbToHex(eyeColor),
+      hairColor: rgbToHex(hairColor),
+      skinColor: rgbToHex(skinColor),
+    };
+
+    console.log(JSON.stringify({ color: color }));
+
     try {
       const response = await fetch("/api/generatePalette", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          colors: {
-            eyeColor: rgbToHex(eyeColor),
-            hairColor: rgbToHex(hairColor),
-            skinColor: rgbToHex(skinColor),
-          },
-        }),
+        body: JSON.stringify({ color: color }),
       });
 
       if (!response.ok) {
