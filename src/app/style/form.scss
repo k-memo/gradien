@@ -1,65 +1,64 @@
-input{
-    width: 82vw;
-    background-color: none;
-    border: solid 1px $main-color;
-    border-radius: 10px;
-    padding-left: 1em;
-    height: 40px;
+input {
+  width: 82vw;
+  background-color: none;
+  border: solid 1px $main-color;
+  border-radius: 10px;
+  padding-left: 1em;
+  height: 40px;
 }
 
-.input-error{
-    width: 82vw;
-    background-color: none;
-    border: solid 1.5px $error;
-    border-radius: 10px;
-    padding-left: 1em;
-    height: 40px;
+.input-error {
+  width: 82vw;
+  background-color: none;
+  border: solid 1.5px $error;
+  border-radius: 10px;
+  padding-left: 1em;
+  height: 40px;
 }
-textarea{
-    width: 82vw;
-    background-color: none;
-    border: solid 1px $main-color;
-    border-radius: 10px;
-    padding-left: 1em;
-    height: 25vh;
-    padding: 1em;
-}
-
-label{
-    font-size: 10px;
-    text-transform: uppercase;
-    color: $main-color;
-    padding-bottom: 4px;
-}
-.label-error{
-    font-size: 10px;
-    text-transform: uppercase;
-    color: $error;
-    padding-bottom: 4px;
+textarea {
+  width: 82vw;
+  background-color: none;
+  border: solid 1px $main-color;
+  border-radius: 10px;
+  padding-left: 1em;
+  height: 25vh;
+  padding: 1em;
 }
 
+label {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: $main-color;
+  padding-bottom: 4px;
+}
+.label-error {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: $error;
+  padding-bottom: 4px;
+}
 
-.login-input{
-    border: solid 1px $yellow;
-    background-color: rgba(255, 255, 255, 0.5);
+.login-input {
+  border: solid 1px $yellow;
+  background-color: rgba(255, 255, 255, 0.5);
 }
-.login-label{
-    color: $yellow;
+.login-label {
+  color: $yellow;
 }
-.img-input{
-    width: 82vw;
-    height: 30vh;
-    border: dashed 2px $main-color;
-    background-color: none;
-    
-    margin-bottom: 1em;
-    border-radius: 10px;
-    @include flex-column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.img-input {
+  width: 82vw;
+  height: 30vh;
+  border: dashed 2px $main-color;
+  background-color: none;
+
+  margin-bottom: 1em;
+  border-radius: 10px;
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.img-input-error{
-    border: dashed 2px $error;
-    background-color: #dc060655;
+.img-input-error {
+  border: dashed 2px $error;
+  background-color: #dc060655;
 }

@@ -8,8 +8,8 @@ export interface IPalette {
   colors: IPalletteColor[];
 
   jewelery: {
-    color: "gold"; // only gold or silver
-    message: "a message why this color works well with the person and what kinda feelings it envokes";
+    color: 'gold'; // only gold or silver
+    message: 'a message why this color works well with the person and what kinda feelings it envokes';
   };
 }
 

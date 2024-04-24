@@ -1,116 +1,114 @@
 .palette {
-    @include flex-row;
-    margin: 2em 0em;
+  @include flex-row;
+  margin: 2em 0em;
 }
 
 .palette-color {
-    width: 50px;
-    height: 60px;
-    border-radius: 5px;
-    box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
-    transition: transform 0.3s ease;
-    margin-right: -4px;
-    cursor: pointer;
+  width: 50px;
+  height: 60px;
+  border-radius: 5px;
+  box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
+  transition: transform 0.3s ease;
+  margin-right: -4px;
+  cursor: pointer;
 
-    &:hover,
-    &:active {
-        transform: scale(1.2);
-    }
+  &:hover,
+  &:active {
+    transform: scale(1.2);
+  }
 }
 
-
-
 .name {
-    @include flex-row;
-    gap: 0.5em;
-    align-items: flex-end;
-    margin-top: 1em;
-    justify-content: center;
+  @include flex-row;
+  gap: 0.5em;
+  align-items: flex-end;
+  margin-top: 1em;
+  justify-content: center;
 
-    label {
-        text-transform: none;
-        font-size: 14px;
-        padding-top: 10px;
-    }
+  label {
+    text-transform: none;
+    font-size: 14px;
+    padding-top: 10px;
+  }
 
-    input {
-        color: $main-color;
-        border-bottom: solid 1px $main-color !important;
-        border: none;
-        border-radius: 0px;
-        background-color: transparent;
-        width: 50%;
-        padding: 0px;
-        height: 30px;
-    }
+  input {
+    color: $main-color;
+    border-bottom: solid 1px $main-color !important;
+    border: none;
+    border-radius: 0px;
+    background-color: transparent;
+    width: 50%;
+    padding: 0px;
+    height: 30px;
+  }
 }
 
 input:focus {
-    border: none;
-    outline: none;
+  border: none;
+  outline: none;
 }
 
 //slider
 .slider {
-    @include flex-row;
-    position: relative;
-    height: 80vh;
-    margin-top: 2em;
+  @include flex-row;
+  position: relative;
+  height: 80vh;
+  margin-top: 2em;
 }
 
 .card {
-    height: 320px;
-    width: 200px;
-    border-radius: 10px;
-    position: absolute;
+  height: 320px;
+  width: 200px;
+  border-radius: 10px;
+  position: absolute;
 }
 
 //swiper
 
 .swiper {
-    width: 240px;
-    height: 320px;
-    margin-top: 1em;
+  width: 240px;
+  height: 320px;
+  margin-top: 1em;
 }
 
 .swiper-slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    font-size: 16px;
-    font-weight: normal;
-    padding: 2em;
-    color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: normal;
+  padding: 2em;
+  color: #fff;
 }
 
 .explanation {
-    margin-bottom: 3em;
+  margin-bottom: 3em;
 }
 
 .palette-heading {
-    text-align: center;
-    margin-top: 2em;
+  text-align: center;
+  margin-top: 2em;
 
-    h2 {
-        text-transform: uppercase;
-    }
+  h2 {
+    text-transform: uppercase;
+  }
 
-    h3 {
-        margin-top: 1em;
-        margin-bottom: 2em;
-    }
+  h3 {
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
 }
 
 .links {
-    @include flex-column;
-    gap: 1em;
+  @include flex-column;
+  gap: 1em;
 
-    .btn-second {
-        width: 50%;
-    }
+  .btn-second {
+    width: 50%;
+  }
 
-    .btn-main {
-        width: 70%;
-    }
+  .btn-main {
+    width: 70%;
+  }
 }

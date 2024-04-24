@@ -1,10 +1,10 @@
-"use client";
-import Image from "next/image";
+'use client';
+import Image from 'next/image';
 import {
   CircleMenu,
   CircleMenuItem,
   TooltipPlacement,
-} from "react-circular-menu";
+} from 'react-circular-menu';
 
 export interface SideNavigationItem {
   name: string;
@@ -28,7 +28,7 @@ export default function SideNavigation() {
         rotationAngleInclusive={false}
       >
         <CircleMenuItem
-          onClick={() => alert("Clicked the item")}
+          onClick={() => alert('Clicked the item')}
           tooltip="Email"
           tooltipPlacement={TooltipPlacement.Right}
         >
