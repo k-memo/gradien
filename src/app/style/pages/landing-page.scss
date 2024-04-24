@@ -1,9 +1,6 @@
 .landing-page {
   margin-top: 20vh;
 
-  h1 {
-    font-weight: 800gi
-  }
 
   .landing-page-greeting {
     @include flex-column;
@@ -27,6 +24,9 @@ h3 {
 
 .heading {
   margin-bottom: 3em;
+}
+.arrow-right{
+  height: 24px;
 }
 
 //about section
@@ -112,6 +112,15 @@ h3 {
 
 .landing-text {
   position: absolute;
+  height: 50vh;
+  width: 80%;
+  text-align: center;
+  @include flex-column;
+  justify-content: space-between;
+  align-items: center;
+  .btn{
+    border-radius: 20px;
+  }
 }
 
 #animated-gradient {
@@ -232,10 +241,43 @@ h3 {
   border-radius: 100%;
   width: 300px;
   height: 300px;
-  top: calc(50% - $circle-size / 2);
-  left: calc(50% - $circle-size / 2);
+  top: calc(-50%);
+  left: calc(-50%);
   transform-origin: calc(50% - 200px);
-  animation: moveHorizontal 40s ease infinite;
+  animation: moveHorizontal 20s ease infinite;
+
+
+  opacity: 1;
+}
+
+.g5 {
+  position: absolute;
+  background: #865aff64;
+  filter: blur(50px);
+  mix-blend-mode: $blending;
+  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+  top: 0;
+  left: 0;
+  transform-origin: calc(50% - 800px) calc(50% + 200px);
+  animation: moveHorizontal 50s ease infinite;
+
+
+  opacity: 1;
+}
+.g6 {
+  position: absolute;
+  background: $yellow;
+  filter: blur(50px);
+  mix-blend-mode: $blending;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  top: calc(50%);
+  left: calc(50% );
+  transform-origin: calc(50% + 200px);
+  animation: moveHorizontal 20s ease infinite;
 
 
   opacity: 1;
