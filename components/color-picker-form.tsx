@@ -71,7 +71,7 @@ export default function ColorPickerForm({ imgSrc }) {
 
   return (
     <div className="color-picker-page">
-      <h1>Pick your colors</h1>
+      <h3>Pick your colors</h3>
 
       <ImageColorPicker
         onColorPick={handleColorPick}
