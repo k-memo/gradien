@@ -1,17 +1,25 @@
 .color-picker-page {
-    .color-input {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        width: 70%;
-        input{
-            width: 50%;
+  
+    .color-div{
+        
+        .color-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 70%;
+            input{
+                width: 50%;
+                height: 24px;
+            background-color: transparent;
+            border-bottom: solid 1px $main-color;
+            border-radius: 0px;
+            }
         }
     }
 
     .color-square {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         margin-right: 10px;
         border-radius: 5px;
         border: solid 1px $grey;

@@ -81,56 +81,65 @@ export default function ColorPickerForm({ imgSrc, setPalette }) {
 
       <form onSubmit={onSubmit}>
         <div className="picked-colors">
-          <div className="color-input">
-            <div
-              className="color-square"
-              style={{ backgroundColor: eyeColor }}
-            />
-            <input
-              type="text"
-              name="eyeColor"
-              onClick={() => setCurrentPart("eye")}
-              value={eyeColor}
-              readOnly
-            />
-            <CgColorPicker
-              className="picker"
-              onClick={() => setCurrentPart("eye")}
-            />
+          <div className="color-div">
+            <label>Eye Color:</label>
+              <div className="color-input">
+                <div
+                  className="color-square"
+                  style={{ backgroundColor: eyeColor }}
+                />
+                <input
+                  type="text"
+                  name="eyeColor"
+                  onClick={() => setCurrentPart("eye")}
+                  value={eyeColor}
+                  readOnly
+                />
+                <CgColorPicker
+                  className="picker"
+                  onClick={() => setCurrentPart("eye")}
+                />
+              </div>
           </div>
-          <div className="color-input">
-            <div
-              className="color-square"
-              style={{ backgroundColor: hairColor }}
-            />
-            <input
-              type="text"
-              name="hairColor"
-              value={hairColor}
-              onClick={() => setCurrentPart("hair")}
-              readOnly
-            />
-            <CgColorPicker
-              className="picker"
-              onClick={() => setCurrentPart("hair")}
-            />
+          <div className="color-div">
+          <label>Hair Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: hairColor }}
+              />
+              <input
+                type="text"
+                name="hairColor"
+                value={hairColor}
+                onClick={() => setCurrentPart("hair")}
+                readOnly
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => setCurrentPart("hair")}
+              />
+            </div>
           </div>
-          <div className="color-input">
-            <div
-              className="color-square"
-              style={{ backgroundColor: skinColor }}
-            />
-            <input
-              type="text"
-              name="skinColor"
-              value={skinColor}
-              onClick={() => setCurrentPart("skin")}
-              readOnly
-            />
-            <CgColorPicker
-              className="picker"
-              onClick={() => setCurrentPart("skin")}
-            />
+          <div className="color-div">
+          <label>Skin Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: skinColor }}
+              />
+              <input
+                type="text"
+                name="skinColor"
+                value={skinColor}
+                onClick={() => setCurrentPart("skin")}
+                readOnly
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => setCurrentPart("skin")}
+              />
+            </div>
           </div>
         </div>
         <div className="submit-area">

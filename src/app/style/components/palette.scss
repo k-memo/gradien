@@ -3,6 +3,11 @@
     margin: 2em 0em;
 }
 
+.palette {
+    @include flex-row;
+    margin: 2em 0em;
+}
+
 .palette-color {
     width: 50px;
     height: 60px;
@@ -16,6 +21,11 @@
     &:active {
         transform: scale(1.2);
     }
+}
+
+&:hover,
+&:active {
+    transform: scale(1.2);
 }
 
 
@@ -77,9 +87,9 @@ input:focus {
     align-items: center;
     justify-content: center;
     border-radius: 18px;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 1em;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 2em;
     color: #fff;
 }
 
@@ -93,6 +103,11 @@ input:focus {
 
     h2 {
         text-transform: uppercase;
+    }
+
+    h3 {
+        margin-top: 1em;
+        margin-bottom: 2em;
     }
 }
 
