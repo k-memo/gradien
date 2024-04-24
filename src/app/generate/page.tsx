@@ -53,9 +53,8 @@ export default function Home() {
         {formStep === 2 && (
           <section className="palette-section">
             <div className="palette-heading">
-              <Logo/>
+              <Logo />
               <h3>Your Colorpalette</h3>
-          
             </div>
             <Swiper
               effect={"cards"}
@@ -73,7 +72,7 @@ export default function Home() {
               <SwiperSlide>Slide 8</SwiperSlide>
               <SwiperSlide>Slide 9</SwiperSlide>
             </Swiper>
-            
+
             <div className="palette">
               <div className="palette-color p1"></div>
               <div className="palette-color p2"></div>
