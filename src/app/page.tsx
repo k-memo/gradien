@@ -18,6 +18,7 @@ export default function Home() {
             <div className="g2"></div>
             <div className="g3"></div>
             <div className="g4"></div>
+            <div className="g6"></div>
           </div>
         </div>
         <div className="landing-text">
@@ -29,13 +30,12 @@ export default function Home() {
             </h1>
             <p className="sub">FIND YOUR COLOR PALETTE</p>
           </div>
-          <Link href="generate" className="btn-special">
-            <div className="circle-icon">
-              <div className="circle"></div>
-              <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
-            </div>
+          <div>
+          <Link href="generate" className="btn-main btn">
             Get Started
+              <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
           </Link>
+          </div>
         </div>
       </section>
       <section id="about">
