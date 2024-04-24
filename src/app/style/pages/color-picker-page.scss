@@ -1,20 +1,12 @@
 .color-picker-page {
+    .color-input {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        width: 70%;
 
-    .color-div {
-
-        .color-input {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            width: 70%;
-
-            input {
-                width: 50%;
-                height: 24px;
-                background-color: transparent;
-                border-bottom: solid 1px $main-color;
-                border-radius: 0px;
-            }
+        input {
+            width: 50%;
         }
     }
 

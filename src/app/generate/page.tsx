@@ -8,6 +8,9 @@ import { EffectCards } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ColorPickerForm from "../../../components/color-picker-form";
 import ImageUploadField from "../../../components/image-upload-field";
+import NavForm from "../../../components/nav-form";
+import ShowMore from "../../../components/showmore";
+import { IPalette } from "../../../models/colorpalette.interface";
 import Logo from "../../../components/logo";
 
 export default function Home() {
