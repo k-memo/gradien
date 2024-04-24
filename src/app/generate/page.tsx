@@ -1,20 +1,20 @@
 "use client";
+import React, { useRef, useState } from "react";
 import { CiExport } from "react-icons/ci";
-import NavForm from "../../../components/nav-form";
-import { FaRegImage } from "react-icons/fa6";
-import { FiCamera, FiSave } from "react-icons/fi";
-import ColorPickerForm from "../../../components/color-picker-form";
-import { useRef, useState } from "react";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { FiSave } from "react-icons/fi";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { EffectCards } from "swiper/modules";
-import ShowMore from "../../../components/showmore";
+import { Swiper, SwiperSlide } from "swiper/react";
+import ColorPickerForm from "../../../components/color-picker-form";
 import ImageUploadField from "../../../components/image-upload-field";
+import NavForm from "../../../components/nav-form";
+import ShowMore from "../../../components/showmore";
+import { IPalette } from "../../../models/colorpalette.interface";
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
+  const [colorpalette, setPalette] = useState<IPalette>();
 
   const imageUploadRef = useRef(null);
   const [imageSrcFromChild, setImageSrcFromChild] = React.useState("");
@@ -45,7 +45,10 @@ export default function Home() {
 
         {formStep === 1 && (
           <section className="color-picker-section">
-            <ColorPickerForm imgSrc={imageSrcFromChild} />
+            <ColorPickerForm
+              imgSrc={imageSrcFromChild}
+              setPalette={setPalette}
+            />
           </section>
         )}
 
@@ -60,30 +63,28 @@ export default function Home() {
               modules={[EffectCards]}
               className="mySwiper"
             >
-              <SwiperSlide>Slide 1</SwiperSlide>
-              <SwiperSlide>Slide 2</SwiperSlide>
-              <SwiperSlide>Slide 3</SwiperSlide>
-              <SwiperSlide>Slide 4</SwiperSlide>
-              <SwiperSlide>Slide 5</SwiperSlide>
-              <SwiperSlide>Slide 6</SwiperSlide>
-              <SwiperSlide>Slide 7</SwiperSlide>
-              <SwiperSlide>Slide 8</SwiperSlide>
-              <SwiperSlide>Slide 9</SwiperSlide>
+              {colorpalette?.colors.map((color) => (
+                <SwiperSlide
+                  key={color.name}
+                  style={{ backgroundColor: color.hex }}
+                >
+                  {color.name}
+                </SwiperSlide>
+              ))}
             </Swiper>
             <div className="name">
               <label>Palettename:</label>
               <input className="palette-name" />
             </div>
             <div className="palette">
-              <div className="palette-color p1"></div>
-              <div className="palette-color p2"></div>
-              <div className="palette-color p3"></div>
-              <div className="palette-color p4"></div>
-              <div className="palette-color p5"></div>
-              <div className="palette-color p6"></div>
-              <div className="palette-color p7"></div>
+              {colorpalette?.colors.map((color) => (
+                <div
+                  key={color.name}
+                  className="palette-color"
+                  style={{ backgroundColor: color.hex }}
+                ></div>
+              ))}
             </div>
-
             <div className="explanation">
               <ShowMore />
             </div>
