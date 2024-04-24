@@ -8,16 +8,22 @@ export default function ColorPickerForm({ imgSrc, setPalette }) {
   const [hairColor, setHairColor] = useState("");
   const [skinColor, setSkinColor] = useState("");
 
+
+
+
   const handleColorPick = (color) => {
     switch (currentPart) {
       case "eye":
         setEyeColor(color);
+        document.body.style.cursor = 'default';
         break;
       case "hair":
         setHairColor(color);
+        document.body.style.cursor = 'default';
         break;
       case "skin":
         setSkinColor(color);
+        document.body.style.cursor = 'default';
         break;
       default:
         break;
@@ -91,13 +97,15 @@ export default function ColorPickerForm({ imgSrc, setPalette }) {
                 <input
                   type="text"
                   name="eyeColor"
-                  onClick={() => setCurrentPart("eye")}
+                  onClick={() => {
+                    setCurrentPart('eye');
+                  }}
                   value={eyeColor}
                   readOnly
                 />
                 <CgColorPicker
                   className="picker"
-                  onClick={() => setCurrentPart("eye")}
+                  onClick={() => {document.body.style.cursor = 'crosshair';setCurrentPart("eye")}}
                 />
               </div>
           </div>
@@ -117,7 +125,7 @@ export default function ColorPickerForm({ imgSrc, setPalette }) {
               />
               <CgColorPicker
                 className="picker"
-                onClick={() => setCurrentPart("hair")}
+                onClick={() => {document.body.style.cursor = 'crosshair';setCurrentPart("hair")}}
               />
             </div>
           </div>
@@ -137,7 +145,7 @@ export default function ColorPickerForm({ imgSrc, setPalette }) {
               />
               <CgColorPicker
                 className="picker"
-                onClick={() => setCurrentPart("skin")}
+                onClick={() => {document.body.style.cursor = 'crosshair';setCurrentPart("skin")}}
               />
             </div>
           </div>
