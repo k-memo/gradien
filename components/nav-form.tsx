@@ -1,7 +1,7 @@
 import { FaCheck } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-export default function NavForm({ formStep }) {
+export default function NavForm({ formStep, setFormStep }) {
     const [activeState, setActiveState] = useState(0); // Track the active state
     useEffect(() => {
         setActiveState(formStep);
@@ -9,6 +9,7 @@ export default function NavForm({ formStep }) {
 
     const handleStateClick = (index) => {
         setActiveState(index);
+        setFormStep(index);
     };
 
     // Calculate the width of .h-active based on the active state
