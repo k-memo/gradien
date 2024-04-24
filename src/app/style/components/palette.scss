@@ -1,27 +1,23 @@
 .palette {
   @include flex-row;
   margin: 2em 0em;
-}
 
-.palette {
-  @include flex-row;
-  margin: 2em 0em;
-}
+  .palette-color {
+    width: 50px;
+    height: 60px;
+    border-radius: 5px;
+    box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
+    transition: transform 0.3s ease;
+    margin-right: -4px;
+    cursor: pointer;
 
-.palette-color {
-  width: 50px;
-  height: 60px;
-  border-radius: 5px;
-  box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
-  transition: transform 0.3s ease;
-  margin-right: -4px;
-  cursor: pointer;
-
-  &:hover,
-  &:active {
-    transform: scale(1.2);
+    &:hover,
+    &:active {
+      transform: scale(1.2);
+    }
   }
 }
+
 
 &:hover,
 &:active {
