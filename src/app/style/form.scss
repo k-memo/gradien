@@ -6,6 +6,15 @@ input{
     padding-left: 1em;
     height: 40px;
 }
+
+.input-error{
+    width: 82vw;
+    background-color: none;
+    border: solid 1.5px $error;
+    border-radius: 10px;
+    padding-left: 1em;
+    height: 40px;
+}
 textarea{
     width: 82vw;
     background-color: none;
@@ -22,6 +31,13 @@ label{
     color: $main-color;
     padding-bottom: 4px;
 }
+.label-error{
+    font-size: 10px;
+    text-transform: uppercase;
+    color: $error;
+    padding-bottom: 4px;
+}
+
 
 .login-input{
     border: solid 1px $yellow;
