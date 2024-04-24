@@ -19,11 +19,6 @@
 }
 
 
-&:hover,
-&:active {
-  transform: scale(1.2);
-}
-
 
 .name {
   @include flex-row;

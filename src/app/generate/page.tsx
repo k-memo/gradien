@@ -12,9 +12,6 @@ import NavForm from "../../../components/nav-form";
 import ShowMore from "../../../components/showmore";
 import { IPalette } from "../../../models/colorpalette.interface";
 import Logo from "../../../components/logo";
-import NavForm from "../../../components/nav-form";
-import ShowMore from "../../../components/showmore";
-import { IPalette } from "../../../models/colorpalette.interface";
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
