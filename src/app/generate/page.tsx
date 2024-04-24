@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <main className="multi-step">
-      <NavForm formStep={formStep}/>
+      <NavForm formStep={formStep} setFormStep={setFormStep} />
 
       <div className="">
         {formStep === 0 && (
