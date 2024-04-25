@@ -9,10 +9,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import ColorPickerForm from '../../../components/color-picker-form';
 import ImageUploadField from '../../../components/image-upload-field';
 import NavForm from '../../../components/nav-form';
-import ShowMore from '../../../components/showmore';
 import { IPalette } from '../../../models/colorpalette.interface';
 import Logo from '../../../components/logo';
 import { LoadingGlobal } from '../../../components/loading-global';
+import ShowMore from '../../../components/showmore';
+import { FaArrowRight } from 'react-icons/fa6';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
@@ -20,7 +22,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const imageUploadRef = useRef(null);
-  const [imageSrcFromChild, setImageSrcFromChild] = React.useState('');
+  const [imageSrcFromChild, setImageSrcFromChild] = React.useState();
 
   const handlePrevStep = () => {
     setFormStep(prevStep => Math.max(prevStep - 1, 0));
@@ -31,6 +33,17 @@ export default function Home() {
   };
 
   const childRef = useRef(null);
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const getColor = (index: number) => {
+    setActiveIndex(index);
+    const swiperElement = document.querySelector(
+      '.mySwiper',
+    ) as HTMLElement | null;
+    const swiper = swiperElement?.swiper;
+    swiper?.slideTo(index);
+  };
 
   return (
     <main className="multi-step">
@@ -49,7 +62,6 @@ export default function Home() {
 
         {formStep === 1 && (
           <section className="color-picker-section">
-            <h3>Pick your colors</h3>
             <ColorPickerForm
               imgSrc={imageSrcFromChild}
               setPalette={setPalette}
@@ -73,6 +85,7 @@ export default function Home() {
                   grabCursor={true}
                   modules={[EffectCards]}
                   className="mySwiper"
+                  initialSlide={activeIndex}
                 >
                   {colorpalette?.colors.map(color => (
                     <SwiperSlide
@@ -85,21 +98,26 @@ export default function Home() {
                 </Swiper>
 
                 <div className="palette">
-                  {colorpalette?.colors.map(color => (
+                  {colorpalette?.colors.map((color, index) => (
                     <div
                       key={color.name}
                       className="palette-color"
                       style={{ backgroundColor: color.hex }}
+                      onClick={() => getColor(index)}
                     ></div>
                   ))}
                 </div>
               </div>
               <div className="explanation">
-                <ShowMore />
+                <ShowMore
+                  header="Colorpalette Info"
+                  explanation={colorpalette?.paletteInfo}
+                />
               </div>
               <div className="links">
                 <a className="btn-second btn">
-                  export <CiExport className="link-icon" />
+                  export
+                  <CiExport className="link-icon" />
                 </a>
                 <a className="btn-main btn">
                   save colorpalette
@@ -114,19 +132,28 @@ export default function Home() {
       <div className="bottom-nav">
         {formStep == 2 && (
           <input
-            className="prev-btn btn"
             type="button"
-            value="Previous"
-            onClick={handlePrevStep}
+            value=" "
+            style={{ visibility: 'hidden' }}
+            disabled
           />
         )}
-        {formStep == 0 && (
-          <input
-            className="btn-main btn"
-            type="button"
-            value="Next"
-            onClick={handleNextStep}
-          />
+        {formStep === 0 && (
+          <>
+            <input
+              type="button"
+              value=" "
+              style={{ visibility: 'hidden' }}
+              disabled
+            />
+            <input
+              className={`btn-main btn ${imageSrcFromChild === undefined ? 'disabled' : ''}`}
+              type="button"
+              value="Next"
+              onClick={handleNextStep}
+              disabled={imageSrcFromChild === undefined}
+            />
+          </>
         )}
       </div>
     </main>

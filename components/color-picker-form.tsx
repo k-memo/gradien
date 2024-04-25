@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { ImageColorPicker } from 'react-image-color-picker';
 import { CgColorPicker } from 'react-icons/cg';
+import { ImageColorPicker } from 'react-image-color-picker';
+import { IerrorField } from '../models/errorField.interface';
+import { IinputField } from '../models/inputField.interface copy';
 
 export default function ColorPickerForm({
   imgSrc,
@@ -14,7 +16,8 @@ export default function ColorPickerForm({
   const [hairColor, setHairColor] = useState('');
   const [skinColor, setSkinColor] = useState('');
 
-  const [errors, setErrors] = useState({});
+  const [fields, setField] = useState<IinputField[]>([]);
+  const [errors, setErrors] = useState<IerrorField[]>([]);
 
   const handleColorPick = color => {
     switch (currentPart) {
@@ -72,45 +75,51 @@ export default function ColorPickerForm({
   async function handleOnSubmit(e) {
     e.preventDefault();
 
-    const formData = {};
-    let isValid = true;
+    const updatedFields: IinputField[] = [];
 
     // Iterate through form fields
     [...e.currentTarget.elements].forEach(field => {
+      console.log(field.name);
       if (!field.name) return;
 
-      formData[field.name] = field.value;
-
-      const isValidField = checkValidation(field.name, field.value);
-      if (!isValidField) isValid = false;
+      updatedFields.push({ name: field.name, value: field.value });
     });
 
-    if (!isValid) {
-      console.warn(errors);
+    setField(updatedFields);
+    console.log(updatedFields); // Log updatedFields instead of fields
+
+    // Check for Errors
+    const newErrors: IerrorField[] = [];
+    updatedFields.forEach(field => {
+      const error = checkValidation(field);
+      if (error) {
+        newErrors.push(error);
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (newErrors.length > 0) {
+      console.warn(newErrors);
       return;
     }
 
     try {
-      sendToGenerate();
+      await sendToGenerate();
       setFormStep(2);
     } catch (error) {
       console.warn('Error:', error);
     }
   }
 
-  function checkValidation(name, value) {
-    let isValid = true;
-    const newErrors = { ...errors };
-
-    if (value === '' && name !== 'hairColor') {
-      newErrors[name] = 'Required';
-      isValid = false;
-    } else {
-      delete newErrors[name];
+  function checkValidation(field: IinputField): IerrorField | undefined {
+    if (field.value === '' && field.name !== 'hairColor') {
+      console.warn(
+        `Not valid: name: "${field.name}" with value: "${field.value}" `,
+      );
+      return { name: field.name, message: 'Required' };
     }
-
-    setErrors(newErrors);
-    return isValid;
+    return undefined;
   }
 
   function rgbToHex(rgb: string): string {
@@ -132,9 +141,42 @@ export default function ColorPickerForm({
       />
 
       <form onSubmit={handleOnSubmit}>
+        <h3>Pick your colors</h3>
+        <p>
+          Step by Step: Choose colors from your image. Start by selecting your
+          eye color, followed by your hair color, and finally your skin tone.
+          Once complete, submit your choices, and we'll generate your
+          personalized color palette.
+        </p>
+
         <div className="picked-colors">
           <div className="color-div">
-            <label>Eye Color:</label>
+            <label className={getErrorClass('skinColor')}>Skin Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: skinColor }}
+              />
+              <input
+                type="text"
+                name="skinColor"
+                placeholder="skin color"
+                value={skinColor}
+                onClick={() => setCurrentPart('skin')}
+                readOnly
+                required
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('skin');
+                }}
+              />
+            </div>
+          </div>
+          <div className="color-div">
+            <label className={getErrorClass('eyeColor')}>Eye Color:</label>
             <div className="color-input">
               <div
                 className="color-square"
@@ -161,7 +203,7 @@ export default function ColorPickerForm({
             </div>
           </div>
           <div className="color-div">
-            <label>Hair Color:</label>
+            <label className={getErrorClass('hairColor')}>Hair Color &#40;Optional&#41;:</label>
             <div className="color-input">
               <div
                 className="color-square"
@@ -184,32 +226,11 @@ export default function ColorPickerForm({
               />
             </div>
           </div>
-          <div className="color-div">
-            <label>Skin Color:</label>
-            <div className="color-input">
-              <div
-                className="color-square"
-                style={{ backgroundColor: skinColor }}
-              />
-              <input
-                type="text"
-                name="skinColor"
-                placeholder="skin color"
-                value={skinColor}
-                onClick={() => setCurrentPart('skin')}
-                readOnly
-                required
-              />
-              <CgColorPicker
-                className="picker"
-                onClick={() => {
-                  document.body.style.cursor = 'crosshair';
-                  setCurrentPart('skin');
-                }}
-              />
-            </div>
-          </div>
+          {errors.some(error => error.name === 'skinColor' || error.name === 'eyeColor') && (
+          <p className="label-error">You need to pick your skin and eye color.</p>
+        )}
         </div>
+        
         <div className="submit-area">
           <a className="prev-btn btn" onClick={handlePrevStep}>
             Previous
@@ -221,4 +242,8 @@ export default function ColorPickerForm({
       </form>
     </div>
   );
+  
+  function getErrorClass(fieldName: string): string {
+    return errors.some(error => error.name === fieldName) ? 'label-error' : '';
+  }
 }

@@ -56,6 +56,7 @@
   @include flex-row;
   align-items: center;
   gap: 2em;
+  justify-content: center;
 
   &:hover {
     background-color: $hover;
@@ -91,9 +92,9 @@
   @include flex-column;
   justify-content: center;
   align-items: center;
-  padding: 8px 40px;
+  padding: 4px 40px;
   border-radius: 10px;
-  gap: 4px;
+  gap: 2px;
   width: 100%;
   border: solid 2px $main-color;
 
@@ -120,12 +121,16 @@
 .prev-btn {
   background-color: $sec-color;
   padding: 10px 30px;
-  color: white;
-  border: none;
+  color: $main-color;
+  border: solid 2px $main-color;
+  @include flex-row;
+  justify-content: center;
+  align-items: center;
 
   &:hover,
   &:active {
-    background-color: $main-color;
+    border: solid 2px $hover;
+    color: $hover;
   }
 }
 
@@ -155,6 +160,11 @@
   font-size: 24px;
 }
 
+.btn.disabled {
+  background-color: $grey;
+  cursor: default;
+}
+
 $circle-size: 100%;
 $blending: hard-light;
 
@@ -167,7 +177,7 @@ $blending: hard-light;
   }
 
   .btn-img {
-    padding: 14px 60px;
+    padding: 10px 50px;
     border-radius: 10px;
   }
 }
