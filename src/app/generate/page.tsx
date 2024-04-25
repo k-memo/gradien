@@ -39,7 +39,7 @@ export default function Home() {
       <div className="multi-step-item">
         {isLoading === true && <LoadingGlobal />}
         {formStep === 0 && (
-          <section id='upload-section'>
+          <section id="upload-section">
             <ImageUploadField
               ref={imageUploadRef}
               setImageSrcFromChild={setImageSrcFromChild} // Pass down the function to update the image source
@@ -49,12 +49,13 @@ export default function Home() {
 
         {formStep === 1 && (
           <section className="color-picker-section">
-             <h3>Pick your colors</h3>
+            <h3>Pick your colors</h3>
             <ColorPickerForm
               imgSrc={imageSrcFromChild}
               setPalette={setPalette}
               setLoading={setIsLoading}
               setFormStep={setFormStep}
+              handlePrevStep={handlePrevStep}
             />
           </section>
         )}
@@ -66,35 +67,33 @@ export default function Home() {
                 <Logo />
                 <h3>Your Colorpalette</h3>
               </div>
-            <div className="palettes">
+              <div className="palettes">
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards]}
+                  className="mySwiper"
+                >
+                  {colorpalette?.colors.map(color => (
+                    <SwiperSlide
+                      key={color.name}
+                      style={{ backgroundColor: color.hex }}
+                    >
+                      {color.name}
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
 
-             <Swiper
-                effect={'cards'}
-                grabCursor={true}
-                modules={[EffectCards]}
-                className="mySwiper"
-              >
-                {colorpalette?.colors.map(color => (
-                  <SwiperSlide
-                    key={color.name}
-                    style={{ backgroundColor: color.hex }}
-                    
-                  >
-                    {color.name}
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-
-              <div className="palette">
-                {colorpalette?.colors.map(color => (
-                  <div
-                    key={color.name}
-                    className="palette-color"
-                    style={{ backgroundColor: color.hex }}
-                  ></div>
-                ))}
+                <div className="palette">
+                  {colorpalette?.colors.map(color => (
+                    <div
+                      key={color.name}
+                      className="palette-color"
+                      style={{ backgroundColor: color.hex }}
+                    ></div>
+                  ))}
+                </div>
               </div>
-            </div>
               <div className="explanation">
                 <ShowMore />
               </div>
@@ -113,7 +112,7 @@ export default function Home() {
       </div>
 
       <div className="bottom-nav">
-        {formStep > 0 && (
+        {formStep == 2 && (
           <input
             className="prev-btn btn"
             type="button"
@@ -121,7 +120,7 @@ export default function Home() {
             onClick={handlePrevStep}
           />
         )}
-        {formStep < 2 && (
+        {formStep == 0 && (
           <input
             className="btn-main btn"
             type="button"
