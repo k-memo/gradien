@@ -32,6 +32,17 @@ export default function Home() {
 
   const childRef = useRef(null);
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const getColor = (index: number) => {
+    setActiveIndex(index);
+    const swiperElement = document.querySelector(
+      '.mySwiper',
+    ) as HTMLElement | null;
+    const swiper = swiperElement?.swiper;
+    swiper?.slideTo(index);
+  };
+
   return (
     <main className="multi-step">
       <NavForm formStep={formStep} setFormStep={setFormStep} />
@@ -72,6 +83,7 @@ export default function Home() {
                   grabCursor={true}
                   modules={[EffectCards]}
                   className="mySwiper"
+                  initialSlide={activeIndex}
                 >
                   {colorpalette?.colors.map(color => (
                     <SwiperSlide
@@ -84,11 +96,12 @@ export default function Home() {
                 </Swiper>
 
                 <div className="palette">
-                  {colorpalette?.colors.map(color => (
+                  {colorpalette?.colors.map((color, index) => (
                     <div
                       key={color.name}
                       className="palette-color"
                       style={{ backgroundColor: color.hex }}
+                      onClick={() => getColor(index)}
                     ></div>
                   ))}
                 </div>
