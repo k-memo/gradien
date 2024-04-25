@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  @include flex-column;
+  font-size: 14px;
+  color: $text-color;
+  margin: 0;
+  overflow-x: hidden !important;
+}
+
+main {
+  padding: 2em;
+  overflow-x: hidden;
+}
+
+.icon {
+  width: 16px;
+  text-align: center;
+}
+
+h1 {
+  font-size: $h1-size;
+  font-weight: 800;
+}
+
+@media screen and (min-width: $desktop-breakpoint) {
+  body {
+    font-size: 16px;
+  }
+}

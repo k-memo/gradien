@@ -1,0 +1,34 @@
+.circular-navigation {
+  width: 100px;
+
+  > * > button {
+    border: none;
+  }
+
+  > * > button:hover,
+  > * > button:active,
+  > * > button:focus {
+    background-color: transparent !important;
+    border: none;
+  }
+
+  > * > button > div {
+    background-color: black !important;
+  }
+
+  > * > button:hover > div,
+  > * > button:active > div,
+  > * > button:focus > div {
+    background-color: black !important;
+  }
+
+  ul > li button {
+    border: none !important;
+  }
+
+  ul > li button:hover > div,
+  ul > li button:active > div,
+  ul > li button:focus > div {
+    background: none !important;
+  }
+}

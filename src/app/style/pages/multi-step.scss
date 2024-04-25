@@ -1,0 +1,199 @@
+.multi-step {
+  background-image: url(../../../../public/gardien.jpg);
+  background-size: cover;
+  min-height: 100vh;
+  .choose-option {
+    @include flex-row;
+    gap: 1em;
+  }
+
+  h3 {
+    margin-bottom: 0.5em;
+    color: $main-color;
+
+    text-transform: uppercase;
+    margin-top: 2em;
+  }
+
+  .btn-img {
+    margin-bottom: 4em;
+  }
+
+  .btn-main,
+  .btn-second,
+  .prev-btn {
+    width: 50%;
+  }
+
+  .bottom-nav {
+    @include flex-row;
+    gap: 1em;
+    justify-content: flex-end;
+  }
+
+  .links {
+    @include flex-column;
+    margin: 5em 0em;
+    gap: 1em;
+
+    .link-icon {
+      width: 24px;
+      height: 20px;
+    }
+
+    .btn {
+      @include flex-row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-main {
+      width: 80%;
+    }
+
+    .btn-second {
+      width: 50%;
+    }
+  }
+}
+.upload-heading {
+  @include flex-column;
+  text-align: start;
+  gap: 0em;
+  margin-bottom: 2em;
+}
+.uploadImage {
+  .cloud {
+    width: 24px;
+    height: 24px;
+  }
+  label {
+    font-size: 14px;
+    text-transform: none;
+  }
+  @include flex-row;
+  justify-content: flex-end;
+}
+.img-input {
+  position: relative;
+  .img-resize {
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+    position: absolute;
+    object-fit: cover;
+  }
+  img {
+    border: none;
+  }
+}
+
+@media screen and (min-width: $desktop-breakpoint) {
+  //upload
+  .uploadImage {
+    .cloud {
+      width: 24px;
+      height: 24px;
+    }
+    label {
+      font-size: 16px;
+    }
+    justify-content: flex-start;
+    margin-bottom: 0em !important;
+  }
+  .upload-section {
+    @include flex-row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 2em;
+    padding: 0vw 10vw;
+
+    .upload-heading {
+      height: 100px;
+      @include flex-column;
+      width: 50%;
+      align-items: flex-start;
+      text-align: start;
+      h3 {
+        margin-top: 0em;
+      }
+      .p {
+        width: 400px;
+      }
+    }
+  }
+  /*
+      .blob {
+        background-color: $light-purp;
+        opacity: 0;
+        height: 200px;
+        width: 200px;
+        position: relative;
+        top: 8vw;
+        right: 0vw;
+        left: -5vw;
+        padding: 3em;
+        font-size: 12px;
+        text-align: center;
+        line-height: 1.5;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(10px);
+        transition:
+          visibility 0.3s,
+          opacity 0.3s ease-in;
+        z-index: 100;
+      }
+      .blob::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $light-purp;
+        border-radius: 50%;
+        z-index: -1;
+        filter: blur(10px);
+      }
+      .icon-div:hover + .blob {
+        visibility: visible;  Show the blob when the icon is hovered 
+        opacity: 1;
+      }
+    */
+
+  //end upload
+  .multi-step {
+    form {
+      h3 {
+        margin-bottom: 0.5em;
+      }
+    }
+    h3 {
+      margin-top: 4em;
+      margin-bottom: 0em;
+    }
+    .bottom-nav {
+      @include flex-row;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      padding: 0vw 10vw;
+    }
+  }
+  .btn-img {
+    max-width: 250px;
+  }
+
+  .description {
+    width: 50%;
+    @include flex-column;
+    justify-content: space-between;
+    min-height: 70vh;
+    max-height: 100vh;
+    padding-top: 4em;
+  }
+}
