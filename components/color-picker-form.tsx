@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { CgColorPicker } from 'react-icons/cg';
 import { ImageColorPicker } from 'react-image-color-picker';
 import { IerrorField } from '../models/errorField.interface';
@@ -89,13 +89,18 @@ export default function ColorPickerForm({
     console.log(updatedFields); // Log updatedFields instead of fields
 
     // Check for Errors
-    setErrors([]);
+    const newErrors: IerrorField[] = [];
     updatedFields.forEach(field => {
-      checkValidation(field);
+      const error = checkValidation(field);
+      if (error) {
+        newErrors.push(error);
+      }
     });
 
-    if (errors.length > 0) {
-      console.warn(errors);
+    setErrors(newErrors);
+
+    if (newErrors.length > 0) {
+      console.warn(newErrors);
       return;
     }
 
@@ -107,15 +112,14 @@ export default function ColorPickerForm({
     }
   }
 
-  function checkValidation(field: IinputField) {
-    const updatedErrors: IerrorField[] = errors;
-
+  function checkValidation(field: IinputField): IerrorField | undefined {
     if (field.value === '' && field.name !== 'hairColor') {
       console.warn(
         `Not valid: name: "${field.name}" with value: "${field.value}" `,
       );
-      updatedErrors.push({ name: field.name, message: 'Required' });
+      return { name: field.name, message: 'Required' };
     }
+    return undefined;
   }
 
   function rgbToHex(rgb: string): string {
@@ -137,93 +141,96 @@ export default function ColorPickerForm({
       />
 
       <form onSubmit={handleOnSubmit}>
-        <div>
-          <h3>Pick your colors</h3>
-          <p>
-            Step by Step: Choose colors from your image. Start by selecting your
-            eye color, followed by your hair color, and finally your skin tone.
-            Once complete, submit your choices, and we'll generate your
-            personalized color palette.
-          </p>
-          <div className="picked-colors">
-            <div className="color-div">
-              <label>Eye Color:</label>
-              <div className="color-input">
-                <div
-                  className="color-square"
-                  style={{ backgroundColor: eyeColor }}
-                />
-                <input
-                  type="text"
-                  name="eyeColor"
-                  placeholder="eye color"
-                  onClick={() => {
-                    setCurrentPart('eye');
-                  }}
-                  value={eyeColor}
-                  readOnly
-                  required
-                />
-                <CgColorPicker
-                  className="picker"
-                  onClick={() => {
-                    document.body.style.cursor = 'crosshair';
-                    setCurrentPart('eye');
-                  }}
-                />
-              </div>
-            </div>
-            <div className="color-div">
-              <label>Hair Color:</label>
-              <div className="color-input">
-                <div
-                  className="color-square"
-                  style={{ backgroundColor: hairColor }}
-                />
-                <input
-                  type="text"
-                  name="hairColor"
-                  placeholder="hair color"
-                  value={hairColor}
-                  onClick={() => setCurrentPart('hair')}
-                  readOnly
-                />
-                <CgColorPicker
-                  className="picker"
-                  onClick={() => {
-                    document.body.style.cursor = 'crosshair';
-                    setCurrentPart('hair');
-                  }}
-                />
-              </div>
-            </div>
-            <div className="color-div">
-              <label>Skin Color:</label>
-              <div className="color-input">
-                <div
-                  className="color-square"
-                  style={{ backgroundColor: skinColor }}
-                />
-                <input
-                  type="text"
-                  name="skinColor"
-                  placeholder="skin color"
-                  value={skinColor}
-                  onClick={() => setCurrentPart('skin')}
-                  readOnly
-                  required
-                />
-                <CgColorPicker
-                  className="picker"
-                  onClick={() => {
-                    document.body.style.cursor = 'crosshair';
-                    setCurrentPart('skin');
-                  }}
-                />
-              </div>
+        <h3>Pick your colors</h3>
+        <p>
+          Step by Step: Choose colors from your image. Start by selecting your
+          eye color, followed by your hair color, and finally your skin tone.
+          Once complete, submit your choices, and we'll generate your
+          personalized color palette.
+        </p>
+
+        <div className="picked-colors">
+          <div className="color-div">
+            <label className={getErrorClass('skinColor')}>Skin Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: skinColor }}
+              />
+              <input
+                type="text"
+                name="skinColor"
+                placeholder="skin color"
+                value={skinColor}
+                onClick={() => setCurrentPart('skin')}
+                readOnly
+                required
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('skin');
+                }}
+              />
             </div>
           </div>
+          <div className="color-div">
+            <label className={getErrorClass('eyeColor')}>Eye Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: eyeColor }}
+              />
+              <input
+                type="text"
+                name="eyeColor"
+                placeholder="eye color"
+                onClick={() => {
+                  setCurrentPart('eye');
+                }}
+                value={eyeColor}
+                readOnly
+                required
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('eye');
+                }}
+              />
+            </div>
+          </div>
+          <div className="color-div">
+            <label className={getErrorClass('hairColor')}>Hair Color &#40;Optional&#41;:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: hairColor }}
+              />
+              <input
+                type="text"
+                name="hairColor"
+                placeholder="hair color"
+                value={hairColor}
+                onClick={() => setCurrentPart('hair')}
+                readOnly
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('hair');
+                }}
+              />
+            </div>
+          </div>
+          {errors.some(error => error.name === 'skinColor' || error.name === 'eyeColor') && (
+          <p className="label-error">You need to pick your skin and eye color.</p>
+        )}
         </div>
+        
         <div className="submit-area">
           <a className="prev-btn btn" onClick={handlePrevStep}>
             Previous
@@ -235,4 +242,8 @@ export default function ColorPickerForm({
       </form>
     </div>
   );
+  
+  function getErrorClass(fieldName: string): string {
+    return errors.some(error => error.name === fieldName) ? 'label-error' : '';
+  }
 }
