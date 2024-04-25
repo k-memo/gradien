@@ -22,7 +22,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const imageUploadRef = useRef(null);
-  const [imageSrcFromChild, setImageSrcFromChild] = React.useState('');
+  const [imageSrcFromChild, setImageSrcFromChild] = React.useState();
 
   const handlePrevStep = () => {
     setFormStep(prevStep => Math.max(prevStep - 1, 0));
@@ -44,6 +44,8 @@ export default function Home() {
     const swiper = swiperElement?.swiper;
     swiper?.slideTo(index);
   };
+
+  console.warn(imageSrcFromChild);
 
   return (
     <main className="multi-step">
@@ -143,12 +145,13 @@ export default function Home() {
             onClick={handlePrevStep}
           />
         )}
-        {formStep == 0 && (
+        {formStep === 0 && (
           <input
-            className="btn-main btn"
+            className={`btn-main btn ${imageSrcFromChild === undefined ? 'disabled' : ''}`}
             type="button"
             value="Next"
             onClick={handleNextStep}
+            disabled={imageSrcFromChild === undefined}
           />
         )}
       </div>

@@ -53,15 +53,18 @@
   align-items: center;
   gap: 2em;
   justify-content: center;
+
   &:hover {
     background-color: $hover;
     border: none;
   }
+
   &:active {
     background-color: $hover;
     border: none;
   }
 }
+
 .btn-second {
   padding: 8px 30px;
   background-color: transparent;
@@ -90,23 +93,27 @@
   gap: 2px;
   width: 100%;
   border: solid 2px $main-color;
+
   &:hover,
   &:active {
     background-color: $main-color;
     color: white;
   }
 }
+
 .btn-long {
   background-color: $main-color;
   color: white;
   padding: 8px 100px;
   border: none;
   width: 270px;
+
   &:hover,
   &:active {
     background-color: $hover;
   }
 }
+
 .prev-btn {
   background-color: $sec-color;
   padding: 10px 30px;
@@ -115,34 +122,45 @@
   @include flex-row;
   justify-content: center;
   align-items: center;
+
   &:hover,
   &:active {
     border: solid 2px $hover;
     color: $hover;
   }
 }
+
 .btn {
   cursor: pointer;
   border-radius: 10px;
   @include transition;
 }
+
 .delete-btn {
   padding: 10px 50px;
   background-color: $error;
   color: white;
   border: solid 1px $darkred;
+
   &:hover,
   &:active {
     background-color: $darkred;
     border: none;
   }
 }
+
 .more {
   background-color: transparent;
   border: none;
   cursor: pointer;
   font-size: 24px;
 }
+
+.btn.disabled {
+  background-color: lightblue;
+  cursor: default;
+}
+
 $circle-size: 100%;
 $blending: hard-light;
 
@@ -153,6 +171,7 @@ $blending: hard-light;
     height: 40px;
     font-size: 1rem;
   }
+
   .btn-img {
     padding: 10px 50px;
     border-radius: 10px;
