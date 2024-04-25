@@ -45,8 +45,6 @@ export default function Home() {
     swiper?.slideTo(index);
   };
 
-  console.warn(imageSrcFromChild);
-
   return (
     <main className="multi-step">
       <NavForm formStep={formStep} setFormStep={setFormStep} />
