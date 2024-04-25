@@ -13,6 +13,8 @@ export default function ColorPickerForm({
   const [hairColor, setHairColor] = useState('');
   const [skinColor, setSkinColor] = useState('');
 
+  const [errors, setErrors] = useState({});
+
   const handleColorPick = color => {
     switch (currentPart) {
       case 'eye':
@@ -32,9 +34,7 @@ export default function ColorPickerForm({
     }
   };
 
-  const onSubmit = async e => {
-    e.preventDefault();
-
+  async function sendToGenerate() {
     setLoading(true);
 
     const color = {
@@ -66,7 +66,51 @@ export default function ColorPickerForm({
       setLoading(false);
       setFormStep(2);
     }
-  };
+  }
+
+  async function handleOnSubmit(e) {
+    e.preventDefault();
+
+    const formData = {};
+    let isValid = true;
+
+    // Iterate through form fields
+    [...e.currentTarget.elements].forEach(field => {
+      if (!field.name) return;
+
+      formData[field.name] = field.value;
+
+      const isValidField = checkValidation(field.name, field.value);
+      if (!isValidField) isValid = false;
+    });
+
+    if (!isValid) {
+      console.warn(errors);
+      return;
+    }
+
+    try {
+      sendToGenerate();
+      setFormStep(2);
+    } catch (error) {
+      console.warn('Error:', error);
+    }
+  }
+
+  function checkValidation(name, value) {
+    let isValid = true;
+    const newErrors = { ...errors };
+
+    if (value === '' && name !== 'hairColor') {
+      newErrors[name] = 'Required';
+      isValid = false;
+    } else {
+      delete newErrors[name];
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  }
 
   function rgbToHex(rgb: string): string {
     // Extracting the RGB values from the string
@@ -80,15 +124,13 @@ export default function ColorPickerForm({
 
   return (
     <div className="color-picker-page">
-     
-
       <ImageColorPicker
         onColorPick={handleColorPick}
         imgSrc={imgSrc}
         zoom={3}
       />
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleOnSubmit}>
         <div className="picked-colors">
           <div className="color-div">
             <label>Eye Color:</label>
@@ -100,7 +142,7 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="eyeColor"
-                placeholder='eye color'
+                placeholder="eye color"
                 onClick={() => {
                   setCurrentPart('eye');
                 }}
@@ -127,11 +169,10 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="hairColor"
-                placeholder='hair color'
+                placeholder="hair color"
                 value={hairColor}
                 onClick={() => setCurrentPart('hair')}
                 readOnly
-                
               />
               <CgColorPicker
                 className="picker"
@@ -152,7 +193,7 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="skinColor"
-                placeholder='skin color'
+                placeholder="skin color"
                 value={skinColor}
                 onClick={() => setCurrentPart('skin')}
                 readOnly
