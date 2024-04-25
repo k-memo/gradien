@@ -13,6 +13,7 @@ body {
   font-size: 14px;
   color: $text-color;
   margin: 0;
+  overflow-x: hidden !important;
 }
 
 main {
@@ -29,3 +30,9 @@ h1 {
   font-weight: 800;
 }
 
+@media screen and (min-width: $desktop-breakpoint) {
+  body{
+    font-size: 18px;
+  }
+
+}

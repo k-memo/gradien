@@ -26,7 +26,7 @@ export default function NavForm({ formStep, setFormStep }) {
             className={`state-circle ${activeState >= index ? 'active' : ''}`}
             onClick={() => handleStateClick(index)}
           >
-            {activeState >= index && <FaCheck />}
+            {activeState >= index && <FaCheck className="check" />}
           </div>
         ))}
       </div>

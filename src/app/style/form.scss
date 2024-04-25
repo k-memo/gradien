@@ -61,3 +61,17 @@ label {
   border: dashed 2px $error;
   background-color: #dc060655;
 }
+
+@media screen and (min-width: $desktop-breakpoint) {
+  .img-input {
+    height: 60vh;
+    width: 50%;
+    border-radius: 5%;
+  }
+}
+
+@media screen and (min-width: $desktop-breakpoint) {
+ label{
+  font-size: 14px;
+ }
+}

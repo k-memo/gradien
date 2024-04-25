@@ -39,7 +39,7 @@ export default function Home() {
       <div className="multi-step-item">
         {isLoading === true && <LoadingGlobal />}
         {formStep === 0 && (
-          <section className="upload-section">
+          <section id='upload-section'>
             <ImageUploadField
               ref={imageUploadRef}
               setImageSrcFromChild={setImageSrcFromChild} // Pass down the function to update the image source
@@ -49,6 +49,7 @@ export default function Home() {
 
         {formStep === 1 && (
           <section className="color-picker-section">
+             <h3>Pick your colors</h3>
             <ColorPickerForm
               imgSrc={imageSrcFromChild}
               setPalette={setPalette}
@@ -60,47 +61,52 @@ export default function Home() {
 
         {formStep === 2 && (
           <section className="palette-section">
-            <div className="palette-heading">
-              <Logo />
-              <h3>Your Colorpalette</h3>
-            </div>
-            <Swiper
-              effect={'cards'}
-              grabCursor={true}
-              modules={[EffectCards]}
-              className="mySwiper"
-            >
-              {colorpalette?.colors.map(color => (
-                <SwiperSlide
-                  key={color.name}
-                  style={{ backgroundColor: color.hex }}
-                  
-                >
-                  {color.name}
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <div className="color-palette-div">
+              <div className="palette-heading">
+                <Logo />
+                <h3>Your Colorpalette</h3>
+              </div>
+            <div className="palettes">
 
-            <div className="palette">
-              {colorpalette?.colors.map(color => (
-                <div
-                  key={color.name}
-                  className="palette-color"
-                  style={{ backgroundColor: color.hex }}
-                ></div>
-              ))}
+             <Swiper
+                effect={'cards'}
+                grabCursor={true}
+                modules={[EffectCards]}
+                className="mySwiper"
+              >
+                {colorpalette?.colors.map(color => (
+                  <SwiperSlide
+                    key={color.name}
+                    style={{ backgroundColor: color.hex }}
+                    
+                  >
+                    {color.name}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <div className="palette">
+                {colorpalette?.colors.map(color => (
+                  <div
+                    key={color.name}
+                    className="palette-color"
+                    style={{ backgroundColor: color.hex }}
+                  ></div>
+                ))}
+              </div>
             </div>
-            <div className="explanation">
-              <ShowMore />
-            </div>
-            <div className="links">
-              <a className="btn-second btn">
-                export <CiExport className="link-icon" />
-              </a>
-              <a className="btn-main btn">
-                save colorpalette
-                <FiSave className="link-icon" />
-              </a>
+              <div className="explanation">
+                <ShowMore />
+              </div>
+              <div className="links">
+                <a className="btn-second btn">
+                  export <CiExport className="link-icon" />
+                </a>
+                <a className="btn-main btn">
+                  save colorpalette
+                  <FiSave className="link-icon" />
+                </a>
+              </div>
             </div>
           </section>
         )}

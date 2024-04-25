@@ -80,7 +80,7 @@ export default function ColorPickerForm({
 
   return (
     <div className="color-picker-page">
-      <h3>Pick your colors</h3>
+     
 
       <ImageColorPicker
         onColorPick={handleColorPick}

@@ -1,5 +1,5 @@
 //buttons
-.btn-special {
+/*.btn-special {
   width: 200px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -42,7 +42,7 @@
     background-color: $main-color;
     color: white;
   }
-}
+}*/
 
 .btn-main {
   padding: 10px 30px;
@@ -84,10 +84,10 @@
   @include flex-column;
   justify-content: center;
   align-items: center;
-  padding: 5px 40px;
+  padding: 8px 40px;
   border-radius: 10px;
   gap: 4px;
-  width: 50%;
+  width: 100%;
   border: solid 2px $main-color;
   &:hover,
   &:active {
@@ -140,3 +140,16 @@
 }
 $circle-size: 100%;
 $blending: hard-light;
+
+@media screen and (min-width: $desktop-breakpoint) {
+ .btn{
+  min-width: 200px;
+  max-width: 200px;
+  height: 40px;
+  font-size: 18px;
+ }
+ .btn-img{
+  padding: 14px 60px;
+  border-radius: 10px;
+ }
+}

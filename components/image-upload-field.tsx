@@ -1,5 +1,5 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
-
+import { IoCloudUploadOutline } from "react-icons/io5";
 interface Props {
   setImageSrcFromChild: (imageUrl: string) => void;
 }
@@ -22,7 +22,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
   }));
 
   return (
-    <div>
+    <div className='upload-section'>
       <input
         type="file"
         accept="image/*"
@@ -39,6 +39,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
 
       <div className="uploadImage">
         <label htmlFor="file" style={{ cursor: 'pointer' }} className="btn-img">
+        <IoCloudUploadOutline className="cloud"/>
           Upload Image
         </label>
       </div>

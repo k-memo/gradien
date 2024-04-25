@@ -1,7 +1,7 @@
 .multi-step {
   background-image: url(../../../../public/gardien.jpg);
   background-size: cover;
-
+  min-height: 100vh;
   .choose-option {
     @include flex-row;
     gap: 1em;
@@ -76,4 +76,37 @@
   img{
     border: none;
   }
+}
+@media screen and (min-width: $desktop-breakpoint) {
+ .upload-section{
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+ }
+ .multi-step{
+    h3{
+      margin-top: 4em;
+      margin-bottom: 2em;
+    }
+    .bottom-nav{
+      @include flex-row;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0vw 15vw;
+    }
+ }
+ .btn-img {
+  width: 100%;
+}
+.uploadImage{
+  .cloud{
+    width: 24px;
+    height: 24px;
+  }
+  label{
+    font-size: 16px;
+  }
+}
+ 
 }
