@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { ImageColorPicker } from 'react-image-color-picker';
+import { useState } from 'react';
 import { CgColorPicker } from 'react-icons/cg';
+import { ImageColorPicker } from 'react-image-color-picker';
+import { IerrorField } from '../models/errorField.interface';
+import { IinputField } from '../models/inputField.interface copy';
 
 export default function ColorPickerForm({
   imgSrc,
@@ -14,7 +16,8 @@ export default function ColorPickerForm({
   const [hairColor, setHairColor] = useState('');
   const [skinColor, setSkinColor] = useState('');
 
-  const [errors, setErrors] = useState({});
+  const [fields, setField] = useState<IinputField[]>([]);
+  const [errors, setErrors] = useState<IerrorField[]>([]);
 
   const handleColorPick = color => {
     switch (currentPart) {
@@ -72,45 +75,47 @@ export default function ColorPickerForm({
   async function handleOnSubmit(e) {
     e.preventDefault();
 
-    const formData = {};
-    let isValid = true;
+    const updatedFields: IinputField[] = [];
 
     // Iterate through form fields
     [...e.currentTarget.elements].forEach(field => {
+      console.log(field.name);
       if (!field.name) return;
 
-      formData[field.name] = field.value;
-
-      const isValidField = checkValidation(field.name, field.value);
-      if (!isValidField) isValid = false;
+      updatedFields.push({ name: field.name, value: field.value });
     });
 
-    if (!isValid) {
+    setField(updatedFields);
+    console.log(updatedFields); // Log updatedFields instead of fields
+
+    // Check for Errors
+    setErrors([]);
+    updatedFields.forEach(field => {
+      checkValidation(field);
+    });
+
+    if (errors.length > 0) {
       console.warn(errors);
       return;
     }
 
     try {
-      sendToGenerate();
+      await sendToGenerate();
       setFormStep(2);
     } catch (error) {
       console.warn('Error:', error);
     }
   }
 
-  function checkValidation(name, value) {
-    let isValid = true;
-    const newErrors = { ...errors };
+  function checkValidation(field: IinputField) {
+    const updatedErrors: IerrorField[] = errors;
 
-    if (value === '' && name !== 'hairColor') {
-      newErrors[name] = 'Required';
-      isValid = false;
-    } else {
-      delete newErrors[name];
+    if (field.value === '' && field.name !== 'hairColor') {
+      console.warn(
+        `Not valid: name: "${field.name}" with value: "${field.value}" `,
+      );
+      updatedErrors.push({ name: field.name, message: 'Required' });
     }
-
-    setErrors(newErrors);
-    return isValid;
   }
 
   function rgbToHex(rgb: string): string {
