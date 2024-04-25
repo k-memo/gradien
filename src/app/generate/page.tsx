@@ -137,20 +137,28 @@ export default function Home() {
       <div className="bottom-nav">
         {formStep == 2 && (
           <input
-            className="prev-btn btn"
             type="button"
-            value="Previous"
-            onClick={handlePrevStep}
+            value=" "
+            style={{ visibility: 'hidden' }}
+            disabled
           />
         )}
         {formStep === 0 && (
-          <input
-            className={`btn-main btn ${imageSrcFromChild === undefined ? 'disabled' : ''}`}
-            type="button"
-            value="Next"
-            onClick={handleNextStep}
-            disabled={imageSrcFromChild === undefined}
-          />
+          <>
+            <input
+              type="button"
+              value=" "
+              style={{ visibility: 'hidden' }}
+              disabled
+            />
+            <input
+              className={`btn-main btn ${imageSrcFromChild === undefined ? 'disabled' : ''}`}
+              type="button"
+              value="Next"
+              onClick={handleNextStep}
+              disabled={imageSrcFromChild === undefined}
+            />
+          </>
         )}
       </div>
     </main>
