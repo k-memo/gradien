@@ -145,7 +145,7 @@ export default function ColorPickerForm({
         <p>
           Step by Step: Choose colors from your image. Start by selecting your
           eye color, followed by your hair color, and finally your skin tone.
-          Once complete, submit your choices, and we'll generate your
+          Once complete, submit your choices, and we&apos;ll generate your
           personalized color palette.
         </p>
 
@@ -203,7 +203,9 @@ export default function ColorPickerForm({
             </div>
           </div>
           <div className="color-div">
-            <label className={getErrorClass('hairColor')}>Hair Color &#40;Optional&#41;:</label>
+            <label className={getErrorClass('hairColor')}>
+              Hair Color &#40;Optional&#41;:
+            </label>
             <div className="color-input">
               <div
                 className="color-square"
@@ -226,11 +228,15 @@ export default function ColorPickerForm({
               />
             </div>
           </div>
-          {errors.some(error => error.name === 'skinColor' || error.name === 'eyeColor') && (
-          <p className="label-error">You need to pick your skin and eye color.</p>
-        )}
+          {errors.some(
+            error => error.name === 'skinColor' || error.name === 'eyeColor',
+          ) && (
+            <p className="label-error">
+              You need to pick your skin and eye color.
+            </p>
+          )}
         </div>
-        
+
         <div className="submit-area">
           <a className="prev-btn btn" onClick={handlePrevStep}>
             Previous
@@ -242,7 +248,7 @@ export default function ColorPickerForm({
       </form>
     </div>
   );
-  
+
   function getErrorClass(fieldName: string): string {
     return errors.some(error => error.name === fieldName) ? 'label-error' : '';
   }
