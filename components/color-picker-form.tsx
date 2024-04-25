@@ -7,6 +7,7 @@ export default function ColorPickerForm({
   setPalette,
   setLoading,
   setFormStep,
+  handlePrevStep,
 }) {
   const [currentPart, setCurrentPart] = useState('');
   const [eyeColor, setEyeColor] = useState('');
@@ -210,7 +211,9 @@ export default function ColorPickerForm({
           </div>
         </div>
         <div className="submit-area">
-          <a className="prev-btn btn">Previous</a>
+          <a className="prev-btn btn" onClick={handlePrevStep}>
+            Previous
+          </a>
           <button type="submit" className="btn-main btn">
             Submit
           </button>
