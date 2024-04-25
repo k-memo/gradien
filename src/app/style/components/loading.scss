@@ -1,6 +1,6 @@
 .loading-animation {
-  position: absolute;
-  min-height: 100vh;
+  position: fixed;
+  height: 100%;
   width: 100%;
   @include flex-column;
   justify-content: center;

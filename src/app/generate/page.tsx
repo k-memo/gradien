@@ -110,18 +110,13 @@ export default function Home() {
               </div>
               <div className="explanation">
                 <ShowMore
-                  header="Your Colors"
-                  explanation={colorpalette?.userColorDisposition}
-                />
-              </div>
-              <div className="explanation">
-                <ShowMore
                   header="Colorpalette Info"
                   explanation={colorpalette?.paletteInfo}
                 />
               </div>
               <div className="links">
                 <a className="btn-second btn">
+                  export
                   <CiExport className="link-icon" />
                 </a>
                 <a className="btn-main btn">

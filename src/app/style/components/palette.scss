@@ -90,7 +90,10 @@ input:focus {
   }
 }
 .explanation {
-  margin-bottom: 3em;
+  margin-bottom: 2em;
+  p {
+    width: 100%;
+  }
 }
 
 .palette-heading {
@@ -158,6 +161,11 @@ input:focus {
   .palette-color {
     &:hover {
       transform: scale(1.2);
+    }
+  }
+  .explanation {
+    p {
+      max-width: 800px;
     }
   }
 }
