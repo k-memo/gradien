@@ -1,6 +1,6 @@
 .loading-animation {
     position: absolute;
-    height: 100%;
+    min-height: 110vh;
     width: 100%;
     @include flex-column;
     justify-content: center;
@@ -16,6 +16,7 @@
         width: 50px;
         height: 50px;
         margin-top: -100px;
+        margin-bottom: 1em;
     }
   }
   @media screen and (min-width: $desktop-breakpoint) {

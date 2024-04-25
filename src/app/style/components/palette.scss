@@ -85,6 +85,9 @@ input:focus {
   @include flex-row;
   justify-content: space-between;
   align-items: center;
+  h2{
+    font-size: 16px;
+  }
 }
 .explanation {
   margin-bottom: 3em;
@@ -147,16 +150,15 @@ input:focus {
     margin: 14em 0em;
     height: 0px;
   }
-  .palette-color{
-    .palette-color:hover {
-      transform: scale(1.2);
-    }
-  }
-
  }
  .swiper {
    width: 340px;
    height: 420px;
    margin-top: 2em;
  }
+ .palette-color{
+  &:hover {
+    transform: scale(1.2);
+  }
+}
 }

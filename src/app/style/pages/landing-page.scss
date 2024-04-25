@@ -430,11 +430,11 @@ h3 {
 .landing-text{
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   margin-left: 4em;
   .btn{
     max-width: 100%;
-    
+    border-radius: 50px;
   }
   .btn-main{
     width: 100%;
@@ -448,12 +448,12 @@ h3 {
     font-size: $h1-l;
   }
   .sub{
-    font-size: 20px !important;
+    font-size: 16px !important;
     font-weight: normal !important;
   }
   img{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
   }
   text-align: start;
 
