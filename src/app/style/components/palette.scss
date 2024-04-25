@@ -86,6 +86,10 @@ input:focus {
   @include flex-row;
   justify-content: space-between;
   align-items: center;
+
+  h2 {
+    font-size: 16px;
+  }
 }
 
 .explanation {

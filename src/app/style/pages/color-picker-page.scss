@@ -85,7 +85,7 @@
 
       .color-square {
         width: 60px;
-        height: 40px;
+        height: 35px;
       }
     }
 
@@ -93,10 +93,16 @@
       .color-input {
         align-items: flex-end;
         margin-bottom: 2em;
+        width: 60%;
 
         input {
-          margin-right: 1em;
+          margin-right: 2em;
         }
+
+      }
+
+      input[type="placeholder"] {
+        color: rgb(45, 43, 43);
       }
     }
 
@@ -107,7 +113,7 @@
 
   #image-color-pick-canvas {
     border-radius: 5%;
-    height: 600px;
+    height: 500px;
     width: 700px;
   }
 

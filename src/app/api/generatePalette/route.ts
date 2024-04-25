@@ -5,6 +5,10 @@ import OpenAI, { ClientOptions } from 'openai';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import path from 'path';
 
+export const config = {
+  runtime: 'edge',
+};
+
 const getOpenApiResponse = async (userMessage: string) => {
   try {
     const openaiApiKey = process.env.OPENAI_API_KEY;
