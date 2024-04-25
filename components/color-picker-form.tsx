@@ -137,41 +137,6 @@ export default function ColorPickerForm({
       />
 
       <form onSubmit={handleOnSubmit}>
-<<<<<<< HEAD
-        <h3>Pick your colors</h3>
-        <p>
-          Step by Step: Choose colors from your image. Start by selecting your
-          eye color, followed by your hair color, and finally your skin tone.
-          Once complete, submit your choices, and we&apos;ll generate your
-          personalized color palette.
-        </p>
-        <div className="picked-colors">
-          <div className="color-div">
-            <label>Eye Color:</label>
-            <div className="color-input">
-              <div
-                className="color-square"
-                style={{ backgroundColor: eyeColor }}
-              />
-              <input
-                type="text"
-                name="eyeColor"
-                placeholder="eye color"
-                onClick={() => {
-                  setCurrentPart('eye');
-                }}
-                value={eyeColor}
-                readOnly
-                required
-              />
-              <CgColorPicker
-                className="picker"
-                onClick={() => {
-                  document.body.style.cursor = 'crosshair';
-                  setCurrentPart('eye');
-                }}
-              />
-=======
         <div>
           <h3>Pick your colors</h3>
           <p>
@@ -207,7 +172,6 @@ export default function ColorPickerForm({
                   }}
                 />
               </div>
->>>>>>> ff2239d (cleaned up the style)
             </div>
             <div className="color-div">
               <label>Hair Color:</label>
