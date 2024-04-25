@@ -80,7 +80,7 @@ export default function ColorPickerForm({
 
   return (
     <div className="color-picker-page">
-      <h3>Pick your colors</h3>
+     
 
       <ImageColorPicker
         onColorPick={handleColorPick}
@@ -100,11 +100,13 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="eyeColor"
+                placeholder='eye color'
                 onClick={() => {
                   setCurrentPart('eye');
                 }}
                 value={eyeColor}
                 readOnly
+                required
               />
               <CgColorPicker
                 className="picker"
@@ -125,9 +127,11 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="hairColor"
+                placeholder='hair color'
                 value={hairColor}
                 onClick={() => setCurrentPart('hair')}
                 readOnly
+                
               />
               <CgColorPicker
                 className="picker"
@@ -148,9 +152,11 @@ export default function ColorPickerForm({
               <input
                 type="text"
                 name="skinColor"
+                placeholder='skin color'
                 value={skinColor}
                 onClick={() => setCurrentPart('skin')}
                 readOnly
+                required
               />
               <CgColorPicker
                 className="picker"

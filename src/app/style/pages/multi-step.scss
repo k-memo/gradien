@@ -1,64 +1,233 @@
 .multi-step {
-    background-image: url(../../../../public/gardien.jpg);
-    background-size: cover;
-    height: 100vh;
+  background-image: url(../../../../public/gardien.jpg);
+  background-size: cover;
+  min-height: 100vh;
 
-    .choose-option {
-        @include flex-row;
-        gap: 1em;
+  .choose-option {
+    @include flex-row;
+    gap: 1em;
+  }
+
+  h3 {
+    margin-bottom: 0.5em;
+    color: $main-color;
+    text-transform: uppercase;
+    margin-top: 2em;
+  }
+
+  .btn-img {
+    margin-bottom: 4em;
+  }
+
+  .btn-main,
+  .btn-second,
+  .prev-btn {
+    width: 50%;
+  }
+
+  .bottom-nav {
+    @include flex-row;
+    gap: 1em;
+    justify-content: flex-end;
+  }
+
+  .links {
+    @include flex-column;
+    margin: 5em 0em;
+    gap: 1em;
+
+    .link-icon {
+      width: 24px;
+      height: 20px;
     }
 
     h3 {
-        margin-bottom: 0.5em;
-        color: $main-color;
-        text-transform: uppercase;
-        margin-top: 2em;
+      margin-bottom: 0.5em;
+      color: $main-color;
+      text-transform: uppercase;
+      margin-top: 2em;
     }
 
     .btn-img {
-        margin-bottom: 4em;
+      margin-bottom: 4em;
     }
 
     .btn-main,
     .btn-second,
     .prev-btn {
-        width: 50%;
+      width: 50%;
     }
 
     .bottom-nav {
-        @include flex-row;
-        gap: 1em;
+      @include flex-row;
+      gap: 1em;
     }
 
     .links {
-        @include flex-column;
-        margin: 5em 0em;
-        gap: 1em;
+      @include flex-column;
+      margin: 5em 0em;
+      gap: 1em;
 
-        .link-icon {
-            width: 24px;
-            height: 20px;
-        }
+      .link-icon {
+        width: 24px;
+        height: 20px;
+      }
 
-        .btn {
-            @include flex-row;
-            justify-content: center;
-            align-items: center;
-        }
+      .btn {
+        @include flex-row;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .btn-main {
-            width: 80%;
-        }
+      .btn-main {
+        width: 80%;
+      }
 
-        .btn-second {
-            width: 50%;
-        }
+      .btn-second {
+        width: 50%;
+      }
     }
-}
+  }
 
-.uploadImage {
+  .upload-heading {
+    @include flex-row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1em;
+  }
+
+  .uploadImage {
     label {
-        font-size: 14px;
-        text-transform: none;
+      font-size: 14px;
+      text-transform: none;
     }
+
+    @include flex-row;
+    justify-content: flex-end;
+  }
+
+  .img-input {
+    position: relative;
+
+    .img-resize {
+      width: 100%;
+      height: 100%;
+      border-radius: 5%;
+      position: absolute;
+      object-fit: cover;
+    }
+
+    img {
+      border: none;
+    }
+  }
+
+  @media screen and (min-width: $desktop-breakpoint) {
+    .upload-section {
+      @include flex-column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      h3 {
+        margin-bottom: 1em;
+      }
+
+      .upload-heading {
+        height: 100px;
+
+        .icon-div {
+          height: 50px;
+          width: 50px;
+          cursor: pointer;
+          @include flex-column;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          margin-top: 2em;
+
+          &:hover {
+            background-color: $light-purp;
+            z-index: 1001;
+          }
+
+          .icon {
+            height: 24px;
+            width: 24px;
+          }
+        }
+
+        .blob {
+          background-color: $light-purp;
+          opacity: 0;
+          height: 200px;
+          width: 200px;
+          position: relative;
+          top: 8vw;
+          right: 0vw;
+          left: -5vw;
+          padding: 3em;
+          font-size: 12px;
+          text-align: center;
+          line-height: 1.5;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          backdrop-filter: blur(10px);
+          transition: visibility 0.3s, opacity 0.3s ease-in;
+          z-index: 100;
+        }
+
+        .blob::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: $light-purp;
+          border-radius: 50%;
+          z-index: -1;
+          filter: blur(10px);
+        }
+
+        .icon-div:hover+.blob {
+          visibility: visible;
+          /* Show the blob when the icon is hovered */
+          opacity: 1;
+        }
+      }
+    }
+
+    .multi-step {
+      h3 {
+        margin-top: 4em;
+        margin-bottom: 2em;
+      }
+
+      .bottom-nav {
+        @include flex-row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0vw 15vw;
+      }
+    }
+
+    .btn-img {
+      width: 100%;
+    }
+
+    .uploadImage {
+      .cloud {
+        width: 24px;
+        height: 24px;
+      }
+
+      label {
+        font-size: 16px;
+      }
+    }
+  }
 }

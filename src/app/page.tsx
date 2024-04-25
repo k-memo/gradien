@@ -21,6 +21,12 @@ export default function Home() {
             <div className="g6"></div>
           </div>
         </div>
+        <div className="wave-div">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 640">
+  <path fill="#ffffff" fill-opacity="1" d="M0,192L48,208C96,224,192,256,288,272C384,288,480,288,576,266.7C672,245,768,203,864,165.3C960,128,1056,96,1152,74.7C1248,53,1344,43,1392,37.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+</svg>
+
+        </div>
         <div className="landing-text">
           <div className="heading">
             <h1>
@@ -38,95 +44,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="about">
-        <h2>
-          WHY YOU NEED <br />
-          COLOR ANALYSIS
-        </h2>
-        <div className="bullet-points">
-          <div className="points">
-            <div>
-              <span className="emoji">🎨</span>
-              <h4>PERSONALIZED STYLE</h4>
-              <p>Discover your colors for effortless, flattering outfits.</p>
-            </div>
-            <div>
-              <span className="emoji">👔</span>
-              <h4>PROFESSIONAL IMAGE</h4>
-              <p>Project competence with a polished appearance.</p>
-            </div>
-          </div>
-          <div className="points">
-            <div>
-              <span className="emoji">💃</span>
-              <h4>CONFIDENCE BOOST</h4>
-              <p>Feel confident and make lasting impressions.</p>
-            </div>
-            <div>
-              <span className="emoji">👗</span>
-              <h4>VERSATILE COORDINATION</h4>
-              <p>Mix and match effortlessly for cohesive style.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2>CONTACT US</h2>
-        <p className="contact-text">
-          Have a question or just want to say hello? We&apos;d love to hear from
-          you! Feel free to reach out to us using the contact form, or connect
-          with us via email or phone.
-        </p>
-        <div className="contact-point">
-          <FiPhone />
-          <p>
-            <a href="tel:0000 00000000">0000 00000000</a>
-          </p>
-        </div>
-        <div className="contact-point">
-          <FaRegEnvelope />
-          <p>
-            <a href="mailto:0000000@0000.com">0000000@0000.com</a>
-          </p>
-        </div>
-        <div className="contact-point">
-          <SlLocationPin />
-          <p>000000000000000000</p>
-        </div>
-
-        <div className="contact-form">
-          <form action="/submit" method="post">
-            <label htmlFor="email">Email:</label>
-            <br />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="email@mail.com"
-              required
-            />
-            <br />
-            <br />
-            <label htmlFor="message">Message:</label>
-            <br />
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              cols={50}
-              required
-            ></textarea>
-            <br />
-            <br />
-            <input type="submit" value="Submit" className="btn-main" />
-          </form>
-        </div>
-      </section>
-
-      <footer>
-        <p>© Datenschutz | Impressum</p>
-      </footer>
     </main>
   );
 }

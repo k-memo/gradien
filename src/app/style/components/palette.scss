@@ -12,7 +12,6 @@
   margin-right: -4px;
   cursor: pointer;
 
-  &:hover,
   &:active {
     transform: scale(1.2);
   }
@@ -80,6 +79,13 @@ input:focus {
   font-weight: normal;
   padding: 2em;
   color: #fff;
+  box-shadow: 4px 0px 10px #1502291f;
+}
+
+.ex-heading {
+  @include flex-row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .explanation {
@@ -110,5 +116,57 @@ input:focus {
 
   .btn-main {
     width: 70%;
+  }
+}
+
+@media screen and (min-width: $desktop-breakpoint) {
+  .palette-section {
+    @include flex-column;
+    align-items: center;
+  }
+
+  .color-palette-div {
+    .links {
+      @include flex-row;
+    }
+
+    .btn {
+      max-width: 100%;
+
+    }
+
+    .btn-main {
+      padding: 10px 0px;
+      max-width: 300px
+    }
+
+    .btn-second {
+      max-width: 200px
+    }
+  }
+
+  .palettes {
+    @include flex-row;
+    margin-bottom: 4em;
+    margin-left: 10em;
+
+    .palette {
+      transform: rotate(90deg);
+      margin: 14em 0em;
+      height: 0px;
+    }
+
+    .palette-color {
+      .palette-color:hover {
+        transform: scale(1.2);
+      }
+    }
+
+  }
+
+  .swiper {
+    width: 340px;
+    height: 420px;
+    margin-top: 2em;
   }
 }
