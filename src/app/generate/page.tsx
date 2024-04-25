@@ -9,10 +9,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import ColorPickerForm from '../../../components/color-picker-form';
 import ImageUploadField from '../../../components/image-upload-field';
 import NavForm from '../../../components/nav-form';
-import ShowMore from '../../../components/showmore';
 import { IPalette } from '../../../models/colorpalette.interface';
 import Logo from '../../../components/logo';
 import { LoadingGlobal } from '../../../components/loading-global';
+import ShowMore from '../../../components/showmore';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
@@ -107,7 +107,16 @@ export default function Home() {
                 </div>
               </div>
               <div className="explanation">
-                <ShowMore />
+                <ShowMore
+                  header="Your Colors"
+                  explanation={colorpalette?.userColorDisposition}
+                />
+              </div>
+              <div className="explanation">
+                <ShowMore
+                  header="Colorpalette Info"
+                  explanation={colorpalette?.paletteInfo}
+                />
               </div>
               <div className="links">
                 <a className="btn-second btn">

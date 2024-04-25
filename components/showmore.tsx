@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { IoIosArrowUp } from 'react-icons/io';
 import { IoIosArrowDown } from 'react-icons/io';
 
-export default function TestComponent() {
+export default function ShowMore(props) {
+  const { header, explanation } = props; // Destructure props here
   const [showMoreText, setShowMoreText] = useState(false);
   const toggleShowMoreText = () => {
     setShowMoreText(!showMoreText);
@@ -12,7 +13,7 @@ export default function TestComponent() {
     <div className="explanation">
       <div className="ex-heading">
         <div>
-          <h2>Explanation </h2>
+          <h2>{header}</h2>
         </div>
 
         <div>
@@ -22,11 +23,7 @@ export default function TestComponent() {
         </div>
       </div>
 
-      {/* Anzeige des zusätzlichen Textes basierend auf dem Zustand */}
-      {showMoreText && (
-        <p>Hier ist der zusätzliche Text, den Sie sehen möchten.</p>
-      )}
-      {/* Button zum Umschalten des zusätzlichen Textes */}
+      {showMoreText && <p>{explanation}</p>}
     </div>
   );
 }
