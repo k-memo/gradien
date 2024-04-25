@@ -137,8 +137,13 @@ export default function ColorPickerForm({
       />
 
       <form onSubmit={handleOnSubmit}>
-      <h3>Pick your colors</h3>
-      <p>Step by Step: Choose colors from your image. Start by selecting your eye color, followed by your hair color, and finally your skin tone. Once complete, submit your choices, and we'll generate your personalized color palette.</p>
+        <h3>Pick your colors</h3>
+        <p>
+          Step by Step: Choose colors from your image. Start by selecting your
+          eye color, followed by your hair color, and finally your skin tone.
+          Once complete, submit your choices, and we&apos;ll generate your
+          personalized color palette.
+        </p>
         <div className="picked-colors">
           <div className="color-div">
             <label>Eye Color:</label>
