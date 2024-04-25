@@ -8,8 +8,10 @@ export default function NavForm({ formStep, setFormStep }) {
   }, [formStep]);
 
   const handleStateClick = index => {
-    setActiveState(index);
-    setFormStep(index);
+    if (index <= formStep) {
+      setActiveState(index);
+      setFormStep(index);
+    }
   };
 
   // Calculate the width of .h-active based on the active state
