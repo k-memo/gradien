@@ -52,6 +52,7 @@
   @include flex-row;
   align-items: center;
   gap: 2em;
+  justify-content: center;
   &:hover {
     background-color: $hover;
     border: none;
@@ -84,9 +85,9 @@
   @include flex-column;
   justify-content: center;
   align-items: center;
-  padding: 8px 40px;
+  padding: 4px 40px;
   border-radius: 10px;
-  gap: 4px;
+  gap: 2px;
   width: 100%;
   border: solid 2px $main-color;
   &:hover,
@@ -109,11 +110,15 @@
 .prev-btn {
   background-color: $sec-color;
   padding: 10px 30px;
-  color: white;
-  border: none;
+  color: $main-color;
+  border: solid 2px $main-color;
+  @include flex-row;
+  justify-content: center;
+  align-items: center;
   &:hover,
   &:active {
-    background-color: $main-color;
+    border: solid 2px $hover;
+    color: $hover;
   }
 }
 .btn {

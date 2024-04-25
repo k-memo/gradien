@@ -63,6 +63,10 @@
   margin-bottom: 2em;
 }
 .uploadImage {
+  .cloud {
+    width: 24px;
+    height: 24px;
+  }
   label {
     font-size: 14px;
     text-transform: none;
@@ -188,7 +192,8 @@
     width: 50%;
     @include flex-column;
     justify-content: space-between;
-    height: 50vh;
+    min-height: 70vh;
+    max-height: 100vh;
     padding-top: 4em;
   }
 }
