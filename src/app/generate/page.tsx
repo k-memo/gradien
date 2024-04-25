@@ -13,6 +13,8 @@ import { IPalette } from '../../../models/colorpalette.interface';
 import Logo from '../../../components/logo';
 import { LoadingGlobal } from '../../../components/loading-global';
 import ShowMore from '../../../components/showmore';
+import { FaArrowRight } from 'react-icons/fa6';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
