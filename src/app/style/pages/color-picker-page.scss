@@ -1,5 +1,4 @@
 .color-picker-page {
-  
   .color-div {
     @include flex-column;
     justify-content: center;
@@ -70,7 +69,7 @@
   cursor: crosshair;
 }
 @media screen and (min-width: $desktop-breakpoint) {
-  .color-picker-section{
+  .color-picker-section {
     @include flex-column;
     align-items: center;
     .color-picker-page {
@@ -78,10 +77,21 @@
       @include flex-row;
       align-items: center;
       margin-bottom: 4em;
-      gap: 6em;
+      gap: 3em;
       .color-square {
         width: 60px;
         height: 35px;
+      }
+      .picked-colors {
+        align-items: flex-start;
+      }
+      p {
+        width: 90%;
+        font-weight: 400;
+        margin-bottom: 2em;
+      }
+      h3 {
+        margin-top: 2em;
       }
     }
     .color-div {
@@ -92,13 +102,12 @@
         input {
           margin-right: 2em;
         }
-       
       }
-      input[type="placeholder"] {
+      input[type='placeholder'] {
         color: rgb(45, 43, 43);
       }
     }
-    .bchfeH{
+    .bchfeH {
       width: 60%;
     }
   }
@@ -107,7 +116,4 @@
     height: 500px;
     width: 700px;
   }
-  
-  
-
 }

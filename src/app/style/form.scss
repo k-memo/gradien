@@ -63,12 +63,13 @@ label {
 }
 
 @media screen and (min-width: $desktop-breakpoint) {
+  label {
+    font-size: 12px;
+  }
+
   .img-input {
-    height: 50vh;
-    width: 40%;
+    height: 60vh;
+    width: 80%;
     border-radius: 5%;
   }
-  label{
-    font-size: 12px;
-   }
 }

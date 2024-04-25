@@ -49,7 +49,6 @@ export default function Home() {
 
         {formStep === 1 && (
           <section className="color-picker-section">
-            <h3>Pick your colors</h3>
             <ColorPickerForm
               imgSrc={imageSrcFromChild}
               setPalette={setPalette}
