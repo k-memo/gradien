@@ -41,7 +41,8 @@ export default function Home() {
     const swiperElement = document.querySelector(
       '.mySwiper',
     ) as HTMLElement | null;
-    const swiper = swiperElement?.swiper;
+
+    const swiper = (swiperElement as any)?.swiper;
     swiper?.slideTo(index);
   };
 
@@ -55,7 +56,7 @@ export default function Home() {
           <section id="upload-section">
             <ImageUploadField
               ref={imageUploadRef}
-              setImageSrcFromChild={setImageSrcFromChild} // Pass down the function to update the image source
+              setImageSrcFromChild={setImageSrcFromChild as any} // Pass down the function to update the image source
             />
           </section>
         )}

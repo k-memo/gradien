@@ -1,8 +1,9 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
 import { IoCloudUploadOutline } from 'react-icons/io5';
 import { CgInfo } from 'react-icons/cg';
+
 interface Props {
-  setImageSrcFromChild: (imageUrl: string) => void;
+  setImageSrcFromChild: (imageUrl: string) => void; // Adjusted type definition
 }
 
 const ImageUploadField = forwardRef((props: Props, ref) => {
