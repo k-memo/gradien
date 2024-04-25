@@ -14,8 +14,11 @@ body {
   color: $text-color;
   margin: 0;
   overflow-x: hidden !important;
+  font-weight: 600;
 }
-
+::placeholder { 
+  font-weight: 600;
+}
 main {
   padding: 2em;
   overflow-x: hidden;
@@ -34,5 +37,6 @@ h1 {
 @media screen and (min-width: $desktop-breakpoint) {
   body {
     font-size: 16px;
+    font-weight: normal;
   }
 }
