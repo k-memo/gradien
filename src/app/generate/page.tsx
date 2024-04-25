@@ -120,7 +120,7 @@ export default function Home() {
               </div>
               <div className="links">
                 <a className="btn-second btn">
-                  export <CiExport className="link-icon" />
+                  <CiExport className="link-icon" />
                 </a>
                 <a className="btn-main btn">
                   save colorpalette
