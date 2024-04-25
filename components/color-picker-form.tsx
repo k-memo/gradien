@@ -141,92 +141,94 @@ export default function ColorPickerForm({
       />
 
       <form onSubmit={handleOnSubmit}>
-        <div>
-          <h3>Pick your colors</h3>
-          <p>
-            Step by Step: Choose colors from your image. Start by selecting your
-            eye color, followed by your hair color, and finally your skin tone.
-            Once complete, submit your choices, and we'll generate your
-            personalized color palette.
-          </p>
-          <div className="picked-colors">
-            <div className="color-div">
-              <label>Eye Color:</label>
-              <div className="color-input">
-                <div
-                  className="color-square"
-                  style={{ backgroundColor: eyeColor }}
-                />
-                <input
-                  type="text"
-                  name="eyeColor"
-                  placeholder="eye color"
-                  onClick={() => {
-                    setCurrentPart('eye');
-                  }}
-                  value={eyeColor}
-                  readOnly
-                  required
-                />
-                <CgColorPicker
-                  className="picker"
-                  onClick={() => {
-                    document.body.style.cursor = 'crosshair';
-                    setCurrentPart('eye');
-                  }}
-                />
-              </div>
-            </div>
-            <div className="color-div">
-              <label>Hair Color:</label>
-              <div className="color-input">
-                <div
-                  className="color-square"
-                  style={{ backgroundColor: hairColor }}
-                />
-                <input
-                  type="text"
-                  name="hairColor"
-                  placeholder="hair color"
-                  value={hairColor}
-                  onClick={() => setCurrentPart('hair')}
-                  readOnly
-                />
-                <CgColorPicker
-                  className="picker"
-                  onClick={() => {
-                    document.body.style.cursor = 'crosshair';
-                    setCurrentPart('hair');
-                  }}
-                />
-              </div>
-            </div>
-            <div className="color-div">
-              <label>Skin Color:</label>
-              <div className="color-input">
-                <div
-                  className="color-square"
-                  style={{ backgroundColor: skinColor }}
-                />
-                <input
-                  type="text"
-                  name="skinColor"
-                  placeholder="skin color"
-                  value={skinColor}
-                  onClick={() => setCurrentPart('skin')}
-                  readOnly
-                  required
-                />
-                <CgColorPicker
-                  className="picker"
-                  onClick={() => {
-                    document.body.style.cursor = 'crosshair';
-                    setCurrentPart('skin');
-                  }}
-                />
-              </div>
+        <h3>Pick your colors</h3>
+        <p>
+          Step by Step: Choose colors from your image. Start by selecting your
+          eye color, followed by your hair color, and finally your skin tone.
+          Once complete, submit your choices, and we'll generate your
+          personalized color palette.
+        </p>
+
+        <div className="picked-colors">
+          <div className="color-div">
+            <label className={getErrorClass('skinColor')}>Skin Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: skinColor }}
+              />
+              <input
+                type="text"
+                name="skinColor"
+                placeholder="skin color"
+                value={skinColor}
+                onClick={() => setCurrentPart('skin')}
+                readOnly
+                required
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('skin');
+                }}
+              />
             </div>
           </div>
+          <div className="color-div">
+            <label className={getErrorClass('eyeColor')}>Eye Color:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: eyeColor }}
+              />
+              <input
+                type="text"
+                name="eyeColor"
+                placeholder="eye color"
+                onClick={() => {
+                  setCurrentPart('eye');
+                }}
+                value={eyeColor}
+                readOnly
+                required
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('eye');
+                }}
+              />
+            </div>
+          </div>
+          <div className="color-div">
+            <label className={getErrorClass('hairColor')}>Hair Color &#40;Optional&#41;:</label>
+            <div className="color-input">
+              <div
+                className="color-square"
+                style={{ backgroundColor: hairColor }}
+              />
+              <input
+                type="text"
+                name="hairColor"
+                placeholder="hair color"
+                value={hairColor}
+                onClick={() => setCurrentPart('hair')}
+                readOnly
+              />
+              <CgColorPicker
+                className="picker"
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('hair');
+                }}
+              />
+            </div>
+          </div>
+          {errors.some(error => error.name === 'skinColor' || error.name === 'eyeColor') && (
+          <p className="label-error">You need to pick your skin and eye color.</p>
+        )}
         </div>
         
         <div className="submit-area">
