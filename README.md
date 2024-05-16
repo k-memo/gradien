@@ -1,6 +1,6 @@
 # Gradien
 
-## Setup 
+## Setup
 
 First install dependencies:
 
@@ -15,6 +15,7 @@ To run the development server:
 ```bash
 npm run dev
 ```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ## Testing
@@ -33,5 +34,4 @@ For testing using playwright use:
 npx playwright test
 ```
 
-If you want to add more tests, add them under `tests` directory
-
+If you want to add more tests, add them under `e2e` directory
