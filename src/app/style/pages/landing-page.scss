@@ -1,11 +1,11 @@
 .landing-page {
   padding-top: 20vh;
   height: 100vh;
-  overflow-y: hidden;
 
   .landing-page-greeting {
     @include flex-column;
     height: 80vh;
+    position: relative;
 
     .sub {
       font-size: 0.8rem;
@@ -13,11 +13,6 @@
     }
   }
 }
-
-h4 {
-  font-size: 12px;
-}
-
 h3 {
   margin-bottom: 0.5em;
 }
@@ -31,80 +26,54 @@ h3 {
 
 //about section
 #about {
-  min-height: 70vh;
-
-  h2 {
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-bottom: 2em;
-    text-align: center;
+  height: 100vh;
+  .about-text {
+    height: 80vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
   }
-
+  h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+    text-align: center;
+    z-index: 1;
+    font-family: 'Spartan-Bold';
+  }
   .emoji {
     font-size: 30px;
+  }
+
+  .bullet-points {
+    @include flex-column;
+    gap: 2em;
+    z-index: 1;
+
+    .points {
+      @include flex-row;
+      text-align: center;
+      max-width: 650px;
+      gap: 8em;
+    }
+    h4 {
+      font-size: 16px;
+      font-family: 'Spartan-Bold';
+    }
+    p {
+      font-size: 14px;
+      font-family: 'Spartan-Regular';
+      padding-top: 10px;
+    }
   }
 }
 
 .icon {
   width: 16px;
   color: $main-color;
-}
-
-.bullet-points {
-  @include flex-column;
-  gap: 2em;
-
-  .points {
-    @include flex-row;
-    text-align: center;
-  }
-}
-
-//contact section
-
-#contact {
-  a {
-    text-decoration: none;
-    cursor: pointer;
-    color: $text-color;
-
-    &:hover,
-    &:active {
-      color: $hover;
-    }
-
-    :visited {
-      color: $text-color;
-    }
-  }
-
-  height: 100vh;
-
-  .contact-text {
-    margin-bottom: 2em;
-  }
-
-  .contact-point {
-    @include flex-row;
-    align-items: center;
-    gap: 1em;
-    margin-bottom: 1em;
-  }
-
-  .contact-form {
-    margin-top: 2em;
-
-    input[type='submit'] {
-      width: 50%;
-      float: right;
-    }
-  }
-
-  input[type='submit'] {
-    background-image: url(../../arrow-right.svg);
-    background-repeat: no-repeat;
-    background-position: 90% center;
-  }
 }
 
 .landing-text {
@@ -309,8 +278,26 @@ h3 {
   left: 0;
   width: 100%;
   height: auto; 
+}
+.wave {
+  position: absolute;
+  width: 50vw;
+  padding: 0;
+  margin: 0;
+}
+.wave-img {
+  height: 10%;
 }*/
+.wave {
+  bottom: 0;
+  height: 100vh;
+  margin-top: 30vh;
+}
 
+.blurgradien {
+  position: absolute;
+  right: 0;
+}
 @media screen and (min-width: $desktop-breakpoint) {
   //gradient beginning
   .gradient-container {
@@ -436,6 +423,7 @@ h3 {
     justify-content: flex-start;
     margin-left: 4em;
     padding-top: 4em;
+    position: relative;
     .btn {
       max-width: 100%;
       border-radius: 50px;
