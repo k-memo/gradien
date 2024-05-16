@@ -38,7 +38,7 @@ const getOpenApiResponse = async (userMessage: string) => {
 
 export async function POST(req) {
   try {
-    const colorPalette = await getOpenApiResponse(await req.text());
+    const colorPalette = await getOpenApiResponse(req.text());
 
     return NextResponse.json(colorPalette, { status: 200 });
   } catch (error) {
