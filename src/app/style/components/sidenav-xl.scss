@@ -1,0 +1,8 @@
+.sidenav {
+  @include flex-column;
+  justify-content: space-around;
+  height: 100vh;
+  padding-left: 2em;
+  z-index: 1000;
+  position: fixed;
+}

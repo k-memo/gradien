@@ -19,6 +19,20 @@ h1 {
 }
 
 @font-face {
+  font-family: Spartan-Bold;
+  font-style: normal;
+  font-display: swap;
+  src: url('font/Spartan-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Spartan-Regular;
+  font-style: normal;
+  font-display: swap;
+  src: url('Spartan-Regular.ttf') format('truetype');
+}
+
+@font-face {
   font-family: InterVariable;
   font-style: normal;
   font-weight: 100 900;
