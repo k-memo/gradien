@@ -42,7 +42,7 @@ export default function Home() {
       <div className="multi-step-item">
         {isLoading === true && <LoadingGlobal />}
         {formStep === 0 && (
-          <section id="upload-section">
+          <section id="upload-section" data-testid="upload-section">
             <ImageUploadField
               ref={imageUploadRef}
               setImageSrcFromChild={setImageSrcFromChild as any} // Pass down the function to update the image source
@@ -51,7 +51,10 @@ export default function Home() {
         )}
 
         {formStep === 1 && (
-          <section className="color-picker-section">
+          <section
+            className="color-picker-section"
+            data-testid="color-picker-section"
+          >
             <ColorPickerForm
               imgSrc={imageSrcFromChild}
               setPalette={setPalette}
@@ -63,7 +66,7 @@ export default function Home() {
         )}
 
         {formStep === 2 && (
-          <section className="palette-section">
+          <section className="palette-section" data-testid="palette-section">
             <SwiperContainer
               colorpalette={colorpalette}
               activeIndex={activeIndex}
