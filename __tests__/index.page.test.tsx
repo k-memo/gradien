@@ -2,7 +2,7 @@ import Page from '@/app/page';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-describe('Page', () => {
+describe('Index', () => {
   it('renders the heading', () => {
     render(<Page />);
 
