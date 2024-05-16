@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import Rado from '../public/rado.png';
 
 test('complete form submission process', async ({ page }) => {
   await page.goto('http://localhost:3000');
@@ -8,7 +9,7 @@ test('complete form submission process', async ({ page }) => {
 
   // Upload an image.
   const input = await page.$('input[type="file"]');
-  await input.setInputFiles('path/to/your/image.jpg');
+  await input.setInputFiles({ Rado });
 
   await page.waitForSelector('[data-testid="color-picker-section"]');
 
