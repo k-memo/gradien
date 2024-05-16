@@ -161,6 +161,7 @@ export default function ColorPickerForm({
                 type="text"
                 name="skinColor"
                 placeholder="skin color"
+                role='text'
                 value={skinColor}
                 onClick={() => setCurrentPart('skin')}
                 readOnly
@@ -168,6 +169,7 @@ export default function ColorPickerForm({
               />
               <CgColorPicker
                 className="picker"
+                role="img"
                 onClick={() => {
                   document.body.style.cursor = 'crosshair';
                   setCurrentPart('skin');
