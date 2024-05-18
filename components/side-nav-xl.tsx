@@ -1,45 +1,32 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Link from 'next/link';
 import Logo from './logo';
+import Menu from '../public/menu.svg';
 
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const openNav = () => {
-    setIsOpen(true);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
   };
-
-  const closeNav = () => {
-    setIsOpen(false);
-  };
-
-  const handleLinkClick = event => {
-    closeNav(); // Close the side navigation when a link is clicked
-    event.preventDefault(); // Prevent default link behavior
-  };
-
   return (
-    <div className={`sidenav ${isOpen ? 'open' : ''}`}>
-      <div className="logo" onClick={closeNav}>
+    <div className="sidenav">
+      <div className="logo">
         <Logo />
       </div>
-      <div>
-        <span className="closebtn" onClick={closeNav}>
-          | | |
-        </span>
-        <a href="#" onClick={handleLinkClick}>
-          About
-        </a>
-        <a href="#" onClick={handleLinkClick}>
-          Services
-        </a>
-        <a href="#" onClick={handleLinkClick}>
-          Clients
-        </a>
-        <a href="#" onClick={handleLinkClick}>
-          Contact
-        </a>
+      <div className="nav-desktop">
+        <div className="menu" onClick={toggleMenu}>
+          <img src={Menu.src} />
+        </div>
+        <div className={`links ${isOpen ? 'open' : ''}`}>
+          <Link href={''}>Link1</Link>
+          <Link href={''}>Link1</Link>
+          <Link href={''}>Link1</Link>
+        </div>
       </div>
-      <div className="copyright">©</div>
+      <div className="copyright">
+        <Link href={''}>©</Link>
+      </div>
     </div>
   );
 }
