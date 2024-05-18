@@ -45,7 +45,7 @@
 }*/
 
 .btn-main {
-  padding: 10px 30px;
+  padding: 8px 30px;
   background-color: $main-color;
   color: white;
   border: none;
@@ -53,7 +53,6 @@
   align-items: center;
   gap: 2em;
   justify-content: center;
-
   &:hover {
     background-color: $hover;
     border: none;

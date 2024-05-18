@@ -1,18 +1,3 @@
-.landing-page {
-  padding-top: 20vh;
-  height: 100vh;
-
-  .landing-page-greeting {
-    @include flex-column;
-    height: 80vh;
-    position: relative;
-
-    .sub {
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
-  }
-}
 h3 {
   margin-bottom: 0.5em;
 }
@@ -24,68 +9,41 @@ h3 {
   height: 24px;
 }
 
-//about section
-#about {
-  height: 100vh;
-  .about-text {
-    height: 80vh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-  }
-  h2 {
-    font-size: 22px;
-    text-transform: uppercase;
-    margin-bottom: 64px;
-    text-align: center;
-    z-index: 1;
-    font-family: 'Spartan-Bold';
-  }
-  .emoji {
-    font-size: 30px;
-  }
-
-  .bullet-points {
-    @include flex-column;
-    gap: 2em;
-    z-index: 1;
-
-    .points {
-      @include flex-row;
-      text-align: center;
-      max-width: 650px;
-      gap: 8em;
-    }
-    h4 {
-      font-size: 16px;
-      font-family: 'Spartan-Bold';
-    }
-    p {
-      font-size: 14px;
-      font-family: 'Spartan-Regular';
-      padding-top: 10px;
-    }
-  }
-}
-
 .icon {
   width: 16px;
   color: $main-color;
 }
+.landing-page {
+  position: relative;
 
+  .landing-page-greeting {
+    @include flex-column;
+    height: 80vh;
+    position: relative;
+
+    .sub {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+}
 .landing-text {
   position: absolute;
   height: 60vh;
   width: 80%;
   text-align: center;
+  z-index: 100;
   @include flex-column;
   justify-content: space-between;
   align-items: center;
+  padding-left: 15vw;
+  padding-top: 20vh;
+
   .btn {
     border-radius: 20px;
+  }
+  .btn-main :hover {
+    background-color: $hover;
   }
 }
 
@@ -97,6 +55,7 @@ h3 {
   filter: url(#goo) blur(40px);
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 @keyframes moveInCircle {
@@ -145,6 +104,7 @@ h3 {
   width: 100vw;
   height: 80vh;
   position: relative;
+  overflow: hidden;
 }
 
 .g1 {
@@ -157,7 +117,6 @@ h3 {
   height: 400px;
   top: calc(-50%);
   left: calc(-50%);
-
   transform-origin: center center;
   animation: moveVertical 30s ease infinite;
 
@@ -174,7 +133,6 @@ h3 {
   height: 400px;
   top: 0;
   right: 0;
-
   transform-origin: calc(50% - 400px);
   animation: moveInCircle 15s reverse infinite;
 
@@ -191,7 +149,6 @@ h3 {
   height: 300px;
   bottom: 0;
   left: 0;
-
   transform-origin: calc(50% + 400px);
   animation: moveInCircle 20s linear infinite;
 
@@ -210,7 +167,6 @@ h3 {
   left: 0;
   transform-origin: calc(50% - 200px);
   animation: moveHorizontal 20s ease infinite;
-
   opacity: 1;
 }
 
@@ -226,7 +182,6 @@ h3 {
   left: 0;
   transform-origin: calc(50% - 800px) calc(50% + 200px);
   animation: moveHorizontal 50s ease infinite;
-
   opacity: 1;
 }
 .g6 {
@@ -241,7 +196,6 @@ h3 {
   left: calc(50%);
   transform-origin: calc(50% + 200px);
   animation: moveHorizontal 20s ease infinite;
-
   opacity: 1;
 }
 
@@ -290,13 +244,7 @@ h3 {
 }*/
 .wave {
   bottom: 0;
-  height: 100vh;
   margin-top: 30vh;
-}
-
-.blurgradien {
-  position: absolute;
-  right: 0;
 }
 @media screen and (min-width: $desktop-breakpoint) {
   //gradient beginning
@@ -420,9 +368,8 @@ h3 {
   .landing-text {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     margin-left: 4em;
-    padding-top: 4em;
     position: relative;
     .btn {
       max-width: 100%;
@@ -430,18 +377,20 @@ h3 {
     }
     .btn-main {
       width: 100%;
-      height: 50px;
+      height: 48px;
       width: 300px;
       justify-content: center;
+      align-items: center;
+      display: flex;
+      cursor: pointer;
+      &:hover {
+        background-color: $hover;
+      }
     }
   }
   .heading {
     h1 {
       font-size: $h1-l;
-    }
-    .sub {
-      font-size: 16px !important;
-      font-weight: normal !important;
     }
     img {
       width: 50px;

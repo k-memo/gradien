@@ -1,13 +1,20 @@
 //contact section
 #contact {
+  @include flex-row;
+  height: 80vh;
+  margin-top: 2em;
+
   .contact-content {
     position: relative;
-    padding: 2em 10em 2em 10em;
+    padding: 0em 15em;
     display: flex;
     flex-direction: column;
     .text {
-      position: absolute;
+      position: relative;
       bottom: 0;
+      @include flex-column;
+      justify-content: center;
+      height: 100vh;
       .contact-text {
         margin-bottom: 2em;
         width: 500px;
@@ -18,7 +25,7 @@
       h2 {
         font-size: 22px;
         text-transform: uppercase;
-        margin-bottom: 1em;
+        margin-bottom: 0.5em;
         font-family: 'Spartan-Bold';
         z-index: 1;
       }
@@ -35,9 +42,9 @@
 
   a {
     text-decoration: none;
-    cursor: pointer;
     color: $text-color;
     font-family: 'Spartan-Regular';
+    font-size: 14px;
 
     &:hover,
     &:active {
@@ -53,6 +60,9 @@
 .contact-gradien {
   position: absolute;
   left: 0;
+  height: 100vh;
+  bottom: 0;
+  padding-left: 5em;
 }
 .vector {
   position: absolute;

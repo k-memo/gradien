@@ -6,3 +6,12 @@
   z-index: 1000;
   position: fixed;
 }
+.links {
+  visibility: hidden;
+}
+.links.open {
+  visibility: visible;
+}
+.menu {
+  cursor: pointer;
+}
