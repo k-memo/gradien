@@ -38,7 +38,7 @@ yarn-error.log*
 next-env.d.ts
 .env
 
-test
+test-page
 /test-results/
 /playwright-report/
 /blob-report/
