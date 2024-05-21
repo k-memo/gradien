@@ -42,11 +42,15 @@ const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
           ))}
         </div>
       </div>
-      <div className="explanation">
-        <ShowMore
-          header="Colorpalette Info"
-          explanation={colorpalette?.paletteInfo}
-        />
+      <div className="showmore">
+        <div className="explanation">
+          <ShowMore
+            header="Colorpalette Info"
+            explanation={
+              colorpalette?.paletteInfo + colorpalette?.userColorDisposition
+            }
+          />
+        </div>
       </div>
       <div className="links">
         <a className="btn-second btn">

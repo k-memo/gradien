@@ -3,8 +3,8 @@ import { IoIosArrowUp } from 'react-icons/io';
 import { IoIosArrowDown } from 'react-icons/io';
 
 export default function ShowMore(props) {
-  const { header, explanation } = props; // Destructure props here
-  const [showMoreText, setShowMoreText] = useState(false);
+  const { header, explanation } = props;
+  const [showMoreText, setShowMoreText] = useState(true);
   const toggleShowMoreText = () => {
     setShowMoreText(!showMoreText);
   };
