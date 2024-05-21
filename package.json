@@ -20,6 +20,7 @@
     "@rive-app/react-canvas": "^4.9.0",
     "@uploadthing/react": "^6.4.4",
     "next": "14.2.0",
+    "next-auth": "^4.24.7",
     "openai": "^4.38.3",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
