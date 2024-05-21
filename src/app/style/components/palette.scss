@@ -101,6 +101,7 @@ input:focus {
   p {
     width: 100%;
     font-family: Spartan-Regular;
+    font-size: 14px;
   }
 }
 
@@ -115,6 +116,24 @@ input:focus {
   h3 {
     margin-top: 1em;
     margin-bottom: 2em;
+  }
+  .back {
+    @include flex-row;
+    justify-content: space-between;
+    width: 52%;
+    a {
+      color: $text-color;
+      @include transition;
+      &:hover {
+        color: $hover;
+      }
+    }
+    p {
+      @include flex-row;
+      gap: 1em;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 

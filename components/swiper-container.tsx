@@ -5,12 +5,25 @@ import Logo from './logo';
 import ShowMore from './showmore';
 import { CiExport } from 'react-icons/ci';
 import { FiSave } from 'react-icons/fi';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa6';
 
 const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
   return (
     <div className="color-palette-div">
       <div className="palette-heading">
-        <Logo />
+        <div className="back">
+          <Link href={'/'}>
+            {' '}
+            <p>
+              {' '}
+              <FaArrowLeft />
+              home
+            </p>
+          </Link>
+          <Logo />
+        </div>
+
         <h3>Your Colorpalette</h3>
       </div>
       <div className="palettes">
