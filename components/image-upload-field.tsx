@@ -1,4 +1,9 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 import { IoCloudUploadOutline } from 'react-icons/io5';
 import { CgInfo } from 'react-icons/cg';
 
@@ -45,8 +50,11 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         onClick={handleDivClick}
         style={{ cursor: 'pointer' }}
       >
-        <img className="img-resize" src={imageSrc} width="200" alt="" />
-        <span>only png or jpg</span>
+        {imageSrc ? (
+          <img className="img-resize" src={imageSrc} width="200" alt="" />
+        ) : (
+          <span>only png or jpg</span>
+        )}
       </div>
       <div className="description">
         <div className="upload-heading">
