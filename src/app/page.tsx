@@ -10,18 +10,21 @@ import About from '../../components/about';
 import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import SideNavXl from '../../components/side-nav-xl';
 import Greeting from '../../components/greeting';
+import { signIn } from 'next-auth/react';
+import OAuth from '../../components/oauth';
 
 export default function Home() {
   return (
     <>
       <SideNavXl />
       <div className="login-nav">
-        <Link href={'/register'} className="btn btn-main">
-          Register
-        </Link>
-        <Link href={'/login'} className="btn btn-second">
-          Login
-        </Link>
+        <OAuth
+          company={'Google'}
+          handleLogin={e => {
+            e.preventDefault();
+            signIn('google', { callbackUrl: 'http://localhost:3000/' });
+          }}
+        />
       </div>
 
       <main className="landing-page">
