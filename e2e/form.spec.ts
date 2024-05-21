@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import Rado from '../public/rado.png';
+import * as Rado from '../public/rado.png';
 
 test('complete form submission process', async ({ page }) => {
   await page.goto('http://localhost:3000');
