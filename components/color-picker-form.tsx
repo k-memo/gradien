@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CgColorPicker } from 'react-icons/cg';
 import { ImageColorPicker } from 'react-image-color-picker';
 import { IerrorField } from '../models/errorField.interface';
-import { IinputField } from '../models/inputField.interface copy';
+import { IinputField } from '../models/inputField.interface';
 
 export default function ColorPickerForm({
   imgSrc,
@@ -137,7 +137,7 @@ export default function ColorPickerForm({
       <ImageColorPicker
         onColorPick={handleColorPick}
         imgSrc={imgSrc}
-        zoom={3}
+        zoom={1}
       />
 
       <form onSubmit={handleOnSubmit}>
@@ -161,7 +161,7 @@ export default function ColorPickerForm({
                 type="text"
                 name="skinColor"
                 placeholder="skin color"
-                role='text'
+                role="text"
                 value={skinColor}
                 onClick={() => setCurrentPart('skin')}
                 readOnly
