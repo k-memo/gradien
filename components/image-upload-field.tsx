@@ -1,13 +1,14 @@
-import React, { forwardRef, useImperativeHandle } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 import { IoCloudUploadOutline } from 'react-icons/io5';
 import { CgInfo } from 'react-icons/cg';
 
 interface Props {
-  setImageSrcFromChild: (imageUrl: string) => void; // Adjusted type definition
+  setImageSrcFromChild: (imageUrl: string) => void;
 }
 
 const ImageUploadField = forwardRef((props: Props, ref) => {
   const [imageSrc, setImageSrc] = React.useState('');
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -15,8 +16,12 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setImageSrc(imageUrl);
-      props.setImageSrcFromChild(imageUrl); // Call the function from props
+      props.setImageSrcFromChild(imageUrl);
     }
+  };
+
+  const handleDivClick = () => {
+    fileInputRef.current?.click();
   };
 
   useImperativeHandle(ref, () => ({
@@ -26,6 +31,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
   return (
     <div className="upload-section">
       <input
+        ref={fileInputRef}
         type="file"
         accept="image/*"
         name="image"
@@ -34,7 +40,11 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         style={{ display: 'none' }}
       />
 
-      <div className="img-input">
+      <div
+        className="img-input"
+        onClick={handleDivClick}
+        style={{ cursor: 'pointer' }}
+      >
         <img className="img-resize" src={imageSrc} width="200" alt="" />
         <span>only png or jpg</span>
       </div>
@@ -54,7 +64,6 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
             style={{ cursor: 'pointer' }}
             className="btn-img"
           >
-            <IoCloudUploadOutline className="cloud" />
             Upload Image
           </label>
         </div>
