@@ -189,6 +189,7 @@ export default function ColorPickerForm({
                 name="eyeColor"
                 placeholder="eye color"
                 onClick={() => {
+                  document.body.style.cursor = 'crosshair';
                   setCurrentPart('eye');
                 }}
                 value={eyeColor}
@@ -218,7 +219,10 @@ export default function ColorPickerForm({
                 name="hairColor"
                 placeholder="hair color"
                 value={hairColor}
-                onClick={() => setCurrentPart('hair')}
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('hair');
+                }}
                 readOnly
               />
               <CgColorPicker

@@ -104,7 +104,6 @@
   .upload-section {
     @include flex-row;
     justify-content: center;
-    align-items: center;
     width: 100%;
     gap: 2em;
     padding: 0vw 10vw;
@@ -192,8 +191,6 @@
     width: 50%;
     @include flex-column;
     justify-content: space-between;
-    min-height: 70vh;
-    max-height: 100vh;
-    padding-top: 4em;
+    height: 100%;
   }
 }
