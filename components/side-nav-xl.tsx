@@ -8,6 +8,7 @@ import { FiUser } from 'react-icons/fi';
 import { SlPlus } from 'react-icons/sl';
 import { FiBookmark } from 'react-icons/fi';
 import { FaCirclePlus } from 'react-icons/fa6';
+import { RiInformationLine } from 'react-icons/ri';
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,15 +25,15 @@ export default function SideNavXl() {
         <div className="menu" onClick={toggleMenu}>
           {isOpen ? <img src={CloseS.src} /> : <img src={Menu.src} />}
         </div>
-        <div className={`links ${isOpen ? 'open' : ''}`}>
-          <Link className="user" href={''}>
-            <FiUser />
+        <div className={`links ${isOpen ? 'open' : 'closed'}`}>
+          <Link className="bookmark" href={''}>
+            <FiBookmark />
           </Link>
           <Link className="plus" href={''}>
             <SlPlus size={'40px'} />
           </Link>
-          <Link className="bookmark" href={''}>
-            <FiBookmark />
+          <Link className="info" href={''}>
+            <RiInformationLine />
           </Link>
         </div>
       </div>
