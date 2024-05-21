@@ -7,26 +7,15 @@ import './style/application.scss';
 import Link from 'next/link';
 import Contact from '../../components/contact';
 import About from '../../components/about';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 import SideNavXl from '../../components/side-nav-xl';
 import Greeting from '../../components/greeting';
-import { signIn } from 'next-auth/react';
-import OAuth from '../../components/oauth';
+import LoginNav from '../../components/login-nav';
 
 export default function Home() {
   return (
     <>
       <SideNavXl />
-      <div className="login-nav">
-        <OAuth
-          company={'Google'}
-          handleLogin={e => {
-            e.preventDefault();
-            signIn('google', { callbackUrl: 'http://localhost:3000/' });
-          }}
-        />
-      </div>
-
+      <LoginNav />
       <main className="landing-page">
         {/*Parallax
         <Parallax pages={2} style={{ top: '0', left: '0' }}>

@@ -57,6 +57,15 @@ h3 {
   align-items: center;
   gap: 1em;
   padding-right: 2em;
+  .btn-main {
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .btn-second {
+    border-radius: 10px;
+    cursor: pointer;
+    @include transition;
+  }
 }
 
 .gradient-container {
