@@ -109,8 +109,9 @@
   width: 24px;
   z-index: 1111;
 }
-.copyright {
+.copyright-icon {
   a {
+    font-size: 24px;
     color: $text-color;
     &:hover {
       color: $hover;

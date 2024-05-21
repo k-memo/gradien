@@ -37,8 +37,8 @@ export default function SideNavXl() {
           </Link>
         </div>
       </div>
-      <div className="copyright">
-        <Link href={''}>©</Link>
+      <div className="copyright-icon">
+        <Link href={'copyright'}>©</Link>
       </div>
     </div>
   );
