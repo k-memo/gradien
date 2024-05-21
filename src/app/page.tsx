@@ -15,6 +15,15 @@ export default function Home() {
   return (
     <>
       <SideNavXl />
+      <div className="login-nav">
+        <Link href={'/register'} className="btn btn-main">
+          Register
+        </Link>
+        <Link href={'/login'} className="btn btn-second">
+          Login
+        </Link>
+      </div>
+
       <main className="landing-page">
         {/*Parallax
         <Parallax pages={2} style={{ top: '0', left: '0' }}>

@@ -50,6 +50,14 @@ h3 {
 #animated-gradient {
   height: 100vh;
 }
+.login-nav {
+  @include flex-row;
+  justify-content: flex-end;
+  height: 100px;
+  align-items: center;
+  gap: 1em;
+  padding-right: 2em;
+}
 
 .gradient-container {
   filter: url(#goo) blur(40px);
