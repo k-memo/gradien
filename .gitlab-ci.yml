@@ -7,6 +7,8 @@ deploy_production:
     - main
   script:
     - npm install --global vercel
+    - npm install
+    - npx prisma generate
     - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
     # - vercel build --prod --token=$VERCEL_TOKEN
     - vercel deploy --prod --token=$VERCEL_TOKEN
