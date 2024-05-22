@@ -122,6 +122,11 @@
   }
 }
 .swiper-form {
+  .inputs {
+    @include flex-column;
+    gap: 1em;
+    margin-bottom: 1em;
+  }
   input {
     width: 100%;
     background-color: none;
@@ -146,9 +151,11 @@
   .color-palette-div {
     .links {
       @include flex-row;
+      justify-content: center;
     }
     .btn {
       max-width: 100%;
+      align-self: flex-end;
     }
     .btn-main {
       padding: 10px 0px;
@@ -181,6 +188,13 @@
   .explanation {
     p {
       max-width: 800px;
+    }
+  }
+  .swiper-form {
+    .inputs {
+      @include flex-row;
+      gap: 1em;
+      margin-bottom: 1em;
     }
   }
 }

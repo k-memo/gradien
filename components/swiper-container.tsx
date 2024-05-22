@@ -100,25 +100,27 @@ const SwiperContainer = ({
           }}
           className="swiper-form"
         >
-          <div className="nam-form">
-            <label>Palette Name:</label>
-            <input
-              type="text"
-              placeholder="Palette Name"
-              value={paletteName}
-              onChange={e => setPaletteName(e.target.value)}
-              required
-            />
-          </div>
-          <div className="description-form">
-            <label>Palette Description:</label>
-            <input
-              type="text"
-              placeholder="Palette Description"
-              value={paletteDesc}
-              onChange={e => setPaletteDesc(e.target.value)}
-              required
-            />
+          <div className="inputs">
+            <div className="nam-form">
+              <label>Palette Name:</label>
+              <input
+                type="text"
+                placeholder="Palette Name"
+                value={paletteName}
+                onChange={e => setPaletteName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="description-form">
+              <label>Palette Description:</label>
+              <input
+                type="text"
+                placeholder="Palette Description"
+                value={paletteDesc}
+                onChange={e => setPaletteDesc(e.target.value)}
+                required
+              />
+            </div>
           </div>
           <button type="submit" className="btn-main btn">
             Save

@@ -66,8 +66,14 @@ export default function ImageCropDialog({
           ></input>
         </div>
         <div className="button-area">
-          <button onClick={onCancel}>Cancel</button>
-          <button onClick={onCrop} data-testid="crop-button">
+          <button onClick={onCancel} className="btn btn-main">
+            Cancel
+          </button>
+          <button
+            onClick={onCrop}
+            className="btn btn-main"
+            data-testid="crop-button"
+          >
             Crop
           </button>
         </div>
