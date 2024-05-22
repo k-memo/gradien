@@ -27,7 +27,11 @@ export default function Greeting() {
           <p className="sub">FIND YOUR COLOR PALETTE</p>
         </div>
         <div>
-          <Link href="generate" className="btn-main btn">
+          <Link
+            href="generate"
+            className="btn-main btn"
+            data-testid="get-started"
+          >
             Get Started
             <FontAwesomeIcon icon={faArrowRight} className="arrow-right" />
           </Link>
