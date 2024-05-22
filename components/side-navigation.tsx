@@ -1,10 +1,14 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   CircleMenu,
   CircleMenuItem,
   TooltipPlacement,
 } from 'react-circular-menu';
+import { SlPlus } from 'react-icons/sl';
+import { FiBookmark } from 'react-icons/fi';
+import { RiInformationLine } from 'react-icons/ri';
 
 export interface SideNavigationItem {
   name: string;
@@ -15,7 +19,7 @@ export default function SideNavigation() {
   return (
     <div className="circular-navigation">
       <CircleMenu
-        startAngle={-45}
+        startAngle={-150}
         rotationAngle={180}
         itemSize={2}
         radius={5}
@@ -29,19 +33,23 @@ export default function SideNavigation() {
       >
         <CircleMenuItem
           onClick={() => alert('Clicked the item')}
-          tooltip="Email"
+          className="link"
+          tooltip="Saved"
           tooltipPlacement={TooltipPlacement.Right}
         >
-          <p>ITEM0</p>
+          <Link href={''}>
+            <FiBookmark />
+          </Link>
         </CircleMenuItem>
-        <CircleMenuItem tooltip="Help">
-          <p>ITEM1</p>
+        <CircleMenuItem tooltip="Generate" className="link">
+          <Link href={''}>
+            <SlPlus />
+          </Link>
         </CircleMenuItem>
-        <CircleMenuItem tooltip="Location">
-          <p>ITEM2</p>
-        </CircleMenuItem>
-        <CircleMenuItem tooltip="Info">
-          <p>ITEM3</p>
+        <CircleMenuItem tooltip="Information" className="link">
+          <Link href={''}>
+            <RiInformationLine />
+          </Link>
         </CircleMenuItem>
       </CircleMenu>
     </div>

@@ -1,6 +1,15 @@
 .circular-navigation {
+  z-index: 1112;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 200px 200px 0 0; // Half-circle
+  backdrop-filter: blur(7.6px);
+  -webkit-backdrop-filter: blur(7.6px);
   width: 100px;
-
+  height: 50px;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   > * > button {
     border: none;
   }
@@ -13,13 +22,7 @@
   }
 
   > * > button > div {
-    background-color: black !important;
-  }
-
-  > * > button:hover > div,
-  > * > button:active > div,
-  > * > button:focus > div {
-    background-color: black !important;
+    background-color: $text-color !important;
   }
 
   ul > li button {
@@ -29,6 +32,42 @@
   ul > li button:hover > div,
   ul > li button:active > div,
   ul > li button:focus > div {
-    background: none !important;
+    background: transparent !important;
+  }
+}
+
+.side-navigation {
+  display: flex;
+  position: absolute;
+  bottom: 10%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .nav-wrap {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 200px 200px 0 0; // Half-circle
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.6px);
+    -webkit-backdrop-filter: blur(7.6px);
+    height: 150px; // Half the original height
+    width: 300px; // Same as the original width
+    @include flex-column;
+    justify-content: flex-end;
+    align-items: center;
+    z-index: 1111;
+    overflow: hidden; // Ensure content stays within the semicircle
+  }
+  .link {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(7.6px);
+    -webkit-backdrop-filter: blur(7.6px);
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      color: $text-color;
+    }
   }
 }

@@ -267,12 +267,24 @@ h3 {
   bottom: 0;
   margin-top: 30vh;
 }
+.side-nav-xl {
+  visibility: hidden;
+}
+.side-navigation {
+  visibility: visible;
+}
 @media screen and (min-width: $desktop-breakpoint) {
+  .side-nav-xl {
+    visibility: visible;
+  }
+  .side-navigation {
+    visibility: hidden;
+  }
   .landing-page {
     height: 100vh;
   }
   .landing-page-greeting {
-    height: 95vh !important;
+    height: 100vh !important;
   }
   //gradient beginning
   .gradient-container {
