@@ -5,7 +5,7 @@ import Logo from './logo';
 import ShowMore from './showmore';
 import { CiExport } from 'react-icons/ci';
 import { FiSave } from 'react-icons/fi';
-
+import prisma from '../lib/prisma';
 const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
   return (
     <div className="color-palette-div">
