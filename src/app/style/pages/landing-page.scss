@@ -57,6 +57,10 @@ h3 {
   align-items: center;
   gap: 1em;
   padding-right: 2em;
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+
   .btn-main {
     border-radius: 10px;
     cursor: pointer;
@@ -264,11 +268,15 @@ h3 {
   margin-top: 30vh;
 }
 @media screen and (min-width: $desktop-breakpoint) {
+  .landing-page {
+    height: 100vh;
+  }
+  .landing-page-greeting {
+    height: 95vh !important;
+  }
   //gradient beginning
   .gradient-container {
     filter: url(#goo) blur(40px);
-    width: 100%;
-    height: 50%;
   }
 
   @keyframes moveInCircle {
@@ -315,7 +323,7 @@ h3 {
 
   .gradient-bg {
     width: 100%;
-    height: 0;
+    height: 100vh;
     position: relative;
   }
 
@@ -387,7 +395,6 @@ h3 {
     align-items: flex-start;
     justify-content: center;
     margin-left: 4em;
-    position: relative;
     .btn {
       max-width: 100%;
       border-radius: 50px;
