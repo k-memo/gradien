@@ -4,8 +4,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { IoCloudUploadOutline } from 'react-icons/io5';
-import { CgInfo } from 'react-icons/cg';
+import ImageCropDialog from './image-crop-dialog';
 
 interface Props {
   setImageSrcFromChild: (imageUrl: string) => void;
@@ -14,15 +13,28 @@ interface Props {
 const ImageUploadField = forwardRef((props: Props, ref) => {
   const [imageSrc, setImageSrc] = React.useState('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [cropActivated, setCropActivated] = useState(false);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+
+  const onCancel = () => {
+    setCropActivated(false);
+  };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
 
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setImageSrc(imageUrl);
-      props.setImageSrcFromChild(imageUrl);
+      setSources(imageUrl);
     }
+
+    setCropActivated(true);
+  };
+
+  const setSources = url => {
+    setImageSrc(url);
+    props.setImageSrcFromChild(url);
   };
 
   const handleDivClick = () => {
@@ -35,6 +47,14 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
 
   return (
     <div className="upload-section">
+      {cropActivated ? (
+        <ImageCropDialog
+          imageUrl={imageSrc}
+          onCancel={onCancel}
+          setCroppedImageUrl={setSources}
+          setCropActivated={setCropActivated}
+        />
+      ) : null}
       <input
         ref={fileInputRef}
         type="file"
