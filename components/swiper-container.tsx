@@ -19,6 +19,8 @@ const SwiperContainer = ({
   getColor: (index: number) => void;
 }) => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [paletteName, setPaletteName] = useState<string>('');
+  const [paletteDesc, setPaletteDesc] = useState<string>('');
 
   useEffect(() => {
     const fetchUserEmail = async () => {
@@ -32,8 +34,8 @@ const SwiperContainer = ({
   async function saveColorPalette() {
     try {
       const savePalette: ISavePalette = {
-        paletteName: 'TEST-NAME',
-        paletteDesc: 'TEST-DESC',
+        paletteName,
+        paletteDesc,
         palette: colorpalette,
       };
 
@@ -101,10 +103,26 @@ const SwiperContainer = ({
         </div>
       </div>
       <div className="links">
-        <a className="btn-main btn" onClick={() => saveColorPalette()}>
-          Save color palette
-          <FiSave className="link-icon" />
-        </a>
+        <form onSubmit={(e) => { e.preventDefault(); saveColorPalette(); }}>
+          <input
+            type="text"
+            placeholder="Palette Name"
+            value={paletteName}
+            onChange={(e) => setPaletteName(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Palette Description"
+            value={paletteDesc}
+            onChange={(e) => setPaletteDesc(e.target.value)}
+            required
+          />
+          <button type="submit" className="btn-main btn">
+            Save color palette
+            <FiSave className="link-icon" />
+          </button>
+        </form>
       </div>
     </div>
   );
