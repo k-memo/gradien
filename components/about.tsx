@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+
 import Gradien from '../public/blurgradien.png';
 
 export default function About() {
@@ -6,7 +8,7 @@ export default function About() {
     <>
       <div className="about-text">
         <div className="blurgradien">
-          <img src={Gradien.src} alt="gradien box" />
+          <Image src={Gradien.src} alt="gradien box" />
         </div>
         <div className="about-content">
           <h2>WHY YOU NEED COLOR ANALYSIS</h2>
