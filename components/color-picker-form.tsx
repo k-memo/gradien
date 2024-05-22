@@ -170,6 +170,7 @@ export default function ColorPickerForm({
               <CgColorPicker
                 className="picker"
                 role="img"
+                data-testid="skin-picker"
                 onClick={() => {
                   document.body.style.cursor = 'crosshair';
                   setCurrentPart('skin');
@@ -197,6 +198,7 @@ export default function ColorPickerForm({
                 required
               />
               <CgColorPicker
+                data-testid="eye-picker"
                 className="picker"
                 onClick={() => {
                   document.body.style.cursor = 'crosshair';
@@ -227,6 +229,7 @@ export default function ColorPickerForm({
               />
               <CgColorPicker
                 className="picker"
+                data-testid="hair-picker"
                 onClick={() => {
                   document.body.style.cursor = 'crosshair';
                   setCurrentPart('hair');
@@ -237,7 +240,7 @@ export default function ColorPickerForm({
           {errors.some(
             error => error.name === 'skinColor' || error.name === 'eyeColor',
           ) && (
-            <p className="label-error">
+            <p className="label-error" data-testid="label-error">
               You need to pick your skin and eye color.
             </p>
           )}
@@ -247,7 +250,11 @@ export default function ColorPickerForm({
           <a className="prev-btn btn" onClick={handlePrevStep}>
             Previous
           </a>
-          <button type="submit" className="btn-main btn">
+          <button
+            type="submit"
+            className="btn-main btn"
+            data-testid="color-submit"
+          >
             Submit
           </button>
         </div>

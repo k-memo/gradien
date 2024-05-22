@@ -98,6 +98,7 @@ export default function Home() {
               type="button"
               value="Next"
               onClick={handleNextStep}
+              data-testid="generate-next"
               disabled={imageSrcFromChild === undefined}
             />
           </>
