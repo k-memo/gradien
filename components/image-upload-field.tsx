@@ -4,6 +4,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import Image from 'next/image';
 import ImageCropDialog from './image-crop-dialog';
 
 interface Props {
@@ -71,7 +72,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         style={{ cursor: 'pointer' }}
       >
         {imageSrc ? (
-          <img className="img-resize" src={imageSrc} width="200" alt="" />
+          <Image className="img-resize" src={imageSrc} width="200" alt="" />
         ) : (
           <span>only png or jpg</span>
         )}

@@ -1,14 +1,12 @@
-import { useState } from 'react';
 import Link from 'next/link';
-import Logo from './logo';
-import Menu from '../public/menu.svg';
-import Close from '../public/close.svg';
-import CloseS from '../public/close-s.svg';
-import { FiUser } from 'react-icons/fi';
-import { SlPlus } from 'react-icons/sl';
+import { useState } from 'react';
 import { FiBookmark } from 'react-icons/fi';
-import { FaCirclePlus } from 'react-icons/fa6';
 import { RiInformationLine } from 'react-icons/ri';
+import { SlPlus } from 'react-icons/sl';
+import CloseS from '../public/close-s.svg';
+import Menu from '../public/menu.svg';
+import Logo from './logo';
+import Image from 'next/image';
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,7 +21,11 @@ export default function SideNavXl() {
       </div>
       <div className="nav-desktop">
         <div className="menu" onClick={toggleMenu}>
-          {isOpen ? <img src={CloseS.src} /> : <img src={Menu.src} />}
+          {isOpen ? (
+            <Image src={CloseS} alt="Close menu" />
+          ) : (
+            <Image src={Menu} alt="Open menu" />
+          )}
         </div>
         <div className={`links ${isOpen ? 'open' : 'closed'}`}>
           <Link className="bookmark" href={''}>
