@@ -68,6 +68,9 @@
 .cursor-crosshair {
   cursor: crosshair;
 }
+.bchfeH {
+  justify-content: center;
+}
 @media screen and (min-width: $desktop-breakpoint) {
   .color-picker-section {
     @include flex-column;

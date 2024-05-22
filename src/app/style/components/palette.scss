@@ -17,36 +17,6 @@
   }
 }
 
-.name {
-  @include flex-row;
-  gap: 0.5em;
-  align-items: flex-end;
-  margin-top: 1em;
-  justify-content: center;
-
-  label {
-    text-transform: none;
-    font-size: 14px;
-    padding-top: 10px;
-  }
-
-  input {
-    color: $main-color;
-    border-bottom: solid 1px $main-color !important;
-    border: none;
-    border-radius: 0px;
-    background-color: transparent;
-    width: 50%;
-    padding: 0px;
-    height: 30px;
-  }
-}
-
-input:focus {
-  border: none;
-  outline: none;
-}
-
 //slider
 .slider {
   @include flex-row;
@@ -98,6 +68,9 @@ input:focus {
   padding: 1em 2em;
 }
 .explanation {
+  h2 {
+    font-size: 14px;
+  }
   p {
     width: 100%;
     font-family: Spartan-Regular;
@@ -107,7 +80,6 @@ input:focus {
 
 .palette-heading {
   text-align: center;
-  margin-top: 2em;
 
   h2 {
     text-transform: uppercase;
@@ -115,7 +87,7 @@ input:focus {
 
   h3 {
     margin-top: 1em;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
   }
   .back {
     @include flex-row;
@@ -140,7 +112,7 @@ input:focus {
 .links {
   @include flex-column;
   gap: 1em;
-
+  margin: 3em 0em !important;
   .btn-second {
     width: 50%;
   }
@@ -149,7 +121,23 @@ input:focus {
     width: 70%;
   }
 }
-
+.swiper-form {
+  input {
+    width: 100%;
+    background-color: none;
+    border: none;
+    border-radius: 10px;
+    padding-left: 1em;
+    height: 40px;
+    font-family: Spartan-Regular;
+    box-shadow: inset 0 0 5px rgba(31, 0, 66, 0.227);
+  }
+  .btn-main {
+    width: 100% !important;
+  }
+  @include flex-column;
+  gap: 1em;
+}
 @media screen and (min-width: $desktop-breakpoint) {
   .palette-section {
     @include flex-column;

@@ -1,4 +1,4 @@
-input {
+.input {
   width: 82vw;
   background-color: none;
   border: solid 1px $main-color;
@@ -7,6 +7,10 @@ input {
   height: 40px;
 }
 
+input:focus {
+  border: 0.5px solid $main-color;
+  outline: none;
+}
 .input-error {
   width: 82vw;
   background-color: none;

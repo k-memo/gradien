@@ -92,6 +92,40 @@ const SwiperContainer = ({
           ))}
         </div>
       </div>
+      <div className="links">
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            saveColorPalette();
+          }}
+          className="swiper-form"
+        >
+          <div className="nam-form">
+            <label>Palette Name:</label>
+            <input
+              type="text"
+              placeholder="Palette Name"
+              value={paletteName}
+              onChange={e => setPaletteName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="description-form">
+            <label>Palette Description:</label>
+            <input
+              type="text"
+              placeholder="Palette Description"
+              value={paletteDesc}
+              onChange={e => setPaletteDesc(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="btn-main btn">
+            Save
+            <FiSave className="link-icon" />
+          </button>
+        </form>
+      </div>
       <div className="showmore">
         <div className="explanation">
           <ShowMore
@@ -101,28 +135,6 @@ const SwiperContainer = ({
             }
           />
         </div>
-      </div>
-      <div className="links">
-        <form onSubmit={(e) => { e.preventDefault(); saveColorPalette(); }}>
-          <input
-            type="text"
-            placeholder="Palette Name"
-            value={paletteName}
-            onChange={(e) => setPaletteName(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Palette Description"
-            value={paletteDesc}
-            onChange={(e) => setPaletteDesc(e.target.value)}
-            required
-          />
-          <button type="submit" className="btn-main btn">
-            Save color palette
-            <FiSave className="link-icon" />
-          </button>
-        </form>
       </div>
     </div>
   );

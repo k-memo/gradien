@@ -22,9 +22,9 @@ export default function CustomWebcam({
       {imageSrc ? (
         <img src={imgSrc} alt="webcam" />
       ) : (
-        <Webcam height={800} width={600} ref={webcamRef} />
+        <Webcam ref={webcamRef} />
       )}
-      <div className="btn-container">
+      <div className="btn-container btn">
         <button onClick={capture}>Capture photo</button>
       </div>
     </div>
