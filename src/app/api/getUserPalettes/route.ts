@@ -28,6 +28,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     );
 
     if (!session) {
+      // @ts-ignore
       res.status(401).json({ error: 'Unauthorized' });
       return;
     }

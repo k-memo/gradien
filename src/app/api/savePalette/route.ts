@@ -35,6 +35,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     );
 
     if (!session) {
+      // @ts-ignore
       res.status(401).json({ error: 'Unauthorized' });
       return;
     }
