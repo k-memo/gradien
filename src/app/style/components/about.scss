@@ -26,6 +26,7 @@
     @include flex-column;
     gap: 4em;
     align-items: center;
+
     .points {
       @include flex-row;
       text-align: center;
@@ -52,4 +53,53 @@
 }
 .overflow {
   overflow: hidden;
+}
+@media screen and (max-width: $desktop-breakpoint) {
+  #about {
+    .about-text {
+      height: 80vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+    }
+    h2 {
+      font-size: 18px;
+      padding: 0em 2em;
+    }
+    .emoji {
+      font-size: 26px;
+    }
+    .about-content {
+      z-index: 100;
+    }
+    .bullet-points {
+      @include flex-column;
+      gap: 2em;
+      .point {
+        @include flex-column;
+        align-items: center;
+      }
+      .points {
+        @include flex-column;
+        gap: 2em;
+      }
+      h4 {
+        font-size: 14px;
+      }
+      p {
+        font-size: 12px;
+        width: 70vw;
+        text-align: center;
+      }
+    }
+    .blurgradien {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 }
