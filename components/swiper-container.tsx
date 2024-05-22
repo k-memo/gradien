@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import Logo from './logo';
@@ -6,7 +6,42 @@ import ShowMore from './showmore';
 import { CiExport } from 'react-icons/ci';
 import { FiSave } from 'react-icons/fi';
 import prisma from '../lib/prisma';
-const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
+import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
+
+const SwiperContainer = ({ colorpalette, activeIndex, getColor }: { colorpalette: IPalette, activeIndex: number, getColor: (index: number) => void }) => {
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      const userEmail = 'user@test.com'; 
+      setUserEmail(userEmail);
+    };
+
+    fetchUserEmail();
+  }, []);
+
+  
+  const saveColorPalette = async (palette: IPalette) => {
+    if (!userEmail) return; 
+
+    try {
+
+      await prisma.palette.create({
+        data: {
+          name: 'xxxxxx', 
+          description: 'xxxxxxx',
+          palleteJson: palette,
+        },
+      });
+
+      console.log('Color palette saved successfully!');
+    } catch (error) {
+      console.error('Error saving color palette:', error);
+    }
+  };
+
+
+
   return (
     <div className="color-palette-div">
       <div className="palette-heading">
@@ -53,12 +88,9 @@ const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
         </div>
       </div>
       <div className="links">
-        <a className="btn-second btn">
-          export
-          <CiExport className="link-icon" />
-        </a>
-        <a className="btn-main btn">
-          save colorpalette
+   
+        <a className="btn-main btn" onClick={() => saveColorPalette(colorpalette)}>
+          Save color palette
           <FiSave className="link-icon" />
         </a>
       </div>
