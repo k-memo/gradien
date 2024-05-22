@@ -92,6 +92,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
             htmlFor="file"
             style={{ cursor: 'pointer' }}
             className="btn-img"
+            data-testid="upload-image"
           >
             Upload Image
           </label>

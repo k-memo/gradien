@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { IoIosArrowUp } from 'react-icons/io';
-import { IoIosArrowDown } from 'react-icons/io';
+import { useState } from 'react';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 export default function ShowMore(props) {
   const { header, explanation } = props;
@@ -18,7 +17,11 @@ export default function ShowMore(props) {
 
         <div>
           <button className="more" onClick={toggleShowMoreText}>
-            {showMoreText ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            {showMoreText ? (
+              <IoIosArrowUp data-testid="arrow-icon" />
+            ) : (
+              <IoIosArrowDown data-testid="arrow-icon" />
+            )}
           </button>
         </div>
       </div>

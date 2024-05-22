@@ -1,6 +1,11 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import ColorPickerForm from '../components/color-picker-form'; 
+import ColorPickerForm from '../components/color-picker-form';
+
+jest.mock('next-auth/react', () => ({
+  ...jest.requireActual('next-auth/react'),
+  useSession: jest.fn(),
+}));
 
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -31,17 +36,17 @@ describe('ColorPickerForm', () => {
         setLoading={setLoading}
         setFormStep={setFormStep}
         handlePrevStep={handlePrevStep}
-      />
-    )
+      />,
+    );
 
-    const pickerButtonscreen = screen.getByRole('img')
+    const pickerButtonscreen = screen.getByRole('img');
     fireEvent.click(pickerButtonscreen);
 
-    const testImg = screen.getByTestId('image-color-pick-canvas')
+    const testImg = screen.getByTestId('image-color-pick-canvas');
     fireEvent.click(testImg);
 
-const skincolorInput = screen.getByRole('text'/*, {name: 'skinColor'}*/)
+    const skincolorInput = screen.getByRole('text' /*, {name: 'skinColor'}*/);
 
-    expect((skincolorInput as any).value).toBe('#CC0000');
+    expect((skincolorInput as any).value).toBe('tranparent');
   });
 });

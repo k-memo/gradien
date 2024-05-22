@@ -1,13 +1,32 @@
 import { test, expect } from '@playwright/test';
 
-test('try to proceed without selecting colors', async ({ page }) => {
+test.beforeEach(async ({ page }, testInfo) => {
+  console.log(`Running ${testInfo.title}`);
   await page.goto('http://localhost:3000');
+});
 
-  await page.click('button[name="get-started"]');
+test('try to proceed without selecting colors', async ({
+  page,
+  browserName,
+}) => {
+  await page.getByTestId('get-started').click();
+  await page.getByTestId('upload-image').click();
 
-  await expect(page.locator('section[name="color-selection"]')).toBeVisible();
+  const input = await page.$('input[type="file"]');
+  if (!input) {
+    console.error('File input element not found!');
+  }
 
-  await page.click('button[name="submit"]');
+  if (browserName === 'firefox') {
+    await page.setInputFiles('input[type="file"]', 'public/rado.png');
+  } else {
+    // @ts-ignore
+    await input.setInputFiles('public/rado.png');
+  }
 
-  await expect(page.locator('section[name="color-selection"]')).toBeVisible();
+  await page.getByTestId('crop-button').click();
+  await page.getByTestId('generate-next').click();
+  await page.getByTestId('color-submit').click();
+
+  await expect(page.getByTestId('label-error')).toBeVisible();
 });
