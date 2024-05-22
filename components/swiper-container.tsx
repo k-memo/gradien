@@ -7,40 +7,53 @@ import { CiExport } from 'react-icons/ci';
 import { FiSave } from 'react-icons/fi';
 import prisma from '../lib/prisma';
 import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
+import { ISavePalette } from '@/app/api/savePalette/route';
 
-const SwiperContainer = ({ colorpalette, activeIndex, getColor }: { colorpalette: IPalette, activeIndex: number, getColor: (index: number) => void }) => {
+const SwiperContainer = ({
+  colorpalette,
+  activeIndex,
+  getColor,
+}: {
+  colorpalette: IPalette;
+  activeIndex: number;
+  getColor: (index: number) => void;
+}) => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchUserEmail = async () => {
-      const userEmail = 'user@test.com'; 
+      const userEmail = 'user@test.com';
       setUserEmail(userEmail);
     };
 
     fetchUserEmail();
   }, []);
 
-  
-  const saveColorPalette = async (palette: IPalette) => {
-    if (!userEmail) return; 
-
+  async function saveColorPalette() {
     try {
+      const savePalette: ISavePalette = {
+        paletteName: 'TEST-NAME',
+        paletteDesc: 'TEST-DESC',
+        palette: colorpalette,
+      };
 
-      await prisma.palette.create({
-        data: {
-          name: 'xxxxxx', 
-          description: 'xxxxxxx',
-          palleteJson: palette,
+      const response = await fetch('/api/savePalette', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify(savePalette),
       });
 
-      console.log('Color palette saved successfully!');
+      if (!response.ok) {
+        throw new Error('Failed to save palette');
+      }
+
+      console.log(await response.text());
     } catch (error) {
-      console.error('Error saving color palette:', error);
+      console.error('Error:', error);
     }
-  };
-
-
+  }
 
   return (
     <div className="color-palette-div">
@@ -88,8 +101,7 @@ const SwiperContainer = ({ colorpalette, activeIndex, getColor }: { colorpalette
         </div>
       </div>
       <div className="links">
-   
-        <a className="btn-main btn" onClick={() => saveColorPalette(colorpalette)}>
+        <a className="btn-main btn" onClick={() => saveColorPalette()}>
           Save color palette
           <FiSave className="link-icon" />
         </a>
