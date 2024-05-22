@@ -10,11 +10,17 @@ import About from '../../components/about';
 import SideNavXl from '../../components/side-nav-xl';
 import Greeting from '../../components/greeting';
 import LoginNav from '../../components/login-nav';
+import SideNavigation from '../../components/side-navigation';
 
 export default function Home() {
   return (
     <>
-      <SideNavXl />
+      <div className="side-nav-xl">
+        <SideNavXl />
+      </div>
+      <div className="side-navigation">
+        <SideNavigation />
+      </div>
       <LoginNav />
       <main className="landing-page">
         {/*Parallax
