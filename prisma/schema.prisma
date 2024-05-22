@@ -1,32 +1,32 @@
-datasource db {
-    provider = "postgresql"
-    url      = env("POSTGRES_PRISMA_URL")
+generator client {
+  provider = "prisma-client-js"
 }
 
-generator client {
-    provider = "prisma-client-js"
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_PRISMA_URL")
 }
 
 model User {
-    id        String    @id @default(cuid())
-    name      String
-    email     String    @unique
-    createdAt DateTime  @default(now())
-    updatedAt DateTime  @default(now())
-    palettes  Palette[] @relation("UserPalettes")
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  palettes  Palette[] @relation("UserPalettes")
 
-    @@map("users")
+  @@map("users")
 }
 
 model Palette {
-    id          String   @id @default(cuid())
-    name        String
-    description String
-    userId      String
-    palleteJson String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @default(now())
-    user        User     @relation(fields: [userId], references: [id], name: "UserPalettes")
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  userId      String
+  palleteJson String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  user        User     @relation("UserPalettes", fields: [userId], references: [id])
 
-    @@map("palette")
+  @@map("palette")
 }
