@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --verbose ./__tests__",
+    "test:e2e": "npx playwright test",
     "test:watch": "jest --verbose ./__tests__ --watch"
   },
   "dependencies": {
