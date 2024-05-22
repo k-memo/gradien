@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import { FaRegEnvelope } from 'react-icons/fa';
 import { FiPhone } from 'react-icons/fi';
 import { SlLocationPin } from 'react-icons/sl';
@@ -11,7 +10,7 @@ export default function Contact() {
   return (
     <section id="contact">
       <div className="contact-content">
-        <Image
+        <img
           className="contact-gradien"
           src={ContactGradien.src}
           alt="gradien box"
@@ -46,7 +45,7 @@ export default function Contact() {
       </div>
 
       <div className="vector">
-        <Image src={Vector2.src} alt="wave" className="vector-img" />
+        <img src={Vector2.src} alt="wave" className="vector-img" />
       </div>
     </section>
   );
