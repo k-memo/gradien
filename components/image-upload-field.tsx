@@ -72,7 +72,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         style={{ cursor: 'pointer' }}
       >
         {imageSrc ? (
-          <Image className="img-resize" src={imageSrc} width="200" alt="" />
+          <img className="img-resize" src={imageSrc} width="200" alt="" />
         ) : (
           <span>only png or jpg</span>
         )}
