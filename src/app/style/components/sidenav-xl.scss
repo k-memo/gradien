@@ -1,0 +1,121 @@
+.sidenav {
+  @include flex-column;
+  justify-content: space-between;
+  padding: 2em 0em 2em 2em;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+}
+.links {
+  visibility: hidden;
+  margin-top: -65px;
+  margin-left: -1em;
+  width: 200px;
+  height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  transition:
+    visibility 0s,
+    margin-top 1s,
+    margin-left 1s;
+  a {
+    color: $text-color;
+
+    &:hover {
+      color: $hover;
+      @include transition;
+    }
+  }
+  // animation
+  &.open {
+    visibility: visible;
+    height: auto;
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    .bookmark {
+      animation: bookmarkAnimation 1s forwards;
+    }
+
+    .info {
+      animation: infoAnimation 1s forwards;
+    }
+
+    .plus {
+      animation: plusAnimation 1s forwards;
+    }
+  }
+  &.closed {
+    .bookmark {
+      animation: bookmarkCloseAnimation 1s forwards;
+    }
+
+    .info {
+      animation: infoCloseAnimation 1s forwards;
+    }
+
+    .plus {
+      animation: plusCloseAnimation 1s forwards;
+    }
+  }
+  .bookmark {
+    position: absolute;
+    padding-bottom: -50%;
+  }
+  .info {
+    position: absolute;
+    margin-top: 0%;
+  }
+  .plus {
+    margin-top: 1em;
+  }
+}
+@keyframes bookmarkAnimation {
+  from {
+    margin-left: -62%;
+    padding-bottom: -50%;
+  }
+  to {
+    margin-left: -62%;
+    margin-bottom: 100%;
+  }
+}
+
+@keyframes infoAnimation {
+  from {
+    margin-left: -60%;
+    margin-top: 50%;
+  }
+  to {
+    margin-left: -60%;
+    margin-top: 8em;
+  }
+}
+
+@keyframes plusAnimation {
+  from {
+    margin-left: -3em;
+  }
+  to {
+    margin-left: 2em;
+  }
+}
+// end animation
+.menu {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  z-index: 1111;
+}
+.copyright-icon {
+  a {
+    font-size: 24px;
+    color: $text-color;
+    &:hover {
+      color: $hover;
+      @include transition;
+    }
+  }
+}

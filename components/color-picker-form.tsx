@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CgColorPicker } from 'react-icons/cg';
 import { ImageColorPicker } from 'react-image-color-picker';
 import { IerrorField } from '../models/errorField.interface';
-import { IinputField } from '../models/inputField.interface copy';
+import { IinputField } from '../models/inputField.interface';
 
 export default function ColorPickerForm({
   imgSrc,
@@ -137,7 +137,7 @@ export default function ColorPickerForm({
       <ImageColorPicker
         onColorPick={handleColorPick}
         imgSrc={imgSrc}
-        zoom={3}
+        zoom={1}
       />
 
       <form onSubmit={handleOnSubmit}>
@@ -161,6 +161,7 @@ export default function ColorPickerForm({
                 type="text"
                 name="skinColor"
                 placeholder="skin color"
+                role="text"
                 value={skinColor}
                 onClick={() => setCurrentPart('skin')}
                 readOnly
@@ -168,6 +169,7 @@ export default function ColorPickerForm({
               />
               <CgColorPicker
                 className="picker"
+                role="img"
                 onClick={() => {
                   document.body.style.cursor = 'crosshair';
                   setCurrentPart('skin');
@@ -187,6 +189,7 @@ export default function ColorPickerForm({
                 name="eyeColor"
                 placeholder="eye color"
                 onClick={() => {
+                  document.body.style.cursor = 'crosshair';
                   setCurrentPart('eye');
                 }}
                 value={eyeColor}
@@ -216,7 +219,10 @@ export default function ColorPickerForm({
                 name="hairColor"
                 placeholder="hair color"
                 value={hairColor}
-                onClick={() => setCurrentPart('hair')}
+                onClick={() => {
+                  document.body.style.cursor = 'crosshair';
+                  setCurrentPart('hair');
+                }}
                 readOnly
               />
               <CgColorPicker

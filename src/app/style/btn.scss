@@ -45,7 +45,7 @@
 }*/
 
 .btn-main {
-  padding: 10px 30px;
+  padding: 8px 30px;
   background-color: $main-color;
   color: white;
   border: none;
@@ -53,7 +53,6 @@
   align-items: center;
   gap: 2em;
   justify-content: center;
-
   &:hover {
     background-color: $hover;
     border: none;
@@ -115,7 +114,7 @@
 }
 
 .prev-btn {
-  background-color: $sec-color;
+  background-color: transparent;
   padding: 10px 30px;
   color: $main-color;
   border: solid 2px $main-color;

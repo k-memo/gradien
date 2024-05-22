@@ -1,20 +1,33 @@
-// schema.prisma
+datasource db {
+    provider = "postgresql"
+    url      = env("POSTGRES_PRISMA_URL")
+}
 
 generator client {
     provider = "prisma-client-js"
 }
 
-datasource db {
-    provider = "postgresql"
-    url      = env("POSTGRES_PRISMA_URL") // uses connection pooling
+model User {
+    id        String    @id @default(cuid())
+    name      String
+    email     String    @unique
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @default(now())
+    palettes  Palette[] @relation("UserPalettes")
+
+    @@map("users")
 }
 
-model User {
-    id        String   @id @default(cuid())
-    name      String?
-    email     String?  @unique
-    createdAt DateTime @default(now()) @map(name: "created_at")
-    updatedAt DateTime @updatedAt @map(name: "updated_at")
+model Palette {
+    id          String   @id @default(cuid())
+    name        String
+    description String
+    userId      String
+    palleteJson String
+    image       String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @default(now())
+    user        User     @relation(fields: [userId], references: [id], name: "UserPalettes")
 
-    @@map(name: "users")
+    @@map("palette")
 }

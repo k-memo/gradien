@@ -72,11 +72,12 @@
   .color-picker-section {
     @include flex-column;
     align-items: center;
+    h3 {
+      margin-top: 0 !important;
+    }
     .color-picker-page {
       width: 70vw;
       @include flex-row;
-      align-items: center;
-      margin-bottom: 4em;
       gap: 3em;
       .color-square {
         width: 60px;
@@ -114,6 +115,6 @@
   #image-color-pick-canvas {
     border-radius: 5%;
     height: 500px;
-    width: 700px;
+    width: 40vw;
   }
 }

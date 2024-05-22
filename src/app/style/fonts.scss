@@ -1,12 +1,35 @@
-:root {
-  font-family: 'Inter', sans-serif;
+* {
+  font-family: 'Spartan', sans-serif;
 }
-
+h1 {
+  font-family: 'InterVariable', sans-serif;
+}
 @supports (font-variation-settings: normal) {
   :root {
-    font-family: 'InterVariable', sans-serif;
+    font-family: 'Spartan', sans-serif;
     font-optical-sizing: auto;
   }
+}
+
+@font-face {
+  font-family: Spartan;
+  font-style: normal;
+  font-display: swap;
+  src: url('font/Spartan-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Spartan-Bold;
+  font-style: normal;
+  font-display: swap;
+  src: url('font/Spartan-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Spartan-Regular;
+  font-style: normal;
+  font-display: swap;
+  src: url('Spartan-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -15,16 +38,4 @@
   font-weight: 100 900;
   font-display: swap;
   src: url('InterVariable.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: InterVariable;
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('InterVariable-Italic.woff2') format('woff2');
-}
-
-* {
-  font-family: 'InterVariable', sans-serif;
 }

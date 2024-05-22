@@ -45,29 +45,29 @@
   }
 }
 @media screen and (min-width: $desktop-breakpoint) {
- .nav-form{
-  margin: 0vw 10vw;
-  align-items: center;
-  .hr {
-    height: 4px;
-  }
-  .h-active {
-    height: 4px;
-  }
-  .states {
-    .state-circle {
-      width: 18px;
-      height: 18px;
+  .nav-form {
+    margin: 5vw 10vw;
+    padding-bottom: 0;
+    align-items: center;
+    .hr {
+      height: 4px;
     }
-    .active {
-      width: 40px;
-      height: 40px;
+    .h-active {
+      height: 4px;
+    }
+    .states {
+      .state-circle {
+        width: 18px;
+        height: 18px;
+      }
+      .active {
+        width: 40px;
+        height: 40px;
+      }
     }
   }
- }
- .check{
-  height: 18px;
-  width: 15px;
- }
- 
+  .check {
+    height: 18px;
+    width: 15px;
+  }
 }

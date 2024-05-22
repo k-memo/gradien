@@ -12,8 +12,8 @@ export interface IPalette {
   paletteInfo: string; // Explaining the general color palette, and why they were chosen for the user and the color psychology behind it
 
   jewelery: {
-    color: 'gold'; // only gold or silver
-    message: 'a message why this color works well with the person and what kinda feelings it envokes';
+    color: string; // only gold or silver
+    message: string;
   };
 }
 
