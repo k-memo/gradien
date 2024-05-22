@@ -7,6 +7,7 @@ import CloseS from '../public/close-s.svg';
 import Menu from '../public/menu.svg';
 import Logo from './logo';
 import Image from 'next/image';
+
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -14,6 +15,7 @@ export default function SideNavXl() {
     console.log('Toggling menu');
     setIsOpen(!isOpen);
   };
+
   return (
     <div className="sidenav">
       <div className="logo">
@@ -27,20 +29,20 @@ export default function SideNavXl() {
             <Image src={Menu} alt="Open menu" />
           )}
         </div>
-        <div className={`links ${isOpen ? 'open' : 'closed'}`}>
-          <Link className="bookmark" href={''}>
+        <div className={`side-links ${isOpen ? 'open' : 'closed'}`}>
+          <Link className="bookmark" href="">
             <FiBookmark />
           </Link>
-          <Link className="plus" href={''}>
+          <Link className="plus" href="">
             <SlPlus size={'40px'} />
           </Link>
-          <Link className="info" href={''}>
+          <Link className="info" href="">
             <RiInformationLine />
           </Link>
         </div>
       </div>
       <div className="copyright-icon">
-        <Link href={'copyright'}>©</Link>
+        <Link href="copyright">©</Link>
       </div>
     </div>
   );
