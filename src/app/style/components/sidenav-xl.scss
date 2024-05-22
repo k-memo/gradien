@@ -58,6 +58,7 @@
   }
 
   &.closed {
+    visibility: hidden;
     .bookmark {
       transform: rotate(20deg) translateY(50px) translateX(20px) rotate(60deg);
       transition-delay: 0s;
