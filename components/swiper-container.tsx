@@ -1,12 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import Logo from './logo';
 import ShowMore from './showmore';
 import { CiExport } from 'react-icons/ci';
 import { FiSave } from 'react-icons/fi';
+import prisma from '../lib/prisma';
+import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
+import { ISavePalette } from '@/app/api/savePalette/route';
 
-const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
+const SwiperContainer = ({
+  colorpalette,
+  activeIndex,
+  getColor,
+}: {
+  colorpalette: IPalette;
+  activeIndex: number;
+  getColor: (index: number) => void;
+}) => {
+  const [userEmail, setUserEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserEmail = async () => {
+      const userEmail = 'user@test.com';
+      setUserEmail(userEmail);
+    };
+
+    fetchUserEmail();
+  }, []);
+
+  async function saveColorPalette() {
+    try {
+      const savePalette: ISavePalette = {
+        paletteName: 'TEST-NAME',
+        paletteDesc: 'TEST-DESC',
+        palette: colorpalette,
+      };
+
+      const response = await fetch('/api/savePalette', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(savePalette),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save palette');
+      }
+
+      console.log(await response.text());
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   return (
     <div className="color-palette-div">
       <div className="palette-heading">
@@ -53,12 +101,8 @@ const SwiperContainer = ({ colorpalette, activeIndex, getColor }) => {
         </div>
       </div>
       <div className="links">
-        <a className="btn-second btn">
-          export
-          <CiExport className="link-icon" />
-        </a>
-        <a className="btn-main btn">
-          save colorpalette
+        <a className="btn-main btn" onClick={() => saveColorPalette()}>
+          Save color palette
           <FiSave className="link-icon" />
         </a>
       </div>
