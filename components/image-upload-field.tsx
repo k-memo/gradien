@@ -4,8 +4,9 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import Image from 'next/image';
 import ImageCropDialog from './image-crop-dialog';
+import Webcam from 'react-webcam';
+import CustomWebcam from './customWebcam';
 
 interface Props {
   setImageSrcFromChild: (imageUrl: string) => void;
@@ -15,6 +16,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
   const [imageSrc, setImageSrc] = React.useState('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [cropActivated, setCropActivated] = useState(false);
+  const [camActivated, setCamActivated] = useState(false);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
 
@@ -66,15 +68,19 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
         style={{ display: 'none' }}
       />
 
-      <div
-        className="img-input"
-        onClick={handleDivClick}
-        style={{ cursor: 'pointer' }}
-      >
+      <div className="img-input" style={{ cursor: 'pointer' }}>
         {imageSrc ? (
           <img className="img-resize" src={imageSrc} width="200" alt="" />
         ) : (
-          <span>only png or jpg</span>
+          <>
+            {camActivated ? (
+              <CustomWebcam imageSrc={imageSrc} setSources={setSources} />
+            ) : (
+              <div className="img-input-file-upload" onClick={handleDivClick}>
+                <span>only png or jpg</span>
+              </div>
+            )}
+          </>
         )}
       </div>
       <div className="description">
@@ -96,6 +102,15 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
           >
             Upload Image
           </label>
+
+          <button
+            onClick={() => setCamActivated(true)}
+            style={{ cursor: 'pointer' }}
+            className="btn-img"
+            data-testid="upload-image"
+          >
+            Use Webcam
+          </button>
         </div>
       </div>
     </div>
