@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 const OAuth = ({ company, handleLogin }) => {
   return (
-    <button className="login btn-main" onClick={handleLogin}>
-      Login with {company}
+    <button className="login btn-second" onClick={handleLogin}>
+      Login
     </button>
   );
 };
