@@ -171,6 +171,7 @@ const SwiperContainer = ({
             ) : (
               <button
                 onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
+                className="google-btn"
               >
                 Sign In with Google
               </button>
