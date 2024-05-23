@@ -56,11 +56,17 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
   
 
   return (
+    <main className="multi-step">
+    <div className="multi-step-item">
+
+    <section id="upload-section" data-testid="upload-section">
+
     <div className="color-palette-div">
       <div className="palette-heading">
         <Logo />
         <h3>Your Colorpalette</h3>
       </div>
+
       <div className="palettes">
         <Swiper
           effect={'cards'}
@@ -87,6 +93,7 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
           ))}
         </div>
       </div>
+     
       <div className="showmore">
         <div className="explanation">
           <ShowMore
@@ -96,6 +103,10 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
         </div>
       </div>
     </div>
+    </section>
+    </div>
+    </main>
+
   );
 };
 
