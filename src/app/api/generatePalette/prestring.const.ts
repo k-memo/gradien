@@ -36,7 +36,9 @@ message: string; // a message why this color works well with the person and what
 Only output the IPalette interface  with 10 IPalletteColors inside the colors array using the guide beneath and one jewelery color no other output please !!!!!!!!!!!!!!!
 Again the output should just be of a json type of IPalette, this is very very very important !!!!!
 
+Also when you write about the disposition texts be sure to call, the person as you and dont speak of them in the 3rd person !
 
+Here is information about Color Theory in aspect of color analysis:
 
 Color Theory
 The three aspects of color are:
