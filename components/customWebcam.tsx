@@ -13,6 +13,7 @@ export default function CustomWebcam({
   const webcamRef = useRef(null);
 
   const capture = useCallback(() => {
+    // @ts-ignore
     const imageSrc = webcamRef.current.getScreenshot();
     setSources(imageSrc);
   }, [webcamRef]);
