@@ -70,3 +70,17 @@
     }
   }
 }
+@media screen and (max-width: $desktop-breakpoint) {
+  .image-crop {
+    p {
+      padding: 0em 2em;
+      font-size: 12px;
+    }
+    .crop-container {
+      bottom: 260px;
+    }
+    .controls {
+      bottom: 10%;
+    }
+  }
+}
