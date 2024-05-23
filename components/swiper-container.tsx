@@ -1,13 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { ISavePalette } from '@/app/api/savePalette/route';
+import { useEffect, useState } from 'react';
+import { FiSave } from 'react-icons/fi';
 import { EffectCards } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
 import Logo from './logo';
 import ShowMore from './showmore';
-import { CiExport } from 'react-icons/ci';
-import { FiSave } from 'react-icons/fi';
-import prisma from '../lib/prisma';
-import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
-import { ISavePalette } from '@/app/api/savePalette/route';
+import { signIn, SignInResponse, useSession } from 'next-auth/react';
+import OAuth from './oauth';
+import Home from '@/app/google-signin/page';
+import GoogleSignInPage from '@/app/google-signin/page';
+
+async function saveColorPalette(
+  paletteName: string,
+  paletteDesc: string,
+  colorpalette: IPalette,
+) {
+  try {
+    const savePalette: ISavePalette = {
+      paletteName,
+      paletteDesc,
+      palette: colorpalette,
+    };
+
+    const response = await fetch('/api/savePalette', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(savePalette),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to save palette');
+    }
+
+    console.log(await response.text());
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+const handleSignIn = async e => {
+  e.preventDefault();
+  // Generate the sign-in URL for the Google provider
+  const signInUrl = await signIn('google', {
+    redirect: false,
+    callbackUrl: 'http://localhost:3000/',
+  });
+  if ((signInUrl as SignInResponse).url) {
+    // Open the URL in a new tab
+    //@ts-ignore
+    window.open(signInUrl.url, '_blank');
+  }
+};
 
 const SwiperContainer = ({
   colorpalette,
@@ -21,41 +67,34 @@ const SwiperContainer = ({
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [paletteName, setPaletteName] = useState<string>('');
   const [paletteDesc, setPaletteDesc] = useState<string>('');
+  const { data: session, status } = useSession();
 
-  useEffect(() => {
-    const fetchUserEmail = async () => {
-      const userEmail = 'user@test.com';
-      setUserEmail(userEmail);
-    };
+  const popupCenter = (url, title) => {
+    const dualScreenLeft = window.screenLeft ?? window.screenX;
+    const dualScreenTop = window.screenTop ?? window.screenY;
+    const width =
+      window.innerWidth ?? document.documentElement.clientWidth ?? screen.width;
 
-    fetchUserEmail();
-  }, []);
+    const height =
+      window.innerHeight ??
+      document.documentElement.clientHeight ??
+      screen.height;
 
-  async function saveColorPalette() {
-    try {
-      const savePalette: ISavePalette = {
-        paletteName,
-        paletteDesc,
-        palette: colorpalette,
-      };
+    const systemZoom = width / window.screen.availWidth;
 
-      const response = await fetch('/api/savePalette', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(savePalette),
-      });
+    const left = (width - 500) / 2 / systemZoom + dualScreenLeft;
+    const top = (height - 550) / 2 / systemZoom + dualScreenTop;
 
-      if (!response.ok) {
-        throw new Error('Failed to save palette');
-      }
+    const newWindow = window.open(
+      url,
+      title,
+      `width=${500 / systemZoom},height=${
+        550 / systemZoom
+      },top=${top},left=${left}`,
+    );
 
-      console.log(await response.text());
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
+    newWindow?.focus();
+  };
 
   return (
     <div className="color-palette-div">
@@ -96,7 +135,7 @@ const SwiperContainer = ({
         <form
           onSubmit={e => {
             e.preventDefault();
-            saveColorPalette();
+            saveColorPalette(paletteName, paletteDesc, colorpalette);
           }}
           className="swiper-form"
         >
@@ -122,10 +161,21 @@ const SwiperContainer = ({
               />
             </div>
           </div>
-          <button type="submit" className="btn-main btn">
-            Save
-            <FiSave className="link-icon" />
-          </button>
+          {
+            // @ts-ignore
+            status === 'authenticated' ? (
+              <button type="submit" className="btn-main btn">
+                Save
+                <FiSave className="link-icon" />
+              </button>
+            ) : (
+              <button
+                onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
+              >
+                Sign In with Google
+              </button>
+            )
+          }
         </form>
       </div>
       <div className="showmore">
