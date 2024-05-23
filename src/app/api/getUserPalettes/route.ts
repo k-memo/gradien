@@ -1,8 +1,7 @@
-import { NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth';
+import { NextRequest, NextResponse } from 'next/server';
 import authOptions from '../../../../lib/authOptions';
 import prisma from '../../../../lib/prisma';
-import { getServerSession } from 'next-auth';
-import { NextApiRequest, NextApiResponse } from 'next/types';
 
 interface ISession {
   user: {
@@ -13,9 +12,9 @@ interface ISession {
   expires: string;
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
-    const session = await getServerSession(req, res, authOptions);
+    const session = await getServerSession(authOptions);
 
     if (!session) {
       // @ts-ignore
