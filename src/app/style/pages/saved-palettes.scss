@@ -1,0 +1,33 @@
+#saved {
+  padding: 20px;
+
+  .saved-palettes {
+    display: grid;
+    gap: 16px;
+
+    .saved-palette {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+
+      a {
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .palette-colors {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+
+        .palette-color {
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ import CloseS from '../public/close-s.svg';
 import Menu from '../public/menu.svg';
 import Logo from './logo';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +16,8 @@ export default function SideNavXl() {
     console.log('Toggling menu');
     setIsOpen(!isOpen);
   };
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
 
   return (
     <div className="sidenav">
@@ -30,9 +33,11 @@ export default function SideNavXl() {
           )}
         </div>
         <div className={`side-links ${isOpen ? 'open' : 'closed'}`}>
-          <Link className="bookmark" href="">
-            <FiBookmark />
-          </Link>
+          {!loading && session && (
+            <Link className="bookmark" href="/savedPalettes">
+              <FiBookmark />
+            </Link>
+          )}
           <Link className="plus" href="">
             <SlPlus size={'40px'} />
           </Link>
