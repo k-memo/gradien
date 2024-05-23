@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import OpenAI, { ClientOptions } from 'openai';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import { prestring } from '../../../../models/prestring.const';
+import { IPalette } from '../../../../models/colorpalette.interface';
+import error from 'next/error';
 
 export const runtime = 'edge';
 
@@ -38,9 +40,23 @@ const getOpenApiResponse = async (userMessage: string) => {
 
 export async function POST(req) {
   try {
-    const colorPalette = await getOpenApiResponse(req.text());
+    let generateUntil = true;
+    let correctPalette: IPalette | null = null;
 
-    return NextResponse.json(colorPalette, { status: 200 });
+    for (let index = 0; index < 4; index++) {
+      const colorPalette: IPalette = await getOpenApiResponse(req.text());
+
+      if (colorPalette.colors?.length > 0) {
+        correctPalette = { ...colorPalette };
+        break;
+      }
+    }
+
+    if (correctPalette == null) {
+      throw 'Something went wrong...';
+    }
+
+    return NextResponse.json(correctPalette, { status: 200 });
   } catch (error) {
     console.error('Error:', error);
     return NextResponse.json(
