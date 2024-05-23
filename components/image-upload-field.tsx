@@ -107,7 +107,7 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
             onClick={() => setCamActivated(true)}
             style={{ cursor: 'pointer' }}
             className="btn-img"
-            data-testid="upload-image"
+            data-testid="upload-webcam"
           >
             Use Webcam
           </label>
