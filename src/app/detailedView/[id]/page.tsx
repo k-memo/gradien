@@ -1,13 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { EffectCards } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Logo from '../../../../components/logo';
-import ShowMore from '../../../../components/showmore';
-import { IGetUserPalette } from '../../../../models/getUserPalette.interface';
-import SwiperContainer from '../../../../components/swiper-container';
-import { IPalette } from '../../../../models/colorpalette.interface';
 import DetailSwiper from '../../../../components/detail-swiper';
+import { IPalette } from '../../../../models/colorpalette.interface';
+import { IGetUserPalette } from '../../../../models/getUserPalette.interface';
 
 const PaletteDetail = ({ params }: { params: { id: string } }) => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
@@ -62,6 +57,7 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
         <p> loading .... </p>
       ) : (
         <DetailSwiper
+          paletteId={palette?.id as string}
           colorpalette={palette?.palleteJson as IPalette}
           activeIndex={0}
           getColor={getColor}

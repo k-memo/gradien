@@ -16,47 +16,13 @@ const handleDelete = (id: string) => {
   console.log();
 };
 
-async function saveColorPalette(
-  paletteName: string,
-  paletteDesc: string,
-  colorpalette: IPalette,
-  setPaletteSaved,
-) {
-  try {
-    const savePalette: ISavePalette = {
-      paletteName,
-      paletteDesc,
-      palette: colorpalette,
-    };
-
-    const response = await fetch('/api/savePalette', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(savePalette),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to save palette');
-    }
-
-    setPaletteSaved(true);
-    toast.success('Palette Saved Successfully !', {
-      position: 'top-right',
-    });
-
-    console.log(await response.text());
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
 const DetailSwiper = ({
+  paletteId,
   colorpalette,
   activeIndex,
   getColor,
 }: {
+  paletteId: string;
   colorpalette: IPalette;
   activeIndex: number;
   getColor: (index: number) => void;
@@ -136,7 +102,11 @@ const DetailSwiper = ({
         </div>
       </div>
       <div className="links">
-        <button type="submit" className="btn-main btn" onClick={handleDelete}>
+        <button
+          type="submit"
+          className="btn-main btn"
+          onClick={() => handleDelete(paletteId)}
+        >
           Delete
           <FiSave className="link-icon" />
         </button>
