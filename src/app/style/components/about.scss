@@ -56,8 +56,11 @@
 }
 @media screen and (max-width: $desktop-breakpoint) {
   #about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .about-text {
-      height: 80vh;
+      height: 100vh;
       position: relative;
       display: flex;
       flex-direction: column;

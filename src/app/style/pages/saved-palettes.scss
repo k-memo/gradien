@@ -1,0 +1,94 @@
+#saved {
+  padding: 4em 6em;
+  background-image: url(../../../../public/gardien.jpg);
+  background-size: cover;
+  min-height: 100vh;
+  .home {
+    font-size: 20px;
+    &:hover {
+      color: $hover;
+      @include transition;
+    }
+  }
+  .saved-heading {
+    @include flex-row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    h2 {
+      text-align: center;
+    }
+  }
+  .saved-palettes {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    .saved-palette {
+      padding: 10px;
+
+      a {
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        color: $main-color;
+        text-transform: uppercase;
+        text-decoration: none;
+        &:hover {
+          color: $hover;
+          text-decoration: 1px solid $hover !important;
+        }
+      }
+
+      .palette-colors {
+        display: flex;
+        gap: 0px;
+
+        .palette-color {
+          width: 50px !important;
+          height: 60px !important;
+          border-radius: 5px !important;
+          box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421) !important;
+          transition: transform 0.3s ease !important;
+          margin-right: -8px !important;
+          cursor: pointer;
+
+          &:active {
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: $desktop-breakpoint) {
+  #saved {
+    padding: 2em 1em;
+    background-image: url(../../../../public/gardien.jpg);
+    background-size: cover;
+    min-height: 100vh;
+    .saved-heading {
+      h2 {
+        font-size: 16px;
+      }
+    }
+    .saved-palettes {
+      @include flex-column;
+      justify-content: center;
+      align-items: center;
+      gap: 0px;
+
+      .saved-palette {
+        padding: 1em 4em;
+        a {
+          font-size: 12px;
+        }
+
+        .palette-colors {
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+}

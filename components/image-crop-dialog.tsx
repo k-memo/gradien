@@ -41,11 +41,12 @@ export default function ImageCropDialog({
     <div className="image-crop">
       <div className="backdrop"></div>
       <div className="crop-container">
+        <p>Please crop the image to clearly show the face. </p>
         <Cropper
           image={imageUrl}
           zoom={zoom}
           crop={crop}
-          aspect={3 / 4}
+          aspect={4 / 3}
           onCropChange={onCropChange}
           onZoomChange={onZoomChange}
           onCropComplete={onCropComplete}
@@ -66,8 +67,14 @@ export default function ImageCropDialog({
           ></input>
         </div>
         <div className="button-area">
-          <button onClick={onCancel}>Cancel</button>
-          <button onClick={onCrop} data-testid="crop-button">
+          <button onClick={onCancel} className="btn btn-second">
+            Cancel
+          </button>
+          <button
+            onClick={onCrop}
+            className="btn btn-main"
+            data-testid="crop-button"
+          >
             Crop
           </button>
         </div>

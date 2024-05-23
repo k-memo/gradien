@@ -1,71 +1,86 @@
 .image-crop {
+  position: fixed;
+  z-index: 100;
+  p {
+    z-index: 111;
+    margin-top: -40px;
+    text-align: center;
+    font-family: Spartan-Regular;
+  }
+  .crop-container {
     position: fixed;
-    z-index: 100;
+    top: 10%;
+    left: 0;
+    right: 0;
+    bottom: 160px;
 
+    .imageCard {
+      text-align: center;
+    }
+
+    .imageCard img {
+      width: 600px;
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .controls {
+    z-index: 110;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 1rem;
+
+    .controls-upper-area {
+      position: relative;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .button-area {
+      display: flex;
+      gap: 1em;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .slider {
+      z-index: 110;
+      width: 50%;
+      height: fit-content;
+    }
+  }
+}
+@media screen and (max-width: $desktop-breakpoint) {
+  .image-crop {
+    p {
+      padding: 0em 2em;
+      font-size: 12px;
+    }
     .crop-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 160px;
-
-        .imageCard {
-            text-align: center;
-        }
-
-        .imageCard img {
-            width: 600px;
-        }
+      bottom: 260px;
     }
-
-    .backdrop {
-        position: fixed;
-        background-color: black;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-
     .controls {
-        z-index: 110;
-        position: fixed;
-        bottom: 0px;
-        left: 0;
-        right: 0;
-        height: 160px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 1rem;
-
-        .controls-upper-area {
-            position: relative;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .button-area {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .slider {
-            z-index: 110;
-            width: 50%;
-            height: fit-content;
-        }
-
-        button {
-            margin-left: 10px;
-            margin-right: 10px;
-            background-color: black;
-            color: white;
-            border: 1px solid yellow;
-            font-size: 20px;
-        }
+      bottom: 10%;
     }
+  }
 }

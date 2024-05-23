@@ -1,15 +1,17 @@
 .circular-navigation {
   z-index: 1112;
-  background: rgba(255, 255, 255, 0.35);
-  border-radius: 200px 200px 0 0; // Half-circle
-  backdrop-filter: blur(7.6px);
-  -webkit-backdrop-filter: blur(7.6px);
+
   width: 100px;
   height: 50px;
   padding: 1em;
   display: flex;
   justify-content: center;
   align-items: center;
+  button {
+    .gVNztz {
+      background: transparent !important;
+    }
+  }
   > * > button {
     border: none;
   }
@@ -17,7 +19,7 @@
   > * > button:hover,
   > * > button:active,
   > * > button:focus {
-    background-color: transparent !important;
+    background-color: white !important;
     border: none;
   }
 
@@ -38,36 +40,65 @@
 
 .side-navigation {
   display: flex;
-  position: absolute;
-  bottom: 10%;
+  position: fixed;
+  bottom: 1%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
+  z-index: 1111;
+  li {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:active {
+        color: $hover !important;
+      }
+    }
+  }
   .nav-wrap {
-    background: rgba(255, 255, 255, 0.35);
-    border-radius: 200px 200px 0 0; // Half-circle
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.6px);
-    -webkit-backdrop-filter: blur(7.6px);
-    height: 150px; // Half the original height
-    width: 300px; // Same as the original width
+    height: 150px;
+    width: 300px;
     @include flex-column;
     justify-content: flex-end;
     align-items: center;
     z-index: 1111;
-    overflow: hidden; // Ensure content stays within the semicircle
+    overflow: hidden;
   }
   .link {
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(7.6px);
-    -webkit-backdrop-filter: blur(7.6px);
-    font-size: 30px;
+    backdrop-filter: blur(4.1px);
+    -webkit-backdrop-filter: blur(4.1px);
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    font-size: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     a {
       color: $text-color;
     }
+  }
+}
+.ljFZHp {
+  .sc-gLLuof {
+    &:nth-child(1) {
+      transform: translate(0, 0.5em) rotateZ(-45deg) !important;
+      width: 2em !important;
+    }
+
+    &:nth-child(3) {
+      transform: translate(0, -0.5em) rotateZ(45deg) !important;
+      width: 2em !important;
+    }
+  }
+}
+.gVNztz {
+  &:hover,
+  &:focus,
+  &:active {
+    color: $hover;
+    background: #fff;
   }
 }

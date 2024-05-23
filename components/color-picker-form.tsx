@@ -166,6 +166,7 @@ export default function ColorPickerForm({
                 onClick={() => setCurrentPart('skin')}
                 readOnly
                 required
+                className="input-pick"
               />
               <CgColorPicker
                 className="picker"
@@ -196,6 +197,7 @@ export default function ColorPickerForm({
                 value={eyeColor}
                 readOnly
                 required
+                className="input-pick"
               />
               <CgColorPicker
                 data-testid="eye-picker"
@@ -226,6 +228,7 @@ export default function ColorPickerForm({
                   setCurrentPart('hair');
                 }}
                 readOnly
+                className="input-pick"
               />
               <CgColorPicker
                 className="picker"

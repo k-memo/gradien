@@ -7,13 +7,19 @@ import CloseS from '../public/close-s.svg';
 import Menu from '../public/menu.svg';
 import Logo from './logo';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { CiCircleInfo } from 'react-icons/ci';
+import { FiInfo } from 'react-icons/fi';
+
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    console.log('Toggling menu');
     setIsOpen(!isOpen);
   };
+  const { data: session, status } = useSession();
+  const loading = status === 'loading';
+
   return (
     <div className="sidenav">
       <div className="logo">
@@ -27,20 +33,22 @@ export default function SideNavXl() {
             <Image src={Menu} alt="Open menu" />
           )}
         </div>
-        <div className={`links ${isOpen ? 'open' : 'closed'}`}>
-          <Link className="bookmark" href={''}>
-            <FiBookmark />
-          </Link>
-          <Link className="plus" href={''}>
+        <div className={`side-links ${isOpen ? 'open' : 'closed'}`}>
+          {!loading && session && (
+            <Link className="bookmark" href="/savedPalettes">
+              <FiBookmark />
+            </Link>
+          )}
+          <Link className="plus" href="/generate">
             <SlPlus size={'40px'} />
           </Link>
-          <Link className="info" href={''}>
-            <RiInformationLine />
+          <Link className="info" href="">
+            <FiInfo />
           </Link>
         </div>
       </div>
       <div className="copyright-icon">
-        <Link href={'copyright'}>©</Link>
+        <Link href="copyright">©</Link>
       </div>
     </div>
   );

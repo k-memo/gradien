@@ -1,0 +1,38 @@
+.btn-container {
+  button {
+    background-color: $main-color;
+    color: white;
+    padding: 8px 40px;
+    box-shadow: 2px 3px 5px #959595;
+    border-radius: 5px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      background-color: $hover;
+    }
+  }
+}
+.container {
+  @include flex-column;
+
+  video {
+    width: 90vw;
+    height: 40vh;
+    border-radius: 20px;
+  }
+}
+@media screen and (min-width: $desktop-breakpoint) {
+  .container {
+    width: 100%;
+    gap: 2em;
+    align-items: center;
+    video {
+      width: 100%;
+      height: 60vh;
+      border-radius: 20px;
+      margin-top: 4em;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-input {
+.input {
   width: 82vw;
   background-color: none;
   border: solid 1px $main-color;
@@ -7,6 +7,10 @@ input {
   height: 40px;
 }
 
+input:focus {
+  border: 0.5px solid $main-color;
+  outline: none;
+}
 .input-error {
   width: 82vw;
   background-color: none;
@@ -15,6 +19,7 @@ input {
   padding-left: 1em;
   height: 40px;
 }
+
 textarea {
   width: 82vw;
   background-color: none;
@@ -31,6 +36,7 @@ label {
   color: $main-color;
   padding-bottom: 4px;
 }
+
 .label-error {
   font-size: 10px;
   text-transform: uppercase;
@@ -42,9 +48,11 @@ label {
   border: solid 1px $yellow;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
 .login-label {
   color: $yellow;
 }
+
 .img-input {
   height: 30vh;
   border: dashed 2px $main-color;
@@ -57,9 +65,18 @@ label {
   align-items: center;
   text-align: center;
 }
+
 .img-input-error {
   border: dashed 2px $error;
   background-color: #dc060655;
+}
+
+.img-input-file-upload {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @media screen and (min-width: $desktop-breakpoint) {

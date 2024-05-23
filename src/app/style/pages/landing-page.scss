@@ -18,7 +18,7 @@ h3 {
 
   .landing-page-greeting {
     @include flex-column;
-    height: 80vh;
+    height: 100vh;
     position: relative;
 
     .sub {
@@ -123,7 +123,7 @@ h3 {
 
 .gradient-bg {
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   position: relative;
   overflow: hidden;
 }
@@ -407,6 +407,7 @@ h3 {
     align-items: flex-start;
     justify-content: center;
     margin-left: 4em;
+    padding-top: 40vh;
     .btn {
       max-width: 100%;
       border-radius: 50px;

@@ -133,6 +133,10 @@
   cursor: pointer;
   border-radius: 10px;
   @include transition;
+  @include flex-row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 
 .delete-btn {
@@ -166,9 +170,9 @@ $blending: hard-light;
 @media screen and (min-width: $desktop-breakpoint) {
   .btn {
     min-width: 200px;
-    max-width: 200px;
+    max-width: 250px;
     height: 40px;
-    font-size: 1rem;
+    font-size: 14px;
   }
 
   .btn-img {
