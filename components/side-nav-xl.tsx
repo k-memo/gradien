@@ -8,12 +8,13 @@ import Menu from '../public/menu.svg';
 import Logo from './logo';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
+import { CiCircleInfo } from 'react-icons/ci';
+import { FiInfo } from 'react-icons/fi';
 
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    console.log('Toggling menu');
     setIsOpen(!isOpen);
   };
   const { data: session, status } = useSession();
@@ -38,11 +39,11 @@ export default function SideNavXl() {
               <FiBookmark />
             </Link>
           )}
-          <Link className="plus" href="">
+          <Link className="plus" href="/generate">
             <SlPlus size={'40px'} />
           </Link>
           <Link className="info" href="">
-            <RiInformationLine />
+            <FiInfo />
           </Link>
         </div>
       </div>

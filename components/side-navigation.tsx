@@ -37,12 +37,12 @@ export default function SideNavigation() {
           tooltip="Saved"
           tooltipPlacement={TooltipPlacement.Right}
         >
-          <Link href={''}>
+          <Link href={'/savedPalettes'}>
             <FiBookmark />
           </Link>
         </CircleMenuItem>
         <CircleMenuItem tooltip="Generate" className="link">
-          <Link href={''}>
+          <Link href={'/generate'}>
             <SlPlus />
           </Link>
         </CircleMenuItem>
