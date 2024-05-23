@@ -29,6 +29,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         getHeader: (name: string) => res.headers?.get(name),
         setHeader: (name: string, value: string) =>
           res.headers?.set(name, value),
+        secret: process.env.SECRET!,
       } as unknown as NextApiResponse,
       authOptions,
     );
@@ -37,17 +38,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json('Unauthorized', { status: 401 });
     }
 
-    const paletteData: {id: string} = await req.json();
+    const paletteData: { id: string } = await req.json();
     const userEmail = session.user?.email;
 
     const deletePalette = await prisma.palette.delete({
-      where : {
+      where: {
         id: paletteData.id,
         user: {
-          email: userEmail
-        }
-      }
-    })
+          email: userEmail,
+        },
+      },
+    });
 
     return NextResponse.json('Deleted Successfully', { status: 200 });
   } catch (error) {

@@ -23,6 +23,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         getHeader: (name: string) => res.headers?.get(name),
         setHeader: (name: string, value: string) =>
           res.headers?.set(name, value),
+        secret: process.env.SECRET!,
       } as unknown as NextApiResponse,
       authOptions,
     );
