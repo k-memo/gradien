@@ -11,6 +11,7 @@ import SideNavXl from '../../components/side-nav-xl';
 import Greeting from '../../components/greeting';
 import LoginNav from '../../components/login-nav';
 import SideNavigation from '../../components/side-navigation';
+import BottomNav from '../../components/bottom-nav';
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         <SideNavXl />
       </div>
       <div className="side-navigation">
-        <SideNavigation />
+        <BottomNav />
       </div>
       <LoginNav />
       <main className="landing-page">
