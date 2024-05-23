@@ -10,6 +10,8 @@ import { signIn, SignInResponse, useSession } from 'next-auth/react';
 import OAuth from './oauth';
 import Home from '@/app/google-signin/page';
 import GoogleSignInPage from '@/app/google-signin/page';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa';
 
 async function saveColorPalette(
   paletteName: string,
@@ -99,7 +101,13 @@ const SwiperContainer = ({
   return (
     <div className="color-palette-div">
       <div className="palette-heading">
-        <Logo />
+        <div className="back">
+          <Link href={'/'} className="home">
+            <FaArrowLeft /> home
+          </Link>
+          <Logo />
+        </div>
+
         <h3>Your Colorpalette</h3>
       </div>
       <div className="palettes">
