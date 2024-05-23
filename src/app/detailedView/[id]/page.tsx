@@ -1,12 +1,13 @@
 'use client';
 // app/detailedView/[id]/page.tsx
-import { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Logo from '../../../../components/logo';
 import ShowMore from '../../../../components/showmore';
 import { IPalette } from '../../../../models/colorpalette.interface';
 import { IGetUserPalette } from '../../../../models/getUserPalette.interface';
+
 
 
 const PaletteDetail = ({ params }: { params: { id: string } }) => {
@@ -90,7 +91,8 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
           ))}
         </div>
       </div>
-     
+      <div className="links">
+        </div>
       <div className="showmore">
         <div className="explanation">
 <ShowMore
