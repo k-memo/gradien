@@ -45,7 +45,7 @@ export default function ImageCropDialog({
           image={imageUrl}
           zoom={zoom}
           crop={crop}
-          aspect={3 / 4}
+          aspect={4 / 3}
           onCropChange={onCropChange}
           onZoomChange={onZoomChange}
           onCropComplete={onCropComplete}
