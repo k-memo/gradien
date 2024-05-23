@@ -93,8 +93,10 @@
     @include flex-row;
     justify-content: space-between;
     width: 52%;
+    align-items: center;
+
     a {
-      color: $text-color;
+      color: $main-color;
       @include transition;
       &:hover {
         color: $hover;
