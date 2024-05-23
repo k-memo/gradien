@@ -52,20 +52,6 @@ async function saveColorPalette(
   }
 }
 
-const handleSignIn = async e => {
-  e.preventDefault();
-  // Generate the sign-in URL for the Google provider
-  const signInUrl = await signIn('google', {
-    redirect: false,
-    callbackUrl: 'http://localhost:3000/',
-  });
-  if ((signInUrl as SignInResponse).url) {
-    // Open the URL in a new tab
-    //@ts-ignore
-    window.open(signInUrl.url, '_blank');
-  }
-};
-
 const DetailSwiper = ({
   colorpalette,
   activeIndex,
