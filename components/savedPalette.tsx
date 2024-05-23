@@ -8,7 +8,7 @@ interface IProps {
 export default function SavedPalette({ palette }: IProps) {
   return (
     <div key={palette.id} className="saved-palette">
-      <Link href={`/palettes/${palette.id}`}>{palette.name}</Link>
+      <Link href={`/detailedView/${palette.id}`}>{palette.name}</Link>
       <div className="palette-colors">
         {palette.palleteJson.colors?.map((color, index) => (
           <div
