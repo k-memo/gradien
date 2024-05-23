@@ -66,7 +66,6 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
         <Logo />
         <h3>Your Colorpalette</h3>
       </div>
-
       <div className="palettes">
         <Swiper
           effect={'cards'}
