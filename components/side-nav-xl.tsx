@@ -1,55 +1,75 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { FiBookmark } from 'react-icons/fi';
-import { RiInformationLine } from 'react-icons/ri';
+import { FiBookmark, FiInfo } from 'react-icons/fi';
 import { SlPlus } from 'react-icons/sl';
 import CloseS from '../public/close-s.svg';
 import Menu from '../public/menu.svg';
 import Logo from './logo';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
-import { CiCircleInfo } from 'react-icons/ci';
-import { FiInfo } from 'react-icons/fi';
 
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  const { data: session, status } = useSession();
-  const loading = status === 'loading';
+
+  const handleBookmarkClick = () => {
+    if (session) {
+      window.location.href = '/savedPalettes';
+    } else {
+      setShowLoginPrompt(true);
+    }
+  };
 
   return (
-    <div className="sidenav">
-      <div className="logo">
-        <Logo />
-      </div>
-      <div className="nav-desktop">
-        <div className="menu" onClick={toggleMenu}>
-          {isOpen ? (
-            <Image src={CloseS} alt="Close menu" />
-          ) : (
-            <Image src={Menu} alt="Open menu" />
-          )}
+    <>
+      <div className="sidenav">
+        <div className="logo">
+          <Logo />
         </div>
-        <div className={`side-links ${isOpen ? 'open' : 'closed'}`}>
-          {!loading && session && (
-            <Link className="bookmark" href="/savedPalettes">
+        <div className="nav-desktop">
+          <div className="menu" onClick={toggleMenu}>
+            {isOpen ? (
+              <Image src={CloseS} alt="Close menu" />
+            ) : (
+              <Image src={Menu} alt="Open menu" />
+            )}
+          </div>
+          <div className={`side-links ${isOpen ? 'open' : 'closed'}`}>
+            <button
+              className="saved-link bookmark"
+              onClick={handleBookmarkClick}
+            >
               <FiBookmark />
+            </button>
+            <Link className="plus" href="/generate">
+              <SlPlus size={'40px'} />
             </Link>
-          )}
-          <Link className="plus" href="/generate">
-            <SlPlus size={'40px'} />
-          </Link>
-          <Link className="info" href="">
-            <FiInfo />
-          </Link>
+            <Link className="info" href="">
+              <FiInfo />
+            </Link>
+          </div>
+        </div>
+
+        <div className="copyright-icon">
+          <Link href="copyright">©</Link>
         </div>
       </div>
-      <div className="copyright-icon">
-        <Link href="copyright">©</Link>
+
+      <div>
+        {showLoginPrompt && (
+          <div className="login-prompt-container">
+            <div className="login-prompt">
+              <p>Please log in to view saved palettes</p>
+              <button onClick={() => setShowLoginPrompt(false)}>Close</button>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 }
