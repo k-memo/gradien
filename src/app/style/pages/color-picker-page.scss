@@ -2,6 +2,7 @@
   .color-div {
     @include flex-column;
     justify-content: center;
+
     .color-input {
       display: flex;
       align-items: center;
@@ -57,7 +58,7 @@
 #image-color-pick-canvas {
   border-radius: 10px;
   width: 82vw;
-  height: 300px;
+  height: 61.5vw;
 }
 
 .submit-area {
@@ -68,56 +69,69 @@
 .cursor-crosshair {
   cursor: crosshair;
 }
+
 .bchfeH {
   justify-content: center;
 }
+
 @media screen and (min-width: $desktop-breakpoint) {
   .color-picker-section {
     @include flex-column;
     align-items: center;
+
     h3 {
       margin-top: 0 !important;
     }
+
     .color-picker-page {
       width: 70vw;
       @include flex-row;
       gap: 3em;
+
       .color-square {
         width: 60px;
         height: 35px;
       }
+
       .picked-colors {
         align-items: flex-start;
       }
+
       p {
         width: 90%;
         // font-weight: 400;
         margin-bottom: 2em;
       }
+
       h3 {
         margin-top: 2em;
       }
     }
+
     .color-div {
       .color-input {
         align-items: flex-end;
         margin-bottom: 2em;
         width: 60%;
+
         input {
           margin-right: 2em;
         }
       }
+
       input[type='placeholder'] {
         color: rgb(45, 43, 43);
       }
     }
+
     .bchfeH {
       width: 60%;
     }
   }
+
   #image-color-pick-canvas {
     border-radius: 5%;
-    height: 500px;
-    width: 40vw;
+    height: 431px;
+    width: 575px
   }
 }
