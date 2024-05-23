@@ -8,7 +8,6 @@ import Logo from './logo';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 
-
 export default function SideNavXl() {
   const [isOpen, setIsOpen] = useState(false);
   const { data: session } = useSession();
