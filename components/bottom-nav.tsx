@@ -11,9 +11,7 @@ export default function Contact() {
 
   const handleBookmarkClick = () => {
     if (session) {
-      // User is logged in, proceed to saved palettes
-      // You can replace '/savedPalettes' with the appropriate href
-      window.location.href = '/savedPalettes'; // Redirect user to saved palettes page
+      window.location.href = '/savedPalettes';
     } else {
       // User is not logged in, show login prompt
       setShowLoginPrompt(true);

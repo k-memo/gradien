@@ -100,3 +100,18 @@
     }
   }
 }
+.nav-desktop {
+  button {
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    &:hover {
+      color: $hover;
+      @include transition;
+    }
+  }
+}
