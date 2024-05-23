@@ -31,12 +31,11 @@ const ImageUploadField = forwardRef((props: Props, ref) => {
       const imageUrl = URL.createObjectURL(file);
       setSources(imageUrl);
     }
-
-    setCropActivated(true);
   };
 
   const setSources = url => {
     setImageSrc(url);
+    setCropActivated(true);
     props.setImageSrcFromChild(url);
   };
 
