@@ -21,7 +21,7 @@ export default function CustomWebcam({
   return (
     <div className="container">
       {imageSrc ? (
-        <img src={imgSrc} alt="webcam" />
+        <img src={imageSrc} alt="webcam" />
       ) : (
         <Webcam ref={webcamRef} />
       )}
