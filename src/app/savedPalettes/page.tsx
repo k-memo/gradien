@@ -47,7 +47,7 @@ export default function SavedPalettes() {
           <FaArrowLeft />
         </Link>
         {session ? (
-          <h2>{session.user?.name}'s palettes</h2>
+          <h2>{session.user?.name}&apos; palettes</h2>
         ) : (
           <h2>Saved Palettes</h2>
         )}
