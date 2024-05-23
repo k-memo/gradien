@@ -94,3 +94,11 @@
     }
   }
 }
+.gVNztz {
+  &:hover,
+  &:focus,
+  &:active {
+    color: $hover;
+    background: #fff;
+  }
+}
