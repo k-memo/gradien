@@ -1,10 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { IPalette } from '../../../../models/colorpalette.interface';
-import prisma from '../../../../lib/prisma';
-import { getServerSideProps } from 'next/dist/build/templates/pages';
-import { getServerSession } from 'next-auth';
-import authOptions from '../../../../lib/authOptions';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth';
+import { NextRequest, NextResponse } from 'next/server';
+import authOptions from '../../../../lib/authOptions';
+import prisma from '../../../../lib/prisma';
+import { IPalette } from '../../../../models/colorpalette.interface';
 
 export interface ISavePalette {
   paletteName: string;
@@ -35,9 +34,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     );
 
     if (!session) {
-      // @ts-ignore
-      res.status(401).json({ error: 'Unauthorized' });
-      return;
+      return NextResponse.json('Unauthorized', { status: 401 });
     }
 
     const paletteData: ISavePalette = await req.json();

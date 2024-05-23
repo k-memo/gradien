@@ -1,22 +1,22 @@
 import { ISavePalette } from '@/app/api/savePalette/route';
-import { useEffect, useState } from 'react';
+import { signIn, SignInResponse, useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { useState } from 'react';
+import { FaArrowLeft } from 'react-icons/fa';
 import { FiSave } from 'react-icons/fi';
+import { toast, ToastContainer } from 'react-toastify';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
 import Logo from './logo';
 import ShowMore from './showmore';
-import { signIn, SignInResponse, useSession } from 'next-auth/react';
-import OAuth from './oauth';
-import Home from '@/app/google-signin/page';
-import GoogleSignInPage from '@/app/google-signin/page';
-import Link from 'next/link';
-import { FaArrowLeft } from 'react-icons/fa';
+import 'react-toastify/dist/ReactToastify.css';
 
 async function saveColorPalette(
   paletteName: string,
   paletteDesc: string,
   colorpalette: IPalette,
+  setPaletteSaved,
 ) {
   try {
     const savePalette: ISavePalette = {
@@ -36,6 +36,11 @@ async function saveColorPalette(
     if (!response.ok) {
       throw new Error('Failed to save palette');
     }
+
+    setPaletteSaved(true);
+    toast.success('Palette Saved Successfully !', {
+      position: 'top-right',
+    });
 
     console.log(await response.text());
   } catch (error) {
@@ -70,6 +75,7 @@ const SwiperContainer = ({
   const [paletteName, setPaletteName] = useState<string>('');
   const [paletteDesc, setPaletteDesc] = useState<string>('');
   const { data: session, status } = useSession();
+  const [paletteSaved, setPaletteSaved] = useState<boolean>(false);
 
   const popupCenter = (url, title) => {
     const dualScreenLeft = window.screenLeft ?? window.screenX;
@@ -100,6 +106,7 @@ const SwiperContainer = ({
 
   return (
     <div className="color-palette-div">
+      <ToastContainer />
       <div className="palette-heading">
         <div className="back">
           <Link href={'/'} className="home">
@@ -143,7 +150,12 @@ const SwiperContainer = ({
         <form
           onSubmit={e => {
             e.preventDefault();
-            saveColorPalette(paletteName, paletteDesc, colorpalette);
+            saveColorPalette(
+              paletteName,
+              paletteDesc,
+              colorpalette,
+              setPaletteSaved,
+            );
           }}
           className="swiper-form"
         >
@@ -169,22 +181,31 @@ const SwiperContainer = ({
               />
             </div>
           </div>
-          {
-            // @ts-ignore
-            status === 'authenticated' ? (
-              <button type="submit" className="btn-main btn">
-                Save
-                <FiSave className="link-icon" />
-              </button>
-            ) : (
-              <button
-                onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
-                className="google-btn"
-              >
-                Sign In with Google
-              </button>
-            )
-          }
+          {status === 'authenticated' && paletteSaved === true && (
+            <button
+              type="submit"
+              className="btn-main btn"
+              disabled
+              style={{ backgroundColor: 'green' }}
+            >
+              Saved
+              <FiSave className="link-icon" />
+            </button>
+          )}
+          {status === 'authenticated' && paletteSaved === false && (
+            <button type="submit" className="btn-main btn">
+              Save
+              <FiSave className="link-icon" />
+            </button>
+          )}
+          {status !== 'authenticated' && (
+            <button
+              onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
+              className="google-btn"
+            >
+              Sign In with Google
+            </button>
+          )}
         </form>
       </div>
       <div className="showmore">
