@@ -5,6 +5,7 @@
   min-height: 100vh;
   .home {
     font-size: 20px;
+
     &:hover {
       color: $hover;
       @include transition;
