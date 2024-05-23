@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
 import OpenAI, { ClientOptions } from 'openai';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
-import { prestring } from '../../../../models/prestring.const';
 import { IPalette } from '../../../../models/colorpalette.interface';
-import error from 'next/error';
+import { prestring } from './prestring.const';
 
 export const runtime = 'edge';
 
@@ -38,6 +37,11 @@ const getOpenApiResponse = async (userMessage: string) => {
   }
 };
 
+const isHexCode = (str: string): boolean => {
+  const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
+  return hexPattern.test(str);
+};
+
 export async function POST(req) {
   try {
     let generateUntil = true;
@@ -46,14 +50,17 @@ export async function POST(req) {
     for (let index = 0; index < 4; index++) {
       const colorPalette: IPalette = await getOpenApiResponse(req.text());
 
-      if (colorPalette.colors?.length > 0) {
+      if (
+        colorPalette.colors?.length > 0 &&
+        isHexCode(colorPalette.colors[0].hex)
+      ) {
         correctPalette = { ...colorPalette };
         break;
       }
     }
 
     if (correctPalette == null) {
-      throw 'Something went wrong...';
+      throw Error('Something went wrong...');
     }
 
     return NextResponse.json(correctPalette, { status: 200 });

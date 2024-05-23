@@ -28,7 +28,7 @@ export interface IPalette {
 
 export interface IPalletteColor {
 name: string; // The color name, cyan, lightblue, yellow etc.
-hex: string; // HEXcode of the color e.g 'FF00FF'
+hex: string; // HEXcode of the color e.g '#FF00FF', dont forget to use the #
 message: string; // a message why this color works well with the person and what kinda feelings it envokes, in context of one or multiple colors provided that will be provide by the request
 }
 
