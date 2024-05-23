@@ -166,6 +166,21 @@
 
 $circle-size: 100%;
 $blending: hard-light;
+.google-btn {
+  background-color: $hover;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 0px;
+  width: 50%;
+  align-self: flex-end;
+  cursor: pointer;
+  &:hover,
+  &:active {
+    background-color: $main-color;
+    @include transition;
+  }
+}
 
 @media screen and (min-width: $desktop-breakpoint) {
   .btn {
@@ -178,5 +193,8 @@ $blending: hard-light;
   .btn-img {
     padding: 10px 50px;
     border-radius: 10px;
+  }
+  .google-btn {
+    width: 100%;
   }
 }
