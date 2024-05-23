@@ -40,13 +40,14 @@ nav {
   }
 }
 .login-prompt-container {
-  position: relative;
-  z-index: 111;
+  position: absolute;
+  z-index: 1111;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(9.7px);
   -webkit-backdrop-filter: blur(9.7px);
   height: 100vh;
   width: 100vw;
+  margin: 0;
   .login-prompt {
     position: absolute;
     top: 50%;
