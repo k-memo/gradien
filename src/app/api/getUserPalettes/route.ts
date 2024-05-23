@@ -14,7 +14,7 @@ interface ISession {
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
-    const session = await getServerSession(authOptions);
+    const session: ISession | null = await getServerSession(authOptions);
 
     if (!session) {
       // @ts-ignore
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
       return;
     }
 
-    const userEmail = (session as any).user?.email;
+    const userEmail = session.user?.email;
 
     const pallettes = await prisma.palette.findMany({
       where: {
