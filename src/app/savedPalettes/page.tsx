@@ -2,6 +2,10 @@
 import { useState, useEffect } from 'react';
 import SavedPalette from '../../../components/savedPalette';
 import { IGetUserPalette } from '../../../models/getUserPalette.interface';
+import Link from 'next/link';
+import { FaArrowLeft } from 'react-icons/fa6';
+import { useSession } from 'next-auth/react';
+import { FiPlus } from 'react-icons/fi';
 
 async function getPalettes(): Promise<IGetUserPalette[]> {
   const response = await fetch('api/getUserPalettes');
@@ -22,6 +26,7 @@ async function getPalettes(): Promise<IGetUserPalette[]> {
 
 export default function SavedPalettes() {
   const [palettes, setPalettes] = useState<IGetUserPalette[]>([]);
+  const { data: session } = useSession();
 
   useEffect(() => {
     const fetchPalettes = async () => {
@@ -37,7 +42,18 @@ export default function SavedPalettes() {
 
   return (
     <section id="saved">
-      <h2>Saved Palettes</h2>
+      <div className="saved-heading">
+        <Link href={'/'} className="home">
+          <FaArrowLeft />
+        </Link>
+        {session ? (
+          <h2>{session.user?.name}'s palettes</h2>
+        ) : (
+          <h2>Saved Palettes</h2>
+        )}
+        <div></div>
+      </div>
+
       <div className="saved-palettes">
         {palettes.length === 0 ? (
           <p>No palettes found</p>
@@ -46,6 +62,11 @@ export default function SavedPalettes() {
             <SavedPalette key={palette.id} palette={palette} />
           ))
         )}
+        <div>
+          <Link href={'/generate'} className="btn btn-second">
+            New Palette <FiPlus />
+          </Link>
+        </div>
       </div>
     </section>
   );
