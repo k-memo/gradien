@@ -17,7 +17,6 @@ export default function Home() {
   const [imageSrcFromChild, setImageSrcFromChild] = React.useState();
   const childRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
   const handlePrevStep = () => {
     setFormStep(prevStep => Math.max(prevStep - 1, 0));
   };

@@ -10,6 +10,7 @@ import { signIn, SignInResponse, useSession } from 'next-auth/react';
 import OAuth from './oauth';
 import Home from '@/app/google-signin/page';
 import GoogleSignInPage from '@/app/google-signin/page';
+import { toast, ToastContainer } from 'react-toastify';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 
@@ -17,6 +18,7 @@ async function saveColorPalette(
   paletteName: string,
   paletteDesc: string,
   colorpalette: IPalette,
+  setPaletteSaved,
 ) {
   try {
     const savePalette: ISavePalette = {
@@ -36,6 +38,9 @@ async function saveColorPalette(
     if (!response.ok) {
       throw new Error('Failed to save palette');
     }
+
+    setPaletteSaved(true);
+    toast('Wow so easy!');
 
     console.log(await response.text());
   } catch (error) {
@@ -70,6 +75,7 @@ const SwiperContainer = ({
   const [paletteName, setPaletteName] = useState<string>('');
   const [paletteDesc, setPaletteDesc] = useState<string>('');
   const { data: session, status } = useSession();
+  const [paletteSaved, setPaletteSaved] = useState<boolean>(false);
 
   const popupCenter = (url, title) => {
     const dualScreenLeft = window.screenLeft ?? window.screenX;
@@ -143,7 +149,12 @@ const SwiperContainer = ({
         <form
           onSubmit={e => {
             e.preventDefault();
-            saveColorPalette(paletteName, paletteDesc, colorpalette);
+            saveColorPalette(
+              paletteName,
+              paletteDesc,
+              colorpalette,
+              setPaletteSaved,
+            );
           }}
           className="swiper-form"
         >
@@ -169,14 +180,28 @@ const SwiperContainer = ({
               />
             </div>
           </div>
+          <ToastContainer />
           {
-            // @ts-ignore
-            status === 'authenticated' ? (
+            // prettier-ignore
+            (status === 'authenticated' && paletteSaved === true) && (
+              <button type="submit" className="btn-main btn" disabled style={{backgroundColor: 'green'}}> 
+                Saved
+                <FiSave className="link-icon" />
+              </button>
+            )
+          }
+          {
+            // prettier-ignore
+            (status === 'authenticated' && paletteSaved === false) && (
               <button type="submit" className="btn-main btn">
                 Save
                 <FiSave className="link-icon" />
               </button>
-            ) : (
+            )
+          }
+          {
+            // prettier-ignore
+            status !== 'authenticated' && (
               <button
                 onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
                 className="google-btn"
