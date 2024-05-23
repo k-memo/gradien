@@ -22,17 +22,7 @@ interface ISession {
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
-    const session: ISession | null = await getServerSession(
-      req as unknown as NextApiRequest,
-      {
-        ...res,
-        getHeader: (name: string) => res.headers?.get(name),
-        setHeader: (name: string, value: string) =>
-          res.headers?.set(name, value),
-        secret: process.env.SECRET!,
-      } as unknown as NextApiResponse,
-      authOptions,
-    );
+    const session: ISession | null = await getServerSession(authOptions);
 
     if (!session) {
       return NextResponse.json('Unauthorized', { status: 401 });
