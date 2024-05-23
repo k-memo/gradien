@@ -68,7 +68,7 @@ export default function Home() {
         {formStep === 2 && (
           <section className="palette-section" data-testid="palette-section">
             <SwiperContainer
-              colorpalette={colorpalette}
+              colorpalette={colorpalette as IPalette}
               activeIndex={activeIndex}
               getColor={getColor}
             />
