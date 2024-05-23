@@ -166,13 +166,14 @@
 
 $circle-size: 100%;
 $blending: hard-light;
+
 .google-btn {
   background-color: $hover;
   color: white;
   border-radius: 10px;
   border: none;
   padding: 10px 0px;
-  width: 50%;
+  width: 100%;
   align-self: flex-end;
   cursor: pointer;
   &:hover,
@@ -195,6 +196,6 @@ $blending: hard-light;
     border-radius: 10px;
   }
   .google-btn {
-    width: 100%;
+    width: 50%;
   }
 }
