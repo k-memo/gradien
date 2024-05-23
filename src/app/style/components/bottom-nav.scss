@@ -1,0 +1,78 @@
+nav {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  height: 60px;
+  text-align: center;
+  border-radius: 100px;
+  box-shadow: 1px 3px 5px #4100475a;
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $main-color;
+    cursor: pointer;
+    &:active {
+      color: $hover;
+    }
+  }
+  ul {
+    list-style: none;
+    @include flex-row;
+    margin: 0;
+    padding: 0;
+    gap: 3em;
+    align-items: center;
+  }
+  li {
+    font-size: 30px;
+    &:hover,
+    &:active {
+      color: $hover;
+      font-size: 32px;
+      @include transition;
+    }
+  }
+}
+.login-prompt-container {
+  position: absolute;
+  z-index: 1111;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  .login-prompt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    border-radius: 10px;
+    width: 70%;
+    text-align: center;
+    font-family: 'Spartan-Regular' !important;
+    button {
+      background-color: transparent;
+      border: 1px solid $main-color;
+      border-radius: 10px;
+      width: 100%;
+      margin-top: 1em;
+      padding: 5px 0px;
+      cursor: pointer;
+      &:active {
+        background-color: $hover;
+      }
+    }
+  }
+}

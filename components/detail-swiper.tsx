@@ -12,47 +12,17 @@ import Logo from './logo';
 import ShowMore from './showmore';
 import 'react-toastify/dist/ReactToastify.css';
 
-async function saveColorPalette(
-  paletteName: string,
-  paletteDesc: string,
-  colorpalette: IPalette,
-  setPaletteSaved,
-) {
-  try {
-    const savePalette: ISavePalette = {
-      paletteName,
-      paletteDesc,
-      palette: colorpalette,
-    };
+const handleDelete = (id: string) => {
+  console.log();
+};
 
-    const response = await fetch('/api/savePalette', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(savePalette),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to save palette');
-    }
-
-    setPaletteSaved(true);
-    toast.success('Palette Saved Successfully !', {
-      position: 'top-right',
-    });
-
-    console.log(await response.text());
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-const SwiperContainer = ({
+const DetailSwiper = ({
+  paletteId,
   colorpalette,
   activeIndex,
   getColor,
 }: {
+  paletteId: string;
   colorpalette: IPalette;
   activeIndex: number;
   getColor: (index: number) => void;
@@ -61,7 +31,6 @@ const SwiperContainer = ({
   const [paletteName, setPaletteName] = useState<string>('');
   const [paletteDesc, setPaletteDesc] = useState<string>('');
   const { data: session, status } = useSession();
-  const [paletteSaved, setPaletteSaved] = useState<boolean>(false);
 
   const popupCenter = (url, title) => {
     const dualScreenLeft = window.screenLeft ?? window.screenX;
@@ -133,66 +102,14 @@ const SwiperContainer = ({
         </div>
       </div>
       <div className="links">
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            saveColorPalette(
-              paletteName,
-              paletteDesc,
-              colorpalette,
-              setPaletteSaved,
-            );
-          }}
-          className="swiper-form"
+        <button
+          type="submit"
+          className="btn-main btn"
+          onClick={() => handleDelete(paletteId)}
         >
-          <div className="inputs">
-            <div className="nam-form">
-              <label>Palette Name:</label>
-              <input
-                type="text"
-                placeholder="Palette Name"
-                value={paletteName}
-                onChange={e => setPaletteName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="description-form">
-              <label>Palette Description:</label>
-              <input
-                type="text"
-                placeholder="Palette Description"
-                value={paletteDesc}
-                onChange={e => setPaletteDesc(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          {status === 'authenticated' && paletteSaved === true && (
-            <button
-              type="submit"
-              className="btn-main btn"
-              disabled
-              style={{ backgroundColor: 'green' }}
-            >
-              Saved
-              <FiSave className="link-icon" />
-            </button>
-          )}
-          {status === 'authenticated' && paletteSaved === false && (
-            <button type="submit" className="btn-main btn">
-              Save
-              <FiSave className="link-icon" />
-            </button>
-          )}
-          {status !== 'authenticated' && (
-            <button
-              onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
-              className="google-btn"
-            >
-              Sign In with Google
-            </button>
-          )}
-        </form>
+          Delete
+          <FiSave className="link-icon" />
+        </button>
       </div>
       <div className="showmore">
         <div className="explanation">
@@ -208,4 +125,4 @@ const SwiperContainer = ({
   );
 };
 
-export default SwiperContainer;
+export default DetailSwiper;

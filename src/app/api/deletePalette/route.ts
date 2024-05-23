@@ -37,18 +37,19 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json('Unauthorized', { status: 401 });
     }
 
-    const paletteData: ISavePalette = await req.json();
+    const paletteData: {id: string} = await req.json();
     const userEmail = session.user?.email;
 
-    const newPalette = await prisma.palette.create({
-      data: {
-        name: paletteData.paletteName,
-        description: paletteData.paletteDesc,
-        user: { connect: { email: userEmail } },
-        palleteJson: JSON.stringify(paletteData.palette),
-      },
-    });
-    return NextResponse.json('', { status: 200 });
+    const deletePalette = await prisma.palette.delete({
+      where : {
+        id: paletteData.id,
+        user: {
+          email: userEmail
+        }
+      }
+    })
+
+    return NextResponse.json('Deleted Successfully', { status: 200 });
   } catch (error) {
     console.error('Error:', error);
     return NextResponse.json(

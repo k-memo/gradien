@@ -22,21 +22,22 @@ h3 {
     position: relative;
 
     .sub {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: normal;
     }
   }
 }
 .landing-text {
   position: absolute;
-  height: 60vh;
-  width: 80%;
+  height: 70%;
+  width: 100%;
   text-align: center;
   z-index: 100;
+
   @include flex-column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-left: 15vw;
+  padding-left: 0vw;
   padding-top: 20vh;
 
   .btn {
@@ -57,7 +58,7 @@ h3 {
   align-items: center;
   gap: 1em;
   padding-right: 2em;
-  position: absolute;
+  position: fixed;
   z-index: 100;
   width: 100%;
 
@@ -285,6 +286,11 @@ h3 {
   }
   .landing-page-greeting {
     height: 100vh !important;
+    .sub {
+      font-size: 14px !important;
+      margin-top: -20px;
+      margin-left: 5px;
+    }
   }
   //gradient beginning
   .gradient-container {
@@ -407,7 +413,14 @@ h3 {
     align-items: flex-start;
     justify-content: center;
     margin-left: 4em;
-    padding-top: 40vh;
+    padding-top: 35vh;
+    position: absolute;
+    height: 60vh;
+    width: 80%;
+    text-align: center;
+    z-index: 100;
+    @include flex-column;
+    padding-left: 15vw;
     .btn {
       max-width: 100%;
       border-radius: 50px;
@@ -426,8 +439,9 @@ h3 {
     }
   }
   .heading {
+    margin-bottom: 6em;
     h1 {
-      font-size: $h1-l;
+      font-size: 70px;
     }
     img {
       width: 50px;
