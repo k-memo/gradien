@@ -1,10 +1,10 @@
 .palette {
   @include flex-row;
-  margin: 2em 0em;
+  justify-content: center;
 }
 
 .palette-color {
-  width: 50px;
+  width: 60px;
   height: 60px;
   border-radius: 5px;
   box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
@@ -37,7 +37,7 @@
 .swiper {
   width: 240px;
   height: 320px;
-  margin-top: 1em;
+  margin: 0 !important;
 }
 
 .swiper-slide {
@@ -51,14 +51,17 @@
   color: #fff;
   box-shadow: 4px 0px 10px #1502291f;
 }
+
 .ex-heading {
   @include flex-row;
   justify-content: space-between;
   align-items: center;
+
   h2 {
     font-size: 16px;
   }
 }
+
 .showmore {
   background: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
@@ -66,11 +69,14 @@
   backdrop-filter: blur(7.6px);
   -webkit-backdrop-filter: blur(7.6px);
   padding: 1em 2em;
+  width: 100%;
 }
+
 .explanation {
   h2 {
     font-size: 14px;
   }
+
   p {
     width: 100%;
     font-family: Spartan-Regular;
@@ -79,7 +85,9 @@
 }
 
 .palette-heading {
-  text-align: center;
+  @include flex-column;
+  align-items: center;
+  width: 100%;
 
   h2 {
     text-transform: uppercase;
@@ -89,20 +97,22 @@
     margin-top: 1em;
     margin-bottom: 1em;
   }
+
   .back {
     @include flex-row;
     justify-content: space-between;
-    width: 41%;
+    width: 100%;
     align-items: center;
-    margin-left: 10vw;
 
     a {
       color: $main-color;
       @include transition;
+
       &:hover {
         color: $hover;
       }
     }
+
     p {
       @include flex-row;
       gap: 1em;
@@ -116,6 +126,7 @@
   @include flex-column;
   gap: 1em;
   margin: 3em 0em !important;
+
   .btn-second {
     width: 50%;
   }
@@ -124,12 +135,14 @@
     width: 70%;
   }
 }
+
 .swiper-form {
   .inputs {
     @include flex-column;
     gap: 1em;
     margin-bottom: 1em;
   }
+
   input {
     width: 100%;
     background-color: none;
@@ -140,55 +153,95 @@
     font-family: Spartan-Regular;
     box-shadow: inset 0 0 5px rgba(31, 0, 66, 0.227);
   }
+
   .btn-main {
     width: 100% !important;
   }
+
   @include flex-column;
   gap: 1em;
 }
+
+.palettes {
+  @include flex-column;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+
+  .palette {
+    width: 100%;
+  }
+}
+
 @media screen and (min-width: $desktop-breakpoint) {
   .palette-section {
     @include flex-column;
+    padding-left: 5em;
+    padding-right: 5em;
     align-items: center;
   }
+
+  .palette-heading {
+    @include flex-column;
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+
+
   .color-palette-div {
+    @include flex-column;
+    align-items: center;
+    width: 100%;
+
     .links {
       @include flex-row;
       justify-content: center;
     }
+
     .btn {
       max-width: 100%;
       align-self: flex-end;
     }
+
     .btn-main {
       padding: 10px 0px;
       max-width: 300px;
     }
+
     .btn-second {
       max-width: 200px;
     }
   }
+
   .palettes {
     @include flex-row;
-    margin-bottom: 4em;
-    margin-left: 10em;
+    position: relative;
+    justify-content: center;
+    gap: 13em;
+    max-width: 1200px;
+
+    * {
+      margin: 0;
+    }
+
     .palette {
-      transform: rotate(90deg);
-      margin: 14em 0em;
-      height: 0px;
-      margin-left: -15em;
+      flex-direction: column;
+      width: fit-content;
     }
   }
+
   .swiper {
     width: 340px;
     height: 420px;
     margin-top: 2em;
   }
+
   .palette-color {
     &:hover {
       transform: scale(1.2);
     }
   }
+
   .swiper-form {
     .inputs {
       @include flex-row;
@@ -196,7 +249,9 @@
       margin-bottom: 1em;
     }
   }
+
   .showmore {
-    margin: 0em 10em;
+    margin: auto;
+    max-width: 800px;
   }
 }

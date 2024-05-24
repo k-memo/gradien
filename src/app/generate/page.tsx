@@ -8,6 +8,9 @@ import NavForm from '../../../components/nav-form';
 import { IPalette } from '../../../models/colorpalette.interface';
 import { LoadingGlobal } from '../../../components/loading-global';
 import SwiperContainer from '../../../components/swiper-container';
+import ExportLogo from '../../../public/export-logo.svg';
+import Image from 'next/image';
+import PrintPalette from '../../../components/printPalette';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
@@ -103,6 +106,7 @@ export default function Home() {
           </>
         )}
       </div>
+      {colorpalette && <PrintPalette palette={colorpalette} />}
     </main>
   );
 }

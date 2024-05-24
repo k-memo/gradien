@@ -98,7 +98,10 @@ const SwiperContainer = ({
           <Link href={'/'} className="home">
             <FaArrowLeft /> home
           </Link>
-          <Logo />
+          <div style={{ marginRight: '4em' }}>
+            <Logo />
+          </div>
+          <div></div>
         </div>
 
         <h3>Your Colorpalette</h3>
