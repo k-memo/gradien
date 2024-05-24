@@ -7,6 +7,7 @@ import ImageUploadField from '../../../components/image-upload-field';
 import { LoadingGlobal } from '../../../components/loading-global';
 import Logo from '../../../components/logo';
 import NavForm from '../../../components/nav-form';
+import PrintPalette from '../../../components/printPalette';
 import SwiperContainer from '../../../components/swiper-container';
 import { IPalette } from '../../../models/colorpalette.interface';
 
@@ -107,6 +108,7 @@ export default function Home() {
           </>
         )}
       </div>
+      {colorpalette && <PrintPalette palette={colorpalette} />}
     </main>
   );
 }
