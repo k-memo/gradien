@@ -11,12 +11,14 @@ import { IPalette } from '../models/colorpalette.interface'; // Import IPalette 
 import Logo from './logo';
 import ShowMore from './showmore';
 import 'react-toastify/dist/ReactToastify.css';
+import { LoadingContainer } from './loading-container';
 
 async function saveColorPalette(
   paletteName: string,
   paletteDesc: string,
   colorpalette: IPalette,
   setPaletteSaved,
+  setButtonLoading,
 ) {
   try {
     const savePalette: ISavePalette = {
@@ -25,6 +27,7 @@ async function saveColorPalette(
       palette: colorpalette,
     };
 
+    setButtonLoading(true);
     const response = await fetch('/api/savePalette', {
       method: 'POST',
       headers: {
@@ -42,9 +45,11 @@ async function saveColorPalette(
       position: 'top-right',
     });
 
+    setButtonLoading(false);
     console.log(await response.text());
   } catch (error) {
     console.error('Error:', error);
+    setButtonLoading(false);
   }
 }
 
@@ -62,6 +67,7 @@ const SwiperContainer = ({
   const [paletteDesc, setPaletteDesc] = useState<string>('');
   const { data: session, status } = useSession();
   const [paletteSaved, setPaletteSaved] = useState<boolean>(false);
+  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
 
   const popupCenter = (url, title) => {
     const dualScreenLeft = window.screenLeft ?? window.screenX;
@@ -141,6 +147,7 @@ const SwiperContainer = ({
               paletteDesc,
               colorpalette,
               setPaletteSaved,
+              setButtonLoading,
             );
           }}
           className="swiper-form"
@@ -170,7 +177,7 @@ const SwiperContainer = ({
           {status === 'authenticated' && paletteSaved === true && (
             <button
               type="submit"
-              className="btn-main btn"
+              className="btn-main btn relative"
               disabled
               style={{ backgroundColor: 'green' }}
             >
@@ -179,15 +186,25 @@ const SwiperContainer = ({
             </button>
           )}
           {status === 'authenticated' && paletteSaved === false && (
-            <button type="submit" className="btn-main btn">
-              Save
-              <FiSave className="link-icon" />
+            <button
+              type="submit"
+              className="btn-main btn relative overflow-hidden"
+              disabled={buttonLoading}
+            >
+              {buttonLoading ? (
+                <LoadingContainer />
+              ) : (
+                <>
+                  Save
+                  <FiSave className="link-icon" />
+                </>
+              )}
             </button>
           )}
           {status !== 'authenticated' && (
             <button
               onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
-              className="google-btn"
+              className="google-btn disabled"
             >
               Sign In with Google
             </button>

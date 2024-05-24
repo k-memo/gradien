@@ -39,7 +39,9 @@ export default function Home() {
       <NavForm formStep={formStep} setFormStep={setFormStep} />
 
       <div className="multi-step-item">
-        {isLoading === true && <LoadingGlobal />}
+        {isLoading === true && (
+          <LoadingGlobal text="Generating your colorpalette...." />
+        )}
         {formStep === 0 && (
           <section id="upload-section" data-testid="upload-section">
             <ImageUploadField
