@@ -49,7 +49,7 @@ export default function SideNavXl() {
             <Link className="plus" href="/generate">
               <SlPlus size={'40px'} />
             </Link>
-            <Link className="info" href="">
+            <Link className="info" href="/information">
               <FiInfo />
             </Link>
           </div>

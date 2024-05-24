@@ -33,7 +33,7 @@ export default function Contact() {
             </Link>
           </li>
           <li key="contact">
-            <Link href={''}>
+            <Link href={'/information'}>
               <RiInformationLine />
             </Link>
           </li>
