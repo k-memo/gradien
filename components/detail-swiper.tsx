@@ -1,20 +1,17 @@
-import { ISavePalette } from '@/app/api/savePalette/route';
-import { signIn, SignInResponse, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
-import { FiSave } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
 import Logo from './logo';
 import ShowMore from './showmore';
-import 'react-toastify/dist/ReactToastify.css';
-
-const handleDelete = (id: string) => {
-  console.log();
-};
+import { LoadingContainer } from './loading-container';
+import { FiTrash } from 'react-icons/fi';
 
 const DetailSwiper = ({
   paletteId,
@@ -30,33 +27,50 @@ const DetailSwiper = ({
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [paletteName, setPaletteName] = useState<string>('');
   const [paletteDesc, setPaletteDesc] = useState<string>('');
+  const [deleted, setDeleted] = useState<boolean>(false);
+  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
   const { data: session, status } = useSession();
+  const router = useRouter();
 
-  const popupCenter = (url, title) => {
-    const dualScreenLeft = window.screenLeft ?? window.screenX;
-    const dualScreenTop = window.screenTop ?? window.screenY;
-    const width =
-      window.innerWidth ?? document.documentElement.clientWidth ?? screen.width;
+  const paletteInfo = colorpalette?.paletteInfo || '';
+  const userColorDisposition = colorpalette?.userColorDisposition || '';
 
-    const height =
-      window.innerHeight ??
-      document.documentElement.clientHeight ??
-      screen.height;
+  const handleDelete = async (id: string) => {
+    try {
+      setButtonLoading(true);
+      const response = await fetch('/api/deletePalette', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }), // Corrected the body payload format
+      });
 
-    const systemZoom = width / window.screen.availWidth;
+      if (!response.ok) {
+        throw new Error('Failed to delete palette');
+      }
 
-    const left = (width - 500) / 2 / systemZoom + dualScreenLeft;
-    const top = (height - 550) / 2 / systemZoom + dualScreenTop;
+      toast.success(
+        'Palette Deleted Successfully! You will be redirected soon!',
+        {
+          position: 'top-right',
+        },
+      );
 
-    const newWindow = window.open(
-      url,
-      title,
-      `width=${500 / systemZoom},height=${
-        550 / systemZoom
-      },top=${top},left=${left}`,
-    );
+      setTimeout(() => {
+        router.push('/savedPalettes');
+      }, 5000);
 
-    newWindow?.focus();
+      setButtonLoading(false);
+      setDeleted(true);
+      console.log(await response.text());
+    } catch (error) {
+      toast.error('Could not delete Palette! You will be redirected soon!', {
+        position: 'top-right',
+      });
+      console.error('Error:', error);
+      setButtonLoading(false);
+    }
   };
 
   return (
@@ -104,20 +118,31 @@ const DetailSwiper = ({
       <div className="links">
         <button
           type="submit"
-          className="btn-main btn"
+          className="delete-btn btn relative overflow-hidden"
           onClick={() => handleDelete(paletteId)}
+          disabled={deleted}
         >
-          Delete
-          <FiSave className="link-icon" />
+          {buttonLoading ? (
+            <LoadingContainer />
+          ) : (
+            <>
+              {deleted ? (
+                <>DELETED</>
+              ) : (
+                <>
+                  Delete
+                  <FiTrash className="link-icon" />
+                </>
+              )}
+            </>
+          )}
         </button>
       </div>
       <div className="showmore">
         <div className="explanation">
           <ShowMore
             header="Colorpalette Info"
-            explanation={
-              colorpalette?.paletteInfo + colorpalette?.userColorDisposition
-            }
+            explanation={`${paletteInfo}${userColorDisposition}`}
           />
         </div>
       </div>

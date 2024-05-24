@@ -1,0 +1,11 @@
+.detail-section {
+  background-image: url(../../../../public/gardien.jpg);
+  background-size: cover;
+  padding: 4em;
+
+  h3 {
+    color: $main-color;
+  }
+}
+
+@media screen and (min-width: $desktop-breakpoint) {}

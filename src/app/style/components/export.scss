@@ -1,0 +1,128 @@
+@media print {
+  .nav-form {
+    display: none !important;
+  }
+
+  .bottom-nav {
+    display: none !important;
+  }
+
+  .color-palette-div {
+    display: none !important;
+  }
+
+  #export {
+    display: block;
+    visibility: visible;
+
+    * {
+      display: block;
+    }
+  }
+}
+
+@media screen {
+  #export {
+    display: none;
+  }
+}
+
+#export {
+  background-size: cover;
+  padding: 0em;
+  height: 100vh;
+
+  .heading {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 3em 0em 0em 0em;
+
+    p {
+      font-size: 22px;
+      color: white;
+      font-family: Spartan-Regular;
+      font-weight: 400;
+    }
+  }
+
+  .export-containers {
+    @include flex-row;
+    gap: 1em;
+    padding: 0em 3em;
+
+    .export-con-1 {
+      @include flex-column;
+      gap: 10px;
+      background-color: rgb(255, 255, 255, 0.9);
+      padding: 2em;
+      height: 100%;
+      width: 60vw;
+      border-radius: 10px;
+      box-shadow: 1px 3px 10px #636363;
+    }
+
+    .export-con-2 {
+      background-color: rgb(255, 255, 255, 0.9);
+      padding: 2em;
+      height: 50%;
+      width: 40vw;
+      @include flex-column;
+      justify-content: flex-start;
+      border-radius: 10px;
+      box-shadow: 1px 3px 5px #343434;
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+        color: $text-color;
+      }
+
+      p {
+        font-family: Spartan-Regular;
+        font-size: 12px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .color-div {
+    @include flex-row;
+    gap: 10px;
+    align-items: center;
+
+    .color {
+      width: 60px;
+      height: 50px;
+      border-radius: 5px;
+      background-color: black;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-color;
+    }
+
+    .color-div-text {
+      @include flex-column;
+      gap: 6px;
+
+      p:last-child {
+        font-weight: 900;
+      }
+    }
+  }
+
+  .bottom-link {
+    bottom: 2%;
+    color: white;
+    font-size: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    position: absolute;
+  }
+}

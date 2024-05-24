@@ -12,7 +12,9 @@ jest.mock('@rive-app/react-canvas', () => ({
 describe('LoadingGlobal', () => {
   it('displays the LoadingGlobal component with Rive animation', () => {
     // Render the LoadingGlobal component
-    const { getByText } = render(<LoadingGlobal />);
+    const { getByText } = render(
+      <LoadingGlobal text="Generating your colorpalette" />,
+    );
 
     // Assert that the mocked Rive component is rendered
     const mockedRiveComponent =

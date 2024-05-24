@@ -4,10 +4,12 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import ColorPickerForm from '../../../components/color-picker-form';
 import ImageUploadField from '../../../components/image-upload-field';
-import NavForm from '../../../components/nav-form';
-import { IPalette } from '../../../models/colorpalette.interface';
 import { LoadingGlobal } from '../../../components/loading-global';
+import Logo from '../../../components/logo';
+import NavForm from '../../../components/nav-form';
+import PrintPalette from '../../../components/printPalette';
 import SwiperContainer from '../../../components/swiper-container';
+import { IPalette } from '../../../models/colorpalette.interface';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
@@ -36,10 +38,13 @@ export default function Home() {
   };
   return (
     <main className="multi-step">
+      <Logo />
       <NavForm formStep={formStep} setFormStep={setFormStep} />
 
       <div className="multi-step-item">
-        {isLoading === true && <LoadingGlobal />}
+        {isLoading === true && (
+          <LoadingGlobal text="Generating your colorpalette...." />
+        )}
         {formStep === 0 && (
           <section id="upload-section" data-testid="upload-section">
             <ImageUploadField
@@ -103,6 +108,7 @@ export default function Home() {
           </>
         )}
       </div>
+      {colorpalette && <PrintPalette palette={colorpalette} />}
     </main>
   );
 }
