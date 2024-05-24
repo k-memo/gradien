@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa6';
 import { useSession } from 'next-auth/react';
 import { FiPlus } from 'react-icons/fi';
+import { LoadingGlobal } from '../../../components/loading-global';
 
 async function getPalettes(): Promise<IGetUserPalette[]> {
   const response = await fetch('api/getUserPalettes');
@@ -26,19 +27,26 @@ async function getPalettes(): Promise<IGetUserPalette[]> {
 
 export default function SavedPalettes() {
   const [palettes, setPalettes] = useState<IGetUserPalette[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
   const { data: session } = useSession();
 
   useEffect(() => {
     const fetchPalettes = async () => {
       try {
+        setLoading(true);
         const fetchedPalettes = await getPalettes();
         setPalettes(fetchedPalettes);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching palettes:', error);
       }
     };
     fetchPalettes();
   }, []);
+
+  if (loading) {
+    return <LoadingGlobal text="" />;
+  }
 
   return (
     <section id="saved">
