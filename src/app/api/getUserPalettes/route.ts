@@ -14,6 +14,8 @@ interface ISession {
   expires: string;
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
     const session: ISession | null = await getServerSession(
@@ -28,9 +30,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     );
 
     if (!session) {
-      // @ts-ignore
-      res.status(401).json({ error: 'Unauthorized' });
-      return;
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const userEmail = session.user?.email;
