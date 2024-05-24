@@ -20,6 +20,7 @@ interface ISession {
   expires: string;
 }
 
+
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
     const session: ISession | null = await getServerSession(
@@ -37,17 +38,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json('Unauthorized', { status: 401 });
     }
 
-    const paletteData: {id: string} = await req.json();
+    const paletteData: { id: string } = await req.json();
     const userEmail = session.user?.email;
 
     const deletePalette = await prisma.palette.delete({
-      where : {
+      where: {
         id: paletteData.id,
         user: {
-          email: userEmail
-        }
-      }
-    })
+          email: userEmail,
+        },
+      },
+    });
 
     return NextResponse.json('Deleted Successfully', { status: 200 });
   } catch (error) {
