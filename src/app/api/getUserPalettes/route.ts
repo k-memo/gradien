@@ -1,8 +1,9 @@
-import { NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth';
+import { NextRequest, NextResponse } from 'next/server';
 import authOptions from '../../../../lib/authOptions';
 import prisma from '../../../../lib/prisma';
-import { getServerSession } from 'next-auth';
-import { NextApiRequest, NextApiResponse } from 'next/types';
+import { IPalette } from '../../../../models/colorpalette.interface';
 
 interface ISession {
   user: {
@@ -13,9 +14,18 @@ interface ISession {
   expires: string;
 }
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
-    const session = await getServerSession(req, res, authOptions);
+    const session: ISession | null = await getServerSession(
+      req as unknown as NextApiRequest,
+      {
+        ...res,
+        getHeader: (name: string) => res.headers?.get(name),
+        setHeader: (name: string, value: string) =>
+          res.headers?.set(name, value),
+      } as unknown as NextApiResponse,
+      authOptions,
+    );
 
     if (!session) {
       // @ts-ignore
@@ -23,7 +33,7 @@ export async function GET(req: NextApiRequest, res: NextApiResponse) {
       return;
     }
 
-    const userEmail = (session as any).user?.email;
+    const userEmail = session.user?.email;
 
     const pallettes = await prisma.palette.findMany({
       where: {
