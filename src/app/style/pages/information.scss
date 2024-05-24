@@ -1,0 +1,127 @@
+#information {
+  padding: 4em;
+  overflow: hidden !important;
+  background-image: url(../../../../public/blur-back.svg);
+  background-size: cover;
+  height: 100vh;
+  .home {
+    &:hover,
+    &:active {
+      color: $hover !important;
+    }
+  }
+
+  .info-content {
+    z-index: 10;
+    position: relative;
+  }
+  .logo {
+    @include flex-row;
+    justify-content: space-between;
+  }
+  .welcome {
+    text-align: center;
+    @include flex-column;
+    align-items: center;
+    h2 {
+      color: $main-color;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+    p {
+      width: 80%;
+    }
+  }
+
+  .info-points {
+    @include flex-row;
+    gap: 2em;
+    padding: 6em 0em;
+    .point {
+      @include flex-column;
+      max-width: 400px;
+      align-items: center;
+      gap: 1em;
+      text-align: center;
+
+      p {
+        font-family: Spartan-Regular;
+        font-weight: 400;
+        @include flex-column;
+        gap: 1em;
+        align-items: center;
+      }
+      .number {
+        padding: 0.5em;
+        border-radius: 40px;
+        height: 40px;
+        width: 40px;
+        border: solid 1.5px $main-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span {
+          font-weight: 600;
+          font-size: 20px;
+          color: $main-color;
+        }
+      }
+    }
+  }
+
+  .bye {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    a {
+      color: $main-color;
+      &:hover,
+      &:active {
+        color: $hover;
+        @include transition;
+      }
+    }
+  }
+}
+@media screen and (max-width: $desktop-breakpoint) {
+  #information {
+    padding: 2em;
+    overflow: hidden;
+    .info-points {
+      @include flex-column;
+      gap: 2em;
+      padding: 4em 0em;
+      .point {
+        @include flex-column;
+
+        p {
+          font-family: Spartan-Regular;
+          font-weight: 400;
+          @include flex-column;
+          gap: 1em;
+          align-items: center;
+          font-size: 12px;
+        }
+        .number {
+          padding: 0.5em;
+          border-radius: 40px;
+          height: 32px;
+          width: 32px;
+          border: solid 1.5px $main-color;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          span {
+            font-weight: 600;
+            font-size: 16px;
+            color: $main-color;
+          }
+        }
+      }
+    }
+    .bye {
+      font-size: 10px;
+      font-weight: 600;
+    }
+  }
+}
