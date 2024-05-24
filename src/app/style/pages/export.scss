@@ -1,12 +1,14 @@
 #export {
-  background-color: $main-color;
-  padding: 3em;
+  background-image: url(../../../../public/export-background.jpg);
+  background-size: cover;
+  padding: 0em;
   height: 100vh;
   .heading {
     @include flex-column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
+    padding: 3em 0em 0em 0em;
     p {
       font-size: 22px;
       color: white;
@@ -17,12 +19,14 @@
   .export-containers {
     @include flex-row;
     gap: 1em;
+    padding: 0em 3em;
     .export-con-1 {
       background-color: rgb(255, 255, 255, 0.9);
       padding: 2em;
       height: 100%;
       width: 60vw;
-      border-radius: 20px;
+      border-radius: 10px;
+      box-shadow: 1px 3px 10px #636363;
     }
     .export-con-2 {
       background-color: rgb(255, 255, 255, 0.9);
@@ -30,7 +34,8 @@
       height: 50%;
       width: 40vw;
       @include flex-column;
-      border-radius: 20px;
+      border-radius: 10px;
+      box-shadow: 1px 3px 5px #343434;
       h3 {
         font-size: 16px;
         color: $text-color;
