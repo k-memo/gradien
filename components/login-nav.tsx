@@ -9,7 +9,7 @@ export default function StartBtn() {
 
   const handleSignIn = async e => {
     e.preventDefault();
-    await signIn('google', { callbackUrl: 'http://localhost:3000/' });
+    await signIn('google', { callbackUrl: process.env.NEXTAUTH_URL });
     setMessage('Successfully logged in!');
   };
 
