@@ -104,11 +104,10 @@ const DetailSwiper = ({
       <div className="links">
         <button
           type="submit"
-          className="btn-main btn"
+          className="delete-btn btn"
           onClick={() => handleDelete(paletteId)}
         >
           Delete
-          <FiSave className="link-icon" />
         </button>
       </div>
       <div className="showmore">

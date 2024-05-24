@@ -92,8 +92,9 @@
   .back {
     @include flex-row;
     justify-content: space-between;
-    width: 52%;
+    width: 41%;
     align-items: center;
+    margin-left: 10vw;
 
     a {
       color: $main-color;
@@ -175,6 +176,7 @@
       transform: rotate(90deg);
       margin: 14em 0em;
       height: 0px;
+      margin-left: -15em;
     }
   }
   .swiper {
@@ -187,16 +189,14 @@
       transform: scale(1.2);
     }
   }
-  .explanation {
-    p {
-      max-width: 800px;
-    }
-  }
   .swiper-form {
     .inputs {
       @include flex-row;
       gap: 1em;
       margin-bottom: 1em;
     }
+  }
+  .showmore {
+    margin: 0em 10em;
   }
 }

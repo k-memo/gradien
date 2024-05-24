@@ -52,7 +52,7 @@ const PaletteDetail = ({ params }: { params: { id: string } }) => {
   }, []);
 
   return (
-    <section id="palette-section">
+    <section id="palette-section" className="detail-section">
       {loading ? (
         <p> loading .... </p>
       ) : (
