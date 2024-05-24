@@ -12,6 +12,9 @@ import ExportLogo from '../../../public/export-logo.svg';
 import Image from 'next/image';
 import PrintPalette from '../../../components/printPalette';
 import { IPalette } from '../../../models/colorpalette.interface';
+import ExportLogo from '../../../public/export-logo.svg';
+import Image from 'next/image';
+import PrintPalette from '../../../components/printPalette';
 
 export default function Home() {
   const [formStep, setFormStep] = useState(0);
