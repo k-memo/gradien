@@ -10,6 +10,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
 import Logo from './logo';
 import ShowMore from './showmore';
+import { LoadingContainer } from './loading-container';
+import { FiTrash } from 'react-icons/fi';
 
 const DetailSwiper = ({
   paletteId,
@@ -25,6 +27,8 @@ const DetailSwiper = ({
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [paletteName, setPaletteName] = useState<string>('');
   const [paletteDesc, setPaletteDesc] = useState<string>('');
+  const [deleted, setDeleted] = useState<boolean>(false);
+  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -33,6 +37,7 @@ const DetailSwiper = ({
 
   const handleDelete = async (id: string) => {
     try {
+      setButtonLoading(true);
       const response = await fetch('/api/deletePalette', {
         method: 'POST',
         headers: {
@@ -56,12 +61,15 @@ const DetailSwiper = ({
         router.push('/savedPalettes');
       }, 5000);
 
+      setButtonLoading(false);
+      setDeleted(true);
       console.log(await response.text());
     } catch (error) {
       toast.error('Could not delete Palette! You will be redirected soon!', {
         position: 'top-right',
       });
       console.error('Error:', error);
+      setButtonLoading(false);
     }
   };
 
@@ -110,10 +118,24 @@ const DetailSwiper = ({
       <div className="links">
         <button
           type="submit"
-          className="delete-btn btn"
+          className="delete-btn btn relative overflow-hidden"
           onClick={() => handleDelete(paletteId)}
+          disabled={deleted}
         >
-          Delete
+          {buttonLoading ? (
+            <LoadingContainer />
+          ) : (
+            <>
+              {deleted ? (
+                <>DELETED</>
+              ) : (
+                <>
+                  Delete
+                  <FiTrash className="link-icon" />
+                </>
+              )}
+            </>
+          )}
         </button>
       </div>
       <div className="showmore">

@@ -17,9 +17,11 @@ body {
   overflow-x: hidden !important;
   font-weight: 600;
 }
+
 ::placeholder {
   font-weight: 600;
 }
+
 main {
   overflow-x: hidden;
 }
@@ -32,6 +34,19 @@ main {
 h1 {
   font-size: $h1-size;
   font-weight: 800;
+}
+
+.relative {
+  position: relative;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+button:disabled,
+button[disabled] {
+  cursor: default;
 }
 
 @media screen and (min-width: $desktop-breakpoint) {

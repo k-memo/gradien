@@ -13,6 +13,7 @@
   backdrop-filter: blur(9.7px);
   -webkit-backdrop-filter: blur(9.7px);
   overflow: hidden;
+
   .loading-svg {
     width: 50px;
     height: 50px;
@@ -20,6 +21,27 @@
     margin-bottom: 1em;
   }
 }
+
+.loading-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(9.7px);
+  -webkit-backdrop-filter: blur(9.7px);
+  overflow: hidden;
+  object-fit: cover;
+
+  .loading-svg {
+    height: 80%;
+    width: 80%;
+  }
+}
+
 @media screen and (min-width: $desktop-breakpoint) {
   .loading-animation {
     .loading-svg {
