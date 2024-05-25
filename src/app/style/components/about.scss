@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     bottom: 0;
-    width: 100%;
   }
   h2 {
     font-size: 22px;
@@ -36,11 +35,11 @@
       z-index: 10;
     }
     h4 {
-      font-size: 16px;
+      font-size: $text-l;
       font-family: 'Spartan-Bold';
     }
     p {
-      font-size: 14px;
+      font-size: $text-m;
       font-family: 'Spartan-Regular';
       padding-top: 10px;
     }
@@ -91,10 +90,10 @@
         gap: 2em;
       }
       h4 {
-        font-size: 14px;
+        font-size: $text-m;
       }
       p {
-        font-size: 12px;
+        font-size: $text-s;
         width: 70vw;
         text-align: center;
       }

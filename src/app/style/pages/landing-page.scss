@@ -22,7 +22,7 @@ h3 {
     position: relative;
 
     .sub {
-      font-size: 12px;
+      font-size: $text-s;
       font-weight: normal;
     }
   }
@@ -287,7 +287,7 @@ h3 {
   .landing-page-greeting {
     height: 100vh !important;
     .sub {
-      font-size: 14px !important;
+      font-size: $text-m !important;
       margin-top: -20px;
       margin-left: 5px;
     }

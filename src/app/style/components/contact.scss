@@ -45,7 +45,7 @@
     text-decoration: none;
     color: $text-color;
     font-family: 'Spartan-Regular';
-    font-size: 14px;
+    font-size: $text-m;
 
     &:hover,
     &:active {
@@ -83,7 +83,7 @@
       padding: 0em 4em;
 
       .text {
-        font-size: 14px;
+        font-size: $text-m;
         .contact-text {
           width: 300px;
         }

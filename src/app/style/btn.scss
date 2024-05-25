@@ -185,8 +185,7 @@ $blending: hard-light;
 
 @media screen and (min-width: $desktop-breakpoint) {
   .btn {
-    min-width: 200px;
-    max-width: 250px;
+    max-width: 150px;
     height: 40px;
     font-size: 14px;
   }

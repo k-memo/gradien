@@ -46,7 +46,7 @@
 }
 @media screen and (min-width: $desktop-breakpoint) {
   .nav-form {
-    margin: 5vw 10vw;
+    margin: 3vw 10vw;
     padding-bottom: 0;
     align-items: center;
     .hr {
@@ -57,17 +57,18 @@
     }
     .states {
       .state-circle {
-        width: 18px;
-        height: 18px;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
       }
       .active {
-        width: 40px;
-        height: 40px;
+        width: 28px;
+        height: 28px;
       }
     }
   }
   .check {
-    height: 18px;
-    width: 15px;
+    height: 12px;
+    width: 12px;
   }
 }
