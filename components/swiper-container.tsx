@@ -102,7 +102,7 @@ const SwiperContainer = ({
       <div className="palette-heading">
         <div className="back">
           <Link href={'/'} className="home">
-            <FaArrowLeft /> home
+            <FaArrowLeft /> HOME
           </Link>
           <div style={{ marginRight: '4em' }}>
             <Logo />
@@ -113,6 +113,16 @@ const SwiperContainer = ({
         <h3>Your Colorpalette</h3>
       </div>
       <div className="palettes">
+        <div className="palette">
+          {colorpalette?.colors.map((color, index) => (
+            <div
+              key={color.name}
+              className="palette-color"
+              style={{ backgroundColor: color.hex }}
+              onClick={() => getColor(index)}
+            ></div>
+          ))}
+        </div>
         <Swiper
           effect={'cards'}
           grabCursor={true}
@@ -125,95 +135,85 @@ const SwiperContainer = ({
               key={color.name}
               style={{ backgroundColor: color.hex }}
             >
-              {color.name}
+              <div className="colorname">{color.name}</div>
             </SwiperSlide>
           ))}
         </Swiper>
-
-        <div className="palette">
-          {colorpalette?.colors.map((color, index) => (
-            <div
-              key={color.name}
-              className="palette-color"
-              style={{ backgroundColor: color.hex }}
-              onClick={() => getColor(index)}
-            ></div>
-          ))}
+        <div className="links">
+          <form
+            onSubmit={e => {
+              e.preventDefault();
+              saveColorPalette(
+                paletteName,
+                paletteDesc,
+                colorpalette,
+                setPaletteSaved,
+                setButtonLoading,
+              );
+            }}
+            className="swiper-form"
+          >
+            <div className="inputs">
+              <div className="nam-form">
+                <label>Palette Name:</label>
+                <input
+                  type="text"
+                  placeholder="Palette Name"
+                  value={paletteName}
+                  onChange={e => setPaletteName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="description-form">
+                <label>Palette Description:</label>
+                <input
+                  type="text"
+                  placeholder="Palette Description"
+                  value={paletteDesc}
+                  onChange={e => setPaletteDesc(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            {status === 'authenticated' && paletteSaved === true && (
+              <button
+                type="submit"
+                className="btn-main btn relative"
+                disabled
+                style={{ backgroundColor: 'green' }}
+              >
+                Saved
+                <FiSave className="link-icon" />
+              </button>
+            )}
+            {status === 'authenticated' && paletteSaved === false && (
+              <button
+                type="submit"
+                className="btn-main btn relative overflow-hidden"
+                disabled={buttonLoading}
+              >
+                {buttonLoading ? (
+                  <LoadingContainer />
+                ) : (
+                  <>
+                    Save
+                    <FiSave className="link-icon" />
+                  </>
+                )}
+              </button>
+            )}
+            {status !== 'authenticated' && (
+              <button
+                onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
+                className="google-btn disabled"
+              >
+                Sign In with Google
+              </button>
+            )}
+          </form>
         </div>
       </div>
-      <div className="links">
-        <form
-          onSubmit={e => {
-            e.preventDefault();
-            saveColorPalette(
-              paletteName,
-              paletteDesc,
-              colorpalette,
-              setPaletteSaved,
-              setButtonLoading,
-            );
-          }}
-          className="swiper-form"
-        >
-          <div className="inputs">
-            <div className="nam-form">
-              <label>Palette Name:</label>
-              <input
-                type="text"
-                placeholder="Palette Name"
-                value={paletteName}
-                onChange={e => setPaletteName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="description-form">
-              <label>Palette Description:</label>
-              <input
-                type="text"
-                placeholder="Palette Description"
-                value={paletteDesc}
-                onChange={e => setPaletteDesc(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          {status === 'authenticated' && paletteSaved === true && (
-            <button
-              type="submit"
-              className="btn-main btn relative"
-              disabled
-              style={{ backgroundColor: 'green' }}
-            >
-              Saved
-              <FiSave className="link-icon" />
-            </button>
-          )}
-          {status === 'authenticated' && paletteSaved === false && (
-            <button
-              type="submit"
-              className="btn-main btn relative overflow-hidden"
-              disabled={buttonLoading}
-            >
-              {buttonLoading ? (
-                <LoadingContainer />
-              ) : (
-                <>
-                  Save
-                  <FiSave className="link-icon" />
-                </>
-              )}
-            </button>
-          )}
-          {status !== 'authenticated' && (
-            <button
-              onClick={() => popupCenter('/google-signin', 'Sample Sign In')}
-              className="google-btn disabled"
-            >
-              Sign In with Google
-            </button>
-          )}
-        </form>
-      </div>
+
       <div className="showmore">
         <div className="explanation">
           <ShowMore

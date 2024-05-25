@@ -57,8 +57,6 @@
 
 #image-color-pick-canvas {
   border-radius: 10px;
-  width: 82vw;
-  height: 61.5vw;
 }
 
 .submit-area {
@@ -78,13 +76,13 @@
   .color-picker-section {
     @include flex-column;
     align-items: center;
-
+    padding: 0vw 10vw;
+    width: 100%;
     h3 {
       margin-top: 0 !important;
     }
 
     .color-picker-page {
-      width: 70vw;
       @include flex-row;
       gap: 3em;
 
@@ -132,6 +130,7 @@
   #image-color-pick-canvas {
     border-radius: 5%;
     height: 431px;
-    width: 575px
+    width: 575px;
+    overflow: hidden;
   }
 }

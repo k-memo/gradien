@@ -4,14 +4,16 @@
 }
 
 .palette-color {
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 50px;
   border-radius: 5px;
-  box-shadow: -3px 4px 6px rgba(0, 0, 0, 0.421);
+  box-shadow: 1px -3px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
-  margin-right: -4px;
   cursor: pointer;
-
+  margin-top: -5px;
+  &:last-child {
+    margin-bottom: 0;
+  }
   &:active {
     transform: scale(1.2);
   }
@@ -60,6 +62,9 @@
   h2 {
     font-size: 16px;
   }
+}
+.colorname {
+  mix-blend-mode: hard-light;
 }
 
 .showmore {
@@ -125,15 +130,6 @@
 .links {
   @include flex-column;
   gap: 1em;
-  margin: 3em 0em !important;
-
-  .btn-second {
-    width: 50%;
-  }
-
-  .btn-main {
-    width: 70%;
-  }
 }
 
 .swiper-form {
@@ -164,10 +160,8 @@
 
 .palettes {
   @include flex-column;
-  align-items: center;
-  gap: 2em;
   width: 100%;
-
+  margin-bottom: 2em;
   .palette {
     width: 100%;
   }
@@ -187,16 +181,10 @@
     padding-right: 4em;
   }
 
-
   .color-palette-div {
     @include flex-column;
     align-items: center;
     width: 100%;
-
-    .links {
-      @include flex-row;
-      justify-content: center;
-    }
 
     .btn {
       max-width: 100%;
@@ -216,13 +204,8 @@
   .palettes {
     @include flex-row;
     position: relative;
-    justify-content: center;
-    gap: 13em;
-    max-width: 1200px;
-
-    * {
-      margin: 0;
-    }
+    justify-content: space-between;
+    max-width: 1060px;
 
     .palette {
       flex-direction: column;
@@ -233,7 +216,6 @@
   .swiper {
     width: 340px;
     height: 420px;
-    margin-top: 2em;
   }
 
   .palette-color {
@@ -244,14 +226,21 @@
 
   .swiper-form {
     .inputs {
-      @include flex-row;
+      @include flex-column;
       gap: 1em;
       margin-bottom: 1em;
+      input {
+        @include flex-column;
+        width: 250px;
+      }
+      input[type='button'] {
+        width: 300px;
+      }
     }
   }
 
   .showmore {
     margin: auto;
-    max-width: 800px;
+    max-width: 1060px;
   }
 }

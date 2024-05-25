@@ -38,7 +38,6 @@ export default function Home() {
   };
   return (
     <main className="multi-step">
-      <Logo />
       <NavForm formStep={formStep} setFormStep={setFormStep} />
 
       <div className="multi-step-item">

@@ -15,6 +15,7 @@ export default function ColorPickerForm({
   const [eyeColor, setEyeColor] = useState('');
   const [hairColor, setHairColor] = useState('');
   const [skinColor, setSkinColor] = useState('');
+  const [active, setActive] = useState(false);
 
   const [fields, setField] = useState<IinputField[]>([]);
   const [errors, setErrors] = useState<IerrorField[]>([]);
