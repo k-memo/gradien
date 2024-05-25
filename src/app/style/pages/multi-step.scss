@@ -46,7 +46,7 @@
     height: 24px;
   }
   label {
-    font-size: 12px;
+    font-size: $text-s;
     text-transform: none;
   }
   @include flex-row;
@@ -76,7 +76,7 @@
       height: 24px;
     }
     label {
-      font-size: 14px;
+      font-size: $text-m;
     }
     justify-content: flex-start;
     margin-bottom: 0em !important;

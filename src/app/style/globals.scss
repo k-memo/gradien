@@ -48,10 +48,16 @@ button:disabled,
 button[disabled] {
   cursor: default;
 }
+h3 {
+  font-size: $text-m;
+}
 
 @media screen and (min-width: $desktop-breakpoint) {
   body {
     font-size: 16px;
     font-weight: normal;
+  }
+  h3 {
+    font-size: $text-l;
   }
 }

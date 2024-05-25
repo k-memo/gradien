@@ -7,13 +7,10 @@
   width: 65px;
   height: 50px;
   border-radius: 5px;
-  box-shadow: 1px -3px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px -3px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
   cursor: pointer;
-  margin-top: -5px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  margin-left: -5px;
   &:active {
     transform: scale(1.2);
   }
@@ -84,25 +81,25 @@
 
   p {
     width: 100%;
-    font-family: Spartan-Regular;
     font-size: 14px;
   }
+}
+p {
+  font-family: Spartan-Regular;
 }
 
 .palette-heading {
   @include flex-column;
   align-items: center;
   width: 100%;
-
+  gap: 10px;
+  margin-bottom: 2em;
+  h3 {
+    margin-top: 0;
+  }
   h2 {
     text-transform: uppercase;
   }
-
-  h3 {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-
   .back {
     @include flex-row;
     justify-content: space-between;
@@ -150,21 +147,36 @@
     box-shadow: inset 0 0 5px rgba(31, 0, 66, 0.227);
   }
 
-  .btn-main {
-    width: 100% !important;
-  }
-
   @include flex-column;
   gap: 1em;
+  .btn {
+    width: 100%;
+  }
 }
 
 .palettes {
   @include flex-column;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
+  gap: 2em;
+  align-items: center;
   .palette {
     width: 100%;
+    order: 2;
   }
+  .mySwiper {
+    order: 1;
+  }
+  .links {
+    order: 3;
+  }
+}
+
+.home {
+  font-size: $text-xs;
+}
+.swiper-wrapper {
+  margin-left: 0em;
 }
 
 @media screen and (min-width: $desktop-breakpoint) {
@@ -204,21 +216,36 @@
   .palettes {
     @include flex-row;
     position: relative;
-    justify-content: space-between;
     max-width: 1060px;
+    align-items: flex-start;
+    gap: 8em;
+    justify-content: flex-end;
 
+    .mySwiper {
+      order: 2;
+    }
     .palette {
       flex-direction: column;
       width: fit-content;
+      order: 1;
+    }
+    .links {
+      order: 3;
     }
   }
-
+  .home {
+    font-size: 14px;
+  }
   .swiper {
     width: 340px;
     height: 420px;
   }
 
   .palette-color {
+    margin-top: -5px;
+    &:last-child {
+      margin-bottom: 0;
+    }
     &:hover {
       transform: scale(1.2);
     }
@@ -229,12 +256,15 @@
       @include flex-column;
       gap: 1em;
       margin-bottom: 1em;
+      width: 250px;
+      label {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
       input {
         @include flex-column;
         width: 250px;
-      }
-      input[type='button'] {
-        width: 300px;
       }
     }
   }

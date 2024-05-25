@@ -75,13 +75,13 @@
 
       h3 {
         margin: 0;
-        font-size: 16px;
+        font-size: $text-l;
         color: $text-color;
       }
 
       p {
         font-family: Spartan-Regular;
-        font-size: 12px;
+        font-size: $text-s;
         font-weight: 300;
       }
     }
@@ -100,7 +100,7 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: $text-m;
       color: $text-color;
     }
 
@@ -117,7 +117,7 @@
   .bottom-link {
     bottom: 2%;
     color: white;
-    font-size: 10px;
+    font-size: $text-xs;
     width: 100%;
     display: flex;
     justify-content: center;

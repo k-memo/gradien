@@ -154,6 +154,13 @@ const SwiperContainer = ({
             className="swiper-form"
           >
             <div className="inputs">
+              <h4>Save Your Color Palette</h4>
+              <p>
+                Preserve your carefully crafted color palette to ensure you can
+                easily access and use it in the future. To get more Information,
+                you can read your Colorpalette Info section.
+              </p>
+
               <div className="nam-form">
                 <label>Palette Name:</label>
                 <input
@@ -183,7 +190,6 @@ const SwiperContainer = ({
                 style={{ backgroundColor: 'green' }}
               >
                 Saved
-                <FiSave className="link-icon" />
               </button>
             )}
             {status === 'authenticated' && paletteSaved === false && (
@@ -192,14 +198,7 @@ const SwiperContainer = ({
                 className="btn-main btn relative overflow-hidden"
                 disabled={buttonLoading}
               >
-                {buttonLoading ? (
-                  <LoadingContainer />
-                ) : (
-                  <>
-                    Save
-                    <FiSave className="link-icon" />
-                  </>
-                )}
+                {buttonLoading ? <LoadingContainer /> : <>Save</>}
               </button>
             )}
             {status !== 'authenticated' && (
