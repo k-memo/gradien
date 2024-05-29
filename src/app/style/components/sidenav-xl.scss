@@ -17,12 +17,18 @@
   align-items: center;
   justify-content: center;
   font-size: 30px;
+  transition:
+    height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.4s ease-in-out;
 
   a {
     color: $text-color;
     position: relative;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition:
+      color 0.3s ease,
+      transform 0.4s ease,
+      opacity 0.4s ease;
 
     &:hover {
       color: $hover;
@@ -34,6 +40,11 @@
     @include flex-column;
     justify-content: center;
     align-items: center;
+    .bookmark,
+    .plus,
+    .info {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     .bookmark {
       transform: rotate(60deg) translateY(60px) translateX(-20px) rotate(-60deg);
@@ -41,7 +52,7 @@
     }
 
     .plus {
-      transform: rotate(20deg) translateX(50px) translateY(40px) rotate(-20deg);
+      transform: rotate(20deg) translateX(30px) translateY(55px) rotate(-20deg);
       transition-delay: 0.1s;
     }
 
@@ -59,25 +70,27 @@
 
   &.closed {
     visibility: hidden;
+    height: 0;
+
+    .bookmark,
+    .plus,
+    .info {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     .bookmark {
-      transform: rotate(20deg) translateY(50px) translateX(20px) rotate(60deg);
+      transform: rotate(0deg) translateY(60px) translateX(-100px) rotate(60deg);
       transition-delay: 0s;
     }
 
     .plus {
-      transform: rotate(0deg) translateX(0) translateY(0) rotate(0);
+      transform: rotate(0deg) translateX(-150px) translateY(0) rotate(0);
       transition-delay: 0.1s;
     }
 
     .info {
-      transform: rotate(0deg) translateX(0) translateY(0) rotate(0);
+      transform: rotate(0deg) translateX(-150px) translateY(150px) rotate(0);
       transition-delay: 0.2s;
-    }
-
-    a {
-      transition:
-        transform 0.5s ease,
-        opacity 0.5s ease;
     }
   }
 }

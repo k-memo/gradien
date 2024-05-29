@@ -8,6 +8,10 @@ nav {
   text-align: center;
   border-radius: 100px;
   box-shadow: 1px 3px 5px #4100475a;
+  .icon {
+    height: 32px;
+    width: 32px;
+  }
   button {
     background-color: transparent;
     border: none;
@@ -39,8 +43,8 @@ nav {
     }
   }
 }
+
 .login-prompt-container {
-  position: absolute;
   z-index: 1111;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(9.7px);
@@ -70,9 +74,20 @@ nav {
       margin-top: 1em;
       padding: 5px 0px;
       cursor: pointer;
-      &:active {
+      &:active,
+      &:hover {
         background-color: $hover;
+        color: white;
+        @include transition;
       }
+    }
+  }
+}
+@media screen and (min-width: $desktop-breakpoint) {
+  .login-prompt-container {
+    position: fixed;
+    .login-prompt {
+      width: 50%;
     }
   }
 }

@@ -6,6 +6,9 @@ import CloseS from '../public/close-s.svg';
 import Menu from '../public/menu.svg';
 import Logo from './logo';
 import Image from 'next/image';
+import Info from '../public/info.svg';
+import Plus from '../public/plus.svg';
+import Bookmark from '../public/bookmark.svg';
 import { useSession } from 'next-auth/react';
 
 export default function SideNavXl() {
@@ -44,13 +47,13 @@ export default function SideNavXl() {
               className="saved-link bookmark"
               onClick={handleBookmarkClick}
             >
-              <FiBookmark />
+              <Image src={Bookmark} alt="saved" />
             </button>
             <Link className="plus" href="/generate">
-              <SlPlus size={'40px'} />
+              <Image src={Plus} alt="generate" />
             </Link>
             <Link className="info" href="/information">
-              <FiInfo />
+              <Image src={Info} alt="info" />
             </Link>
           </div>
         </div>
