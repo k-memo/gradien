@@ -7,51 +7,12 @@ import { FiSave } from 'react-icons/fi';
 import { toast, ToastContainer } from 'react-toastify';
 import { EffectCards } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IPalette } from '../models/colorpalette.interface'; // Import IPalette interface
+import { IPalette } from '../models/colorpalette.interface';
 import Logo from './logo';
 import ShowMore from './showmore';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoadingContainer } from './loading-container';
-
-async function saveColorPalette(
-  paletteName: string,
-  paletteDesc: string,
-  colorpalette: IPalette,
-  setPaletteSaved,
-  setButtonLoading,
-) {
-  try {
-    const savePalette: ISavePalette = {
-      paletteName,
-      paletteDesc,
-      palette: colorpalette,
-    };
-
-    setButtonLoading(true);
-    const response = await fetch('/api/savePalette', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(savePalette),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to save palette');
-    }
-
-    setPaletteSaved(true);
-    toast.success('Palette Saved Successfully !', {
-      position: 'top-right',
-    });
-
-    setButtonLoading(false);
-    console.log(await response.text());
-  } catch (error) {
-    console.error('Error:', error);
-    setButtonLoading(false);
-  }
-}
+import { useRouter } from 'next/navigation';
 
 const SwiperContainer = ({
   colorpalette,
@@ -68,6 +29,49 @@ const SwiperContainer = ({
   const { data: session, status } = useSession();
   const [paletteSaved, setPaletteSaved] = useState<boolean>(false);
   const [buttonLoading, setButtonLoading] = useState<boolean>(false);
+  const router = useRouter();
+
+  const saveColorPalette = async (
+    paletteName: string,
+    paletteDesc: string,
+    colorpalette: IPalette,
+    setPaletteSaved,
+    setButtonLoading,
+  ) => {
+    try {
+      const savePalette: ISavePalette = {
+        paletteName,
+        paletteDesc,
+        palette: colorpalette,
+      };
+
+      setButtonLoading(true);
+      const response = await fetch('/api/savePalette', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(savePalette),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save palette');
+      }
+
+      setPaletteSaved(true);
+      toast.success('Palette Saved Successfully!', {
+        position: 'top-right',
+      });
+
+      setButtonLoading(false);
+      console.log(await response.text());
+
+      router.push('/savedPalettes');
+    } catch (error) {
+      console.error('Error:', error);
+      setButtonLoading(false);
+    }
+  };
 
   const popupCenter = (url, title) => {
     const dualScreenLeft = window.screenLeft ?? window.screenX;
