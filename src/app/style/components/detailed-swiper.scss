@@ -1,0 +1,38 @@
+.detail-palettes {
+  @include flex-column;
+  width: 100%;
+  margin-bottom: 4em;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  .palette {
+    width: 100%;
+    order: 2;
+  }
+  .mySwiper {
+    order: 1;
+  }
+  .empty {
+    order: 3;
+  }
+}
+@media screen and (min-width: $desktop-breakpoint) {
+  .detail-palettes {
+    @include flex-row;
+    position: relative;
+    max-width: 1060px;
+    gap: 8em;
+
+    .mySwiper {
+      order: 2;
+    }
+    .palette {
+      flex-direction: column;
+      width: fit-content;
+      order: 1;
+    }
+    .empty {
+      order: 3;
+    }
+  }
+}

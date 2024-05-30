@@ -82,11 +82,12 @@ const DetailSwiper = ({
             <FaArrowLeft /> home
           </Link>
           <Logo />
+          <div></div>
         </div>
 
         <h3>Your Colorpalette</h3>
       </div>
-      <div className="palettes">
+      <div className="detail-palettes">
         <Swiper
           effect={'cards'}
           grabCursor={true}
@@ -114,6 +115,7 @@ const DetailSwiper = ({
             ></div>
           ))}
         </div>
+        <div className="empty"></div>
       </div>
       <div className="links">
         <button

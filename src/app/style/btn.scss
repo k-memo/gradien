@@ -144,7 +144,7 @@
   background-color: $error;
   color: white;
   border: solid 1px $darkred;
-
+  margin-bottom: 1em;
   &:hover,
   &:active {
     background-color: $darkred;
@@ -185,7 +185,6 @@ $blending: hard-light;
 
 @media screen and (min-width: $desktop-breakpoint) {
   .btn {
-    max-width: 150px;
     height: 40px;
     font-size: 14px;
   }

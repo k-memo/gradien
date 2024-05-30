@@ -1,7 +1,7 @@
 //about section
 #about {
   .about-text {
-    height: 80vh;
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -104,7 +104,6 @@
       right: 0;
       top: 50%;
       transform: translateY(-50%);
-      width: 100%;
       overflow: hidden;
     }
   }
