@@ -3,8 +3,29 @@ import OpenAI, { ClientOptions } from 'openai';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import { IPalette } from '../../../../models/colorpalette.interface';
 import { prestring } from './prestring.const';
+import { z } from 'zod';
 
 export const runtime = 'edge';
+
+const hexCodePattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
+
+const hexCodeSchema = z.string().refine(str => hexCodePattern.test(str), {
+  message: 'Invalid hex color code',
+});
+
+const paletteSchema = z.object({
+  colors: z.array(
+    z.object({
+      hex: hexCodeSchema,
+    }),
+  ),
+});
+
+// old validation
+const isHexCode = (str: string): boolean => {
+  const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
+  return hexPattern.test(str);
+};
 
 const getOpenApiResponse = async (userMessage: string) => {
   try {
@@ -37,25 +58,21 @@ const getOpenApiResponse = async (userMessage: string) => {
   }
 };
 
-const isHexCode = (str: string): boolean => {
-  const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
-  return hexPattern.test(str);
-};
-
 export async function POST(req) {
   try {
-    let generateUntil = true;
     let correctPalette: IPalette | null = null;
 
     for (let index = 0; index < 4; index++) {
-      const colorPalette: IPalette = await getOpenApiResponse(req.text());
+      const userMessage = await req.text();
+      const colorPalette: IPalette = await getOpenApiResponse(userMessage);
 
-      if (
-        colorPalette.colors?.length > 0 &&
-        isHexCode(colorPalette.colors[0].hex)
-      ) {
+      const result = paletteSchema.safeParse(colorPalette);
+
+      if (result.success) {
         correctPalette = { ...colorPalette };
         break;
+      } else {
+        console.error('Validation Error:', result.error.errors);
       }
     }
 

@@ -3,23 +3,12 @@ import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import authOptions from '../../../../lib/authOptions';
 import prisma from '../../../../lib/prisma';
-import { IPalette } from '../../../../models/colorpalette.interface';
+import { ISession } from '../../../../models/session.interface';
+import { z } from 'zod';
 
-export interface ISavePalette {
-  paletteName: string;
-  paletteDesc: string;
-  palette: IPalette;
-}
-
-interface ISession {
-  user: {
-    name: string;
-    email: string;
-    image: string;
-  };
-  expires: string;
-}
-
+const Zid = z.object({
+  id: z.string(),
+});
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
@@ -38,7 +27,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json('Unauthorized', { status: 401 });
     }
 
-    const paletteData: { id: string } = await req.json();
+    const body = await req.json();
+
+    // Schema Validation
+    const result = Zid.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
+    }
+
+    const paletteData: { id: string } = result.data;
+
     const userEmail = session.user?.email;
 
     const deletePalette = await prisma.palette.delete({

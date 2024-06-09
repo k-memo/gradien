@@ -3,22 +3,16 @@ import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import authOptions from '../../../../lib/authOptions';
 import prisma from '../../../../lib/prisma';
-import { IPalette } from '../../../../models/colorpalette.interface';
+import { ISession } from '../../../../models/session.interface';
+import { ISavePalette } from '../../../../models/savePalette.interface';
+import { z } from 'zod';
+import { ZIPalette } from '../../../../models/colorpalette.interface';
 
-export interface ISavePalette {
-  paletteName: string;
-  paletteDesc: string;
-  palette: IPalette;
-}
-
-interface ISession {
-  user: {
-    name: string;
-    email: string;
-    image: string;
-  };
-  expires: string;
-}
+const ZISavePaletteSchema = z.object({
+  paletteName: z.string(),
+  paletteDesc: z.string(),
+  palette: ZIPalette,
+});
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
@@ -37,7 +31,17 @@ export async function POST(req: NextRequest, res: NextResponse) {
       return NextResponse.json('Unauthorized', { status: 401 });
     }
 
-    const paletteData: ISavePalette = await req.json();
+    const body = await req.json();
+
+    // Schema Validation
+    const result = ZISavePaletteSchema.safeParse(body);
+
+    if (!result.success) {
+      return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
+    }
+
+    const paletteData: ISavePalette = result.data;
+
     const userEmail = session.user?.email;
 
     const newPalette = await prisma.palette.create({
