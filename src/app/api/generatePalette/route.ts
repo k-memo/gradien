@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import OpenAI, { ClientOptions } from 'openai';
+import ratelimit from '../../../../lib/rateLimiter';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import { IPalette } from '../../../../models/colorpalette.interface';
 import { prestring } from './prestring.const';
@@ -20,6 +21,11 @@ const paletteSchema = z.object({
     }),
   ),
 });
+
+const getClientIp = (req: NextRequest): string => {
+  // Vercel provides the IP in req.ip, for self-hosting it's in X-Forwarded-For
+  return req.headers.get('X-Forwarded-For') || req.ip || 'unknown';
+};
 
 // old validation
 const isHexCode = (str: string): boolean => {
@@ -58,7 +64,17 @@ const getOpenApiResponse = async (userMessage: string) => {
   }
 };
 
+
+
 export async function POST(req) {
+
+
+    const identifier = getClientIp(req);
+    const result = await ratelimit.limit(identifier);
+    
+    if (!result.success) {
+      return NextResponse.json({ message: 'The request has been rate limited.', rateLimitState: result }, { status: 429 });
+    }
   try {
     let correctPalette: IPalette | null = null;
 
