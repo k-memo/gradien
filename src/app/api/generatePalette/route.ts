@@ -1,10 +1,37 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import OpenAI, { ClientOptions } from 'openai';
+import ratelimit from '../../../../lib/rateLimiter';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import { IPalette } from '../../../../models/colorpalette.interface';
 import { prestring } from './prestring.const';
+import { z } from 'zod';
 
 export const runtime = 'edge';
+
+const hexCodePattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
+
+const hexCodeSchema = z.string().refine(str => hexCodePattern.test(str), {
+  message: 'Invalid hex color code',
+});
+
+const paletteSchema = z.object({
+  colors: z.array(
+    z.object({
+      hex: hexCodeSchema,
+    }),
+  ),
+});
+
+const getClientIp = (req: NextRequest): string => {
+  // Vercel provides the IP in req.ip, for self-hosting it's in X-Forwarded-For
+  return req.headers.get('X-Forwarded-For') || req.ip || 'unknown';
+};
+
+// old validation
+const isHexCode = (str: string): boolean => {
+  const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
+  return hexPattern.test(str);
+};
 
 const getOpenApiResponse = async (userMessage: string) => {
   try {
@@ -37,25 +64,31 @@ const getOpenApiResponse = async (userMessage: string) => {
   }
 };
 
-const isHexCode = (str: string): boolean => {
-  const hexPattern = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$/;
-  return hexPattern.test(str);
-};
+
 
 export async function POST(req) {
+
+
+    const identifier = getClientIp(req);
+    const result = await ratelimit.limit(identifier);
+    
+    if (!result.success) {
+      return NextResponse.json({ message: 'The request has been rate limited.', rateLimitState: result }, { status: 429 });
+    }
   try {
-    let generateUntil = true;
     let correctPalette: IPalette | null = null;
 
     for (let index = 0; index < 4; index++) {
-      const colorPalette: IPalette = await getOpenApiResponse(req.text());
+      const userMessage = await req.text();
+      const colorPalette: IPalette = await getOpenApiResponse(userMessage);
 
-      if (
-        colorPalette.colors?.length > 0 &&
-        isHexCode(colorPalette.colors[0].hex)
-      ) {
+      const result = paletteSchema.safeParse(colorPalette);
+
+      if (result.success) {
         correctPalette = { ...colorPalette };
         break;
+      } else {
+        console.error('Validation Error:', result.error.errors);
       }
     }
 

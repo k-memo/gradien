@@ -3,16 +3,7 @@ import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 import authOptions from '../../../../lib/authOptions';
 import prisma from '../../../../lib/prisma';
-import { IPalette } from '../../../../models/colorpalette.interface';
-
-interface ISession {
-  user: {
-    name: string;
-    email: string;
-    image: string;
-  };
-  expires: string;
-}
+import { ISession } from '../../../../models/session.interface';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,4 +1,3 @@
-import { ISavePalette } from '@/app/api/savePalette/route';
 import { signIn, SignInResponse, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -13,6 +12,7 @@ import ShowMore from './showmore';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoadingContainer } from './loading-container';
 import { useRouter } from 'next/navigation';
+import { ISavePalette } from '../models/savePalette.interface';
 
 const SwiperContainer = ({
   colorpalette,

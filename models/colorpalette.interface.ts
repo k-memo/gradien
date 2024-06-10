@@ -1,3 +1,5 @@
+import z from 'zod';
+
 export interface IPalette {
   initialColor: {
     eyes: string;
@@ -22,3 +24,25 @@ export interface IPalletteColor {
   hex: string;
   message: string;
 }
+
+// ----------------------------------------------------- ZOD
+export const ZIPaletteColor = z.object({
+  name: z.string(),
+  hex: z.string(),
+  message: z.string(),
+});
+
+export const ZIPalette = z.object({
+  initialColor: z.object({
+    eyes: z.string(),
+    hair: z.string(),
+    skin: z.string(),
+  }),
+  userColorDisposition: z.string(),
+  colors: z.array(ZIPaletteColor),
+  paletteInfo: z.string(),
+  jewelery: z.object({
+    color: z.enum(['gold', 'silver']),
+    message: z.string(),
+  }),
+});
